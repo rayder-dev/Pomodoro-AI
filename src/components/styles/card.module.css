@@ -1,0 +1,37 @@
+:root {
+  --left: 28% 82% 35px 35px / 30% 24% 35px 35px;
+  --right: 82% 28% 35px 35px / 24% 30% 35px 35px;
+}
+
+.card {
+  margin: 0 auto;
+  height: 25em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.219);
+  border-radius: 35px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass {
+  flex-grow: 1; /* This makes the child grow with the parent */
+  min-width: 0; /* Prevents the child from growing beyond its parent */
+  overflow: hidden; /* To ensure contents don’t exceed child width */
+  padding: 1em;
+  height: 85%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #524281b7;
+  border-radius: var(--left);
+  box-shadow: 0 4px 30px rgb(0, 0, 0);
+  /* border: 1px solid rgba(255, 255, 255, 0.25); */
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(10.5px);
+}

@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  /* Enable touch scrolling while hiding the scrollbar */
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #1f1e3c;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #2d2d44;
+  border-radius: 20px;
+  border: 3px solid #1f1e3c;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3a3a5b;
+}
+
+/* By default, hide scrollbar */
+body {
+  /* For Firefox */
+  scrollbar-width: none; /* Hides scrollbar */
+}
+
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  display: none; /* Hides scrollbar */
+}
+
+@media (min-width: 750px) {
+  body {
+    overflow-y: auto; /* Show scrollbar when window is wider than 750px */
+    scrollbar-width: thin; /* For Firefox: show thin scrollbar */
+    scrollbar-color: #2d2d44 #1f1e3c; /* Custom scrollbar colors */
+  }
+
+  /* For WebKit browsers */
+  ::-webkit-scrollbar {
+    display: block; /* Show scrollbar */
+  }
+
+  /* Scrollbar thumb retains original styling */
+  ::-webkit-scrollbar-thumb {
+    background: #2d2d44;
+    border-radius: 20px; /* Circular scrollbar ends */
+    border: 3px solid #1f1e3c;
+  }
+}

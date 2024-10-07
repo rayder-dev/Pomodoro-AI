@@ -1,0 +1,115 @@
+/* ============
+Navigation
+=============*/
+header {
+  background-color: #2d2d44;
+  box-shadow: 0 4px 30px rgb(0, 0, 0);
+}
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em 0 0 0;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  gap: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  /* remove the default left padding caused by the 'UL' bullet */
+  padding: 0;
+  margin: 0.5em;
+}
+
+.nav-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.nav-button span {
+  /* Prevent text from wrapping */
+  white-space: nowrap;
+  /*Hide the text inside the button*/
+  display: none;
+}
+
+/* Nav button design */
+.nav-button {
+  width: 2em;
+  position: relative;
+  height: 2.5em;
+  border: 3px ridge #8253f7;
+  transition: 1s;
+  border-radius: 0.5em;
+}
+
+.nav-button::after {
+  content: '';
+  transform-origin: center;
+  position: absolute;
+  top: -10px;
+  left: 25%;
+  width: 55%;
+  height: 40%;
+  background-color: #2d2d44;
+  transition: 0.5s;
+}
+
+.nav-button::before {
+  content: '';
+  transform-origin: center;
+  position: absolute;
+  top: 80%;
+  left: 25%;
+  width: 55%;
+  height: 40%;
+  background-color: #2d2d44;
+  transition: 0.5s;
+}
+
+.nav-button:hover::before,
+.nav-button:hover::after {
+  transform: scale(0);
+}
+
+.nav-button:hover {
+  box-shadow: inset 0px 0px 25px #e314ea;
+}
+
+@media (min-width: 470px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 750px) {
+  .nav-button {
+    width: 7em;
+  }
+
+  .nav-button span {
+    /*Hide the text inside the button*/
+    display: inline;
+    /* space between nav button Icon & Text */
+    margin-left: 5px;
+  }
+}

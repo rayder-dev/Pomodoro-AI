@@ -1,0 +1,23 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+  background-color: #1f1e3c;
+  padding: 1em 0.5em;
+}
+
+@media (min-width: 470px) {
+  .container {
+    gap: 2em;
+    padding: 2em;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+@media (min-width: 750px) {
+  .container {
+    gap: 3em;
+    padding: 3em;
+    grid-template-columns: 2fr 1fr;
+  }
+}
