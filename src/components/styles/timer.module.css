@@ -1,46 +1,126 @@
-.time {
-  margin-top: 0;
-  font-size: 5em;
-  font-weight: bolder;
-  color: white;
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.button {
-  --bg: #ffffff;
-  --text-color: #503578;
+.clock-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  width: 250px;
-  border: none;
-  background: var(--bg);
-  color: var(--text-color);
-  padding: 0.5em;
-  font-weight: bolder;
-  font-size: 25px;
-  text-transform: uppercase;
-  transition: 0.2s;
-  border-radius: 5px;
-  opacity: 1;
-  letter-spacing: 1px;
-  box-shadow: #c9c9c9 0px 7px 2px, #000 0px 8px 5px;
+  width: 340px;
+  height: 340px;
+  background-color: #1e2e2e;
+  border-radius: 50%;
+  box-shadow: inset 0 3px 3px rgba(255, 255, 255, 0.685),
+    inset 0 0 15px rgba(0, 0, 0, 0.685), 0 5px 10px rgba(0, 0, 0, 0.5);
+  z-index: 0;
 }
 
-.button:hover {
-  opacity: 0.8;
+.clock-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 320px;
+  height: 320px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.685), inset 0 0 4px rgba(0, 0, 0, 0.685);
+  z-index: 1;
 }
 
-.button:active {
-  top: 4px;
-  box-shadow: #afafaf 0px 3px 2px, #000 0px 3px 5px;
+.clock-inner::before {
+  content: '';
+  position: absolute;
+  width: 315px;
+  height: 315px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #293135 0% 0.325%,
+    #ff6b6b 0.325% 8.05%,
+    #293135 8.05% 8.355%,
+    #ff9f43 8.355% 16.395%,
+    #293135 16.395% 16.695%,
+    #1dd1a1 16.695% 24.725%,
+    #293135 24.725% 25.025%,
+    #48dbfb 25.025% 33.055%,
+    #293135 33.055% 33.355%,
+    #ff5e57 33.355% 41.385%,
+    #293135 41.385% 41.685%,
+    #feca57 41.685% 49.715%,
+    #293135 49.715% 50.015%,
+    #ff9ff3 50.015% 58.045%,
+    #293135 58.045% 58.345%,
+    #00d2d3 58.345% 66.375%,
+    #293135 66.375% 66.675%,
+    #54a0ff 66.675% 74.705%,
+    #293135 74.705% 75.005%,
+    #5f27cd 75.005% 83.035%,
+    #293135 83.035% 83.335%,
+    #ee5253 83.335% 91.365%,
+    #293135 91.365% 91.665%,
+    #0abde3 91.665% 99.695%
+  );
+  box-shadow: inset 0 10px 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 
-@media (min-width: 470px) {
-  .time {
-    font-size: 8rem;
+.clock-inner::after {
+  content: '';
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: inset 0 0 3px rgb(0, 0, 0);
+  z-index: 3;
+}
+
+.clock-inner .clock-center {
+  position: absolute;
+  text-align: center;
+  color: #162121;
+  z-index: 4;
+}
+.clock-inner .clock-center .time {
+  font-size: 6em;
+  font-weight: bold;
+}
+.clock-inner .clock-center .label {
+  font-size: 1.3em;
+  font-weight: 900;
+  margin-top: -10px;
+}
+
+@media (min-width: 700px) {
+  .clock-outer {
+    width: 600px;
+    height: 600px;
   }
-}
 
-@media (min-width: 750px) {
-  .time {
-    font-size: 10rem;
+  .clock-inner {
+    width: 530px;
+    height: 530px;
+  }
+
+  .clock-inner::before {
+    width: 505px;
+    height: 505px;
+  }
+
+  .clock-inner::after {
+    width: 360px;
+    height: 360px;
+  }
+
+  .clock-inner .clock-center .time {
+    font-size: 7em;
+  }
+  .clock-inner .clock-center .label {
+    font-size: 1.5em;
   }
 }

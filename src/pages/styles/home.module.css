@@ -1,16 +1,26 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr;
+  /* grid-template-columns: 1fr; */
   gap: 1.5em;
-  background-color: #1f1e3c;
+  background: linear-gradient(#3b414d71 10.8%, #35424275 94.3%),
+    url('/assets/Vector.png');
+  background-position: center; /* Center the background image */
+  background-size: contain; /* Make the image cover the entire area */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
   padding: 1em 0.5em;
+}
+
+section:last-child {
+  height: 900px;
+  width: 100%;
+  background: #ffff;
 }
 
 @media (min-width: 470px) {
   .container {
     gap: 2em;
     padding: 2em;
-    grid-template-columns: 2fr 1fr;
+    /* grid-template-columns: 1fr 2fr 1fr; */
   }
 }
 
@@ -18,6 +28,6 @@
   .container {
     gap: 3em;
     padding: 3em;
-    grid-template-columns: 2fr 1fr;
+    /* grid-template-columns: 1fr 2fr 1fr; */
   }
 }

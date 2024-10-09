@@ -28,10 +28,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #524281b7;
+
   border-radius: var(--left);
-  box-shadow: 0 4px 30px rgb(0, 0, 0);
   /* border: 1px solid rgba(255, 255, 255, 0.25); */
+  box-shadow: 0 4px 30px rgb(0, 0, 0);
+  background: #524281b7;
   backdrop-filter: blur(10.5px);
   -webkit-backdrop-filter: blur(10.5px);
 }

@@ -1,0 +1,55 @@
+/* =================
+Pomodoro Logo
+==================*/
+.site-logo {
+  margin-top: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #404040;
+  font-family: 'Segoe UI';
+  font-size: 40px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+img {
+  margin-top: -3px;
+  max-width: 50px;
+}
+
+.site-logo span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Hidden but still accessible to screen readers and SEO */
+.visually-hiddens {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (min-width: 500px) {
+  .site-logo span {
+    position: static; /* Reset position */
+    width: auto; /* Reset width */
+    height: auto; /* Reset height */
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+    overflow: visible; /* Show overflow */
+    clip: auto; /* Remove the clipping */
+    border: none; /* Reset border */
+  }
+}
