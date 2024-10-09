@@ -1,8 +1,8 @@
 import Styles from './styles/home.module.css';
 import Header from '../components/Header';
-import Tasks from '../components/Tasks';
 import Timer from '../components/Timer';
-import Card from '../components/cards/Card';
+import Music from '../components/Music';
+import BookCard from '../components/cards/Book-Card';
 
 function Home() {
   return (
@@ -10,14 +10,22 @@ function Home() {
       <Header />
       <main>
         <section>
-          <div className={Styles['container']}>
-            <Timer />
+          <div className={Styles['bg-container']}>
+            <div className={Styles['border']}>
+              <div className={Styles['container']}>
+                <BookCard />
+                <Music />
+              </div>
+              <Timer />
+              <div className={Styles['container']}>
+                <BookCard />
+                <Music />
+              </div>
+            </div>
           </div>
         </section>
 
-        <section>
-          <div></div>
-        </section>
+        <section></section>
       </main>
     </>
   );

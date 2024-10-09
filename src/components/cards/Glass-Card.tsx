@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
-import Style from './styles/card.module.css';
+import Style from './styles/glass-card.module.css';
 
-interface CardProps {
+interface GlassCardProps {
   children: ReactNode;
   image: string;
   borderPosition: 'left' | 'right';
 }
 
-function Card({ children, image, borderPosition }: CardProps) {
+function GlassCard({ children, image, borderPosition }: GlassCardProps) {
   const borderRadius =
     borderPosition === 'right' ? 'var(--right)' : 'var(--left)';
 
@@ -30,4 +30,4 @@ function Card({ children, image, borderPosition }: CardProps) {
   );
 }
 
-export default Card;
+export default GlassCard;

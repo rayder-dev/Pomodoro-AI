@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: sans-serif;
   /* Enable touch scrolling while hiding the scrollbar */
-  background: #3d3d3dd0;
+  background: #565f62;
   -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
 }
 

@@ -53,7 +53,7 @@ SignIn Button
   padding: 0;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 700px) {
   .container {
     flex-direction: row;
     justify-content: space-between;

@@ -1,10 +1,8 @@
-import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import AssessmentRoundedIcon from '@mui/icons-material/AssessmentRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import Styles from './styles/header.module.css';
-import { Link } from 'react-router-dom';
 import NavButton from './buttons/Nav-Btn';
 import SigninButton from './buttons/SignIn-Btn';
 import PomodoroLogo from './logo/Pomodoro-logo';
@@ -12,7 +10,7 @@ import PomodoroLogo from './logo/Pomodoro-logo';
 function Header() {
   return (
     <header>
-      <div className={Styles['container']}>
+      <div className={Styles['header-container']}>
         {/* Logo Section */}
         <PomodoroLogo to="/" />
         {/* Navigation Buttons */}
@@ -38,7 +36,7 @@ function Header() {
               text="About"
             />
             <SigninButton
-              to="/"
+              to="/sign-in"
               icon={
                 <AccountCircleRoundedIcon
                   sx={{ fontSize: '20px', mb: '-2px' }}

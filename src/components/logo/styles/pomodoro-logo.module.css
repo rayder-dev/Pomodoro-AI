@@ -41,7 +41,7 @@ img {
   border: 0;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 575px) {
   .site-logo span {
     position: static; /* Reset position */
     width: auto; /* Reset width */

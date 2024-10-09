@@ -1,0 +1,57 @@
+/* ============
+START BUTTON
+=============*/
+.start-btn {
+  width: 7em;
+  position: relative;
+  height: 2.3em;
+  border: 3px ridge #23bab1;
+  outline: none;
+  background-color: transparent;
+  color: 404040;
+  font-weight: 900;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.start-btn::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 10%;
+  width: 80%;
+  height: 40%;
+  background-color: #ffffff;
+  transition: 0.5s;
+  transform-origin: center;
+}
+
+.start-btn::before {
+  content: '';
+  transform-origin: center;
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  width: 80%;
+  height: 40%;
+  background-color: #ffffff;
+  transition: 0.5s;
+}
+
+.start-btn:hover::before,
+.start-btn:hover::after {
+  transform: scale(0);
+}
+
+.start-btn:hover {
+  box-shadow: inset 0px 0px 25px #23ba67;
+}
+
+@media (min-width: 700px) {
+  .start-btn {
+    margin-top: 1em;
+    height: 3em;
+  }
+}

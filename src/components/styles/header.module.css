@@ -13,7 +13,7 @@ header {
   position: relative;
 }
 
-.container {
+.header-container {
   padding: 1em 0;
   width: 90%;
   margin: 0 auto;
@@ -26,8 +26,8 @@ header {
 
 nav ul {
   list-style: none;
-  font-weight: 800;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 23px;
   letter-spacing: 2px;
   /* Prevent text from wrapping */
   white-space: nowrap;
@@ -42,16 +42,17 @@ nav ul {
   margin: 0;
 }
 
-@media (min-width: 450px) {
-  .container {
+@media (min-width: 520px) {
+  .header-container {
     width: 95%;
   }
+
   nav ul {
     gap: 1em;
   }
 }
 
-@media (min-width: 1170px) {
+@media (min-width: 1200px) {
   nav ul {
     gap: 2em;
   }

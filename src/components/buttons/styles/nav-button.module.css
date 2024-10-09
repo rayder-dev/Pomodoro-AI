@@ -47,7 +47,7 @@ Nav Button Design
   scale: 0.8;
 }
 
-@media (min-width: 965px) {
+@media (min-width: 1100px) {
   .text {
     display: inline;
   }
@@ -57,7 +57,7 @@ Nav Button Design
   }
 }
 
-@media (min-width: 1170px) {
+@media (min-width: 1300px) {
   .text {
     display: inline;
   }
