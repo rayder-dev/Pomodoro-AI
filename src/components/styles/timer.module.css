@@ -112,8 +112,8 @@
   }
 
   .clock-inner::after {
-    width: 360px;
-    height: 360px;
+    width: 425px;
+    height: 425px;
   }
 
   .clock-inner .clock-center .time {

@@ -1,6 +1,17 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 1em auto 3em;
+  padding: 0;
+}
+
 .dial-label {
   color: #fff;
   margin: 0 auto;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .timing-container {
@@ -20,19 +31,31 @@
   font-weight: 900;
   height: 50px;
   width: 60px;
+  border: none;
+  box-shadow: 0px 4px 0px #658485; /* Adding solid shadow for 3D effect */
+  transition: transform 0.1s, box-shadow 0.1s; /* Smooth transition */
+}
+
+.timing-container > button:active {
+  transform: translateY(6px); /* Move button down */
+  box-shadow: 0px 3px 0px #666; /* Reduce shadow */
 }
 
 .minus-minute {
   background: #fb786e;
   border-radius: 50% 0 0 50%;
+  cursor: pointer;
 }
 
 .plus-minute {
   background: #36c8bd;
   border-radius: 0 50% 50% 0;
+  cursor: pointer;
 }
 
 .time-set {
+  border: 1px solid black;
+  box-shadow: 0px 2px 0px #658485;
   margin: 0;
   padding: 0 1em;
   background: #fffcf0;

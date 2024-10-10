@@ -74,6 +74,7 @@ section:last-child {
     /* border-right: 3px solid #1b2929;
     border-left: 3px solid #1b2929; */
     /* box-shadow: 0 3em #444b4d, inset 0 -2px #243a3bad, inset 2px 0 #243a3bad; */
+    box-shadow: 0 3em #444b4d, inset 0 -2px #243a3bad;
   }
 }
 

@@ -54,4 +54,8 @@ START BUTTON
     margin-top: 1em;
     height: 3em;
   }
+
+  .start-btn::after {
+    top: -12px;
+  }
 }

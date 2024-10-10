@@ -31,25 +31,23 @@ function Home() {
         <section>
           <article>
             <div className={`${Styles['article-container']}`}>
-              <h1>An online Pomodoro Timer to boost your productivity</h1>
-              <h2>What is Pomofocus?</h2>
+              <h1>Boost Your Productivity with an Online Pomodoro Timer</h1>
+              <h2>What is Pomodoro?</h2>
               <p>
-                Pomofocus is a customizable pomodoro timer that works on desktop
-                & mobile browser. The aim of this app is to help you focus on
-                any task you are working on, such as study, writing, or coding.
-                This app is inspired by <strong> Pomodoro Technique</strong>{' '}
-                which is a time management method developed by Francesco
-                Cirillo.{' '}
+                Pomodoro is a customizable timer designed to help you focus on
+                your tasks, whether you're studying, writing, or coding.
+                Available on both desktop and mobile browsers, this app takes
+                inspiration from the
+                <strong> Pomodoro Technique</strong>, a time management method
+                developed by Francesco Cirillo.
               </p>
-              <h2>What is Pomodoro Technique?</h2>
+              <h2>Understanding the Pomodoro Technique</h2>
               <p>
-                The Pomodoro Technique is created by Francesco Cirillo for a
-                more productive way to work and study. The technique uses a
-                timer to break down work into intervals, traditionally 25
-                minutes in length, separated by short breaks. Each interval is
-                known as a pomodoro, from the Italian word for 'tomato', after
-                the tomato-shaped kitchen timer that Cirillo used as a
-                university student. - <strong>Wikipedia</strong>
+                The Pomodoro Technique is a productivity method that breaks work
+                into intervals, typically 25 minutes, with short breaks in
+                between. Each work interval is called a pomodoro, named after
+                the tomato-shaped kitchen timer Cirillo used during his
+                university days.
               </p>
               <h2>How to use the Pomodoro Timer?</h2>
               <ol>
@@ -60,9 +58,34 @@ function Home() {
                 <li>Select a task to work on</li>
                 <li>Start timer and focus on the task for 25 minutes</li>
                 <li>Take a break for 5 minutes when the alarm ring</li>
-                <li>Take a longer break for 10 minutes for every 4 cycles</li>
+                <li>
+                  After every 4 pomodoros, take a longer break of 10 minutes.
+                </li>
                 <li>Iterate until you finish the tasks</li>
-              </ol>{' '}
+              </ol>
+              <h2>Additional Features of Pomodoro</h2>
+              <ul>
+                <li>
+                  <strong>Notepad</strong>: Quickly jot down notes without
+                  leaving the app, keeping all your thoughts and to-dos in one
+                  place.
+                </li>
+                <li>
+                  <strong>Procrastinator Life Calendar</strong>: Inspired by Tim
+                  Urban's TED Talk "
+                  <strong>Inside the Mind of a Master Procrastinator</strong>",
+                  this powerful visual tool helps you track and reflect on how
+                  you've spent each week of your life. Each week of a 90-year
+                  lifespan is represented by a single box, creating a long-term
+                  view of your productivity. Log the tasks you've completed
+                  weekly, and the more work you accomplish, the more intense the
+                  color of the box becomes. Over time, this visualization helps
+                  reveal patterns in your productivity, highlighting periods of
+                  hard work and procrastination, offering a unique perspective
+                  on how you’ve utilized your time. It’s more than just a
+                  calendar—it’s a reflection of your life’s progress.
+                </li>
+              </ul>
             </div>
           </article>
         </section>
