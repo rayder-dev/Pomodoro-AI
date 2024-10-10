@@ -12,7 +12,7 @@ function BookCard() {
         </div>
       </div>
       <div className={Styles['cover']}>
-        <p>Take Note</p>
+        <p className={Styles['take-note']}>Take Note</p>
       </div>
     </div>
   );

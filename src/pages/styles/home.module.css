@@ -1,3 +1,34 @@
+/* ============
+Typography 
+=============*/
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  color: #243a3b;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+strong {
+  color: #fb786e;
+  font-weight: 700;
+}
+
+/* ============
+Main Layout 
+=============*/
+
 .bg-container {
   background: linear-gradient(#565f6262 10.8%, #565f6262 94.3%),
     url('/assets/Vector.png');
@@ -12,8 +43,9 @@
   grid-template-columns: 1fr;
   align-items: center;
   justify-content: center;
+  border-radius: 1em;
   border-bottom: 3px solid #1b2929;
-  box-shadow: 0 1em #444b4d, inset 0 -2px #243a3bad;
+  /* box-shadow: 0 1em #444b4d, inset 0 -2px #243a3bad; */
 }
 
 .container {
@@ -39,7 +71,25 @@ section:last-child {
 @media (min-width: 825px) {
   .border {
     grid-template-columns: 1fr 2fr 1fr;
-    border-left: 3px solid #1b2929;
-    box-shadow: 0 3em #444b4d, inset 0 -2px #243a3bad, inset 2px 0 #243a3bad;
+    /* border-right: 3px solid #1b2929;
+    border-left: 3px solid #1b2929; */
+    /* box-shadow: 0 3em #444b4d, inset 0 -2px #243a3bad, inset 2px 0 #243a3bad; */
   }
+}
+
+@media (min-width: 1400px) {
+  .bg-container {
+    width: 95%;
+    margin: 0 auto;
+    box-shadow: 20em 0 #444b4e, -20em 0 #444b4e;
+  }
+}
+
+/* ============
+Article Layout 
+=============*/
+.article-container {
+  margin: 0 auto;
+  width: 90%;
+  padding: 2em 0;
 }
