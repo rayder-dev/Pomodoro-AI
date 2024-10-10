@@ -13,7 +13,7 @@
   position: relative;
   width: 340px;
   height: 340px;
-  background-color: #1e2e2e;
+  background-color: #294142;
   border-radius: 50%;
   box-shadow: inset 0 3px 3px rgba(255, 255, 255, 0.685),
     inset 0 0 15px rgba(0, 0, 0, 0.685), 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -27,7 +27,7 @@
   position: relative;
   width: 320px;
   height: 320px;
-  background-color: #ffffff;
+  background-color: #f7e9e7;
   border-radius: 50%;
   box-shadow: 0 0 35px rgba(0, 0, 0, 0.685), inset 0 0 4px rgba(0, 0, 0, 0.685);
   z-index: 1;
@@ -74,7 +74,7 @@
   position: absolute;
   width: 290px;
   height: 290px;
-  background-color: #ffffff;
+  background-color: #ffff;
   border-radius: 50%;
   box-shadow: inset 0 0 3px rgb(0, 0, 0);
   z-index: 3;

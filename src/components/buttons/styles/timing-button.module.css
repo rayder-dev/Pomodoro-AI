@@ -1,0 +1,39 @@
+.dial-label {
+  color: #fff;
+  margin: 0 auto;
+}
+
+.timing-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 1em auto 3em;
+  padding: 0;
+}
+
+.timing-container > button,
+.time-set {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 900;
+  height: 50px;
+  width: 60px;
+}
+
+.minus-minute {
+  background: #fb786e;
+  border-radius: 50% 0 0 50%;
+}
+
+.plus-minute {
+  background: #36c8bd;
+  border-radius: 0 50% 50% 0;
+}
+
+.time-set {
+  margin: 0;
+  padding: 0 1em;
+  background: #fffcf0;
+}

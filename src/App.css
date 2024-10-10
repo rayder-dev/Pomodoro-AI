@@ -2,8 +2,15 @@ body {
   margin: 0;
   font-family: sans-serif;
   /* Enable touch scrolling while hiding the scrollbar */
-  background: #565f62;
+  background: #393f41;
   -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+hr {
+  margin: 5px auto;
+  width: 100%;
+  border: 1px solid #1b2929;
+  box-shadow: 0 -2px 3px #243a3bad;
 }
 
 /* Scrollbar styles */

@@ -1,7 +1,7 @@
 import AssessmentRoundedIcon from '@mui/icons-material/AssessmentRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
+import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import Styles from './styles/header.module.css';
 import NavButton from './buttons/Nav-Btn';
 import SigninButton from './buttons/SignIn-Btn';
@@ -18,28 +18,28 @@ function Header() {
           <ul>
             <NavButton
               to="/"
-              icon={
-                <AssessmentRoundedIcon sx={{ fontSize: '20px', mb: '-2px' }} />
-              }
-              text="Report"
+              icon={<StickyNote2Icon sx={{ fontSize: '23px', mb: '-3px' }} />}
+              text="Notes"
             />
             <NavButton
               to="/"
               icon={
-                <SettingsRoundedIcon sx={{ fontSize: '20px', mb: '-2px' }} />
+                <AssessmentRoundedIcon sx={{ fontSize: '23px', mb: '-3px' }} />
+              }
+              text="Stats"
+            />
+            <NavButton
+              to="/"
+              icon={
+                <SettingsRoundedIcon sx={{ fontSize: '23px', mb: '-3px' }} />
               }
               text="Setting"
-            />
-            <NavButton
-              to="/"
-              icon={<InfoRoundedIcon sx={{ fontSize: '20px', mb: '-2px' }} />}
-              text="About"
             />
             <SigninButton
               to="/sign-in"
               icon={
                 <AccountCircleRoundedIcon
-                  sx={{ fontSize: '20px', mb: '-2px' }}
+                  sx={{ fontSize: '23px', mb: '-3px' }}
                 />
               }
               text="Sign In"

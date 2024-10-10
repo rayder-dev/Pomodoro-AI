@@ -3,6 +3,8 @@ import Header from '../components/Header';
 import Timer from '../components/Timer';
 import Music from '../components/Music';
 import BookCard from '../components/cards/Book-Card';
+import PomodoroBtn from '../components/buttons/Pomodoro-Timing-Btn';
+import BreakBtn from '../components/buttons/Break-Timing-Btn';
 
 function Home() {
   return (
@@ -12,12 +14,13 @@ function Home() {
         <section>
           <div className={Styles['bg-container']}>
             <div className={Styles['border']}>
-              <div className={Styles['container']}>
+              <div className={`${Styles['container']} ${Styles['left']}`}>
+                <PomodoroBtn />
+                <BreakBtn />
                 <BookCard />
-                <Music />
               </div>
               <Timer />
-              <div className={Styles['container']}>
+              <div className={`${Styles['container']} ${Styles['right']}`}>
                 <BookCard />
                 <Music />
               </div>
