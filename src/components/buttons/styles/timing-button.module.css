@@ -1,15 +1,7 @@
-.container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin: 1em auto 3em;
-  padding: 0;
-}
-
 .dial-label {
   color: #fff;
   margin: 0 auto;
-  font-size: 25px;
+  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -18,7 +10,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  margin: 1em auto 3em;
+  margin: 0 auto;
   padding: 0;
 }
 
@@ -59,4 +51,8 @@
   margin: 0;
   padding: 0 1em;
   background: #fffcf0;
+}
+
+.break {
+  margin-top: 1em;
 }

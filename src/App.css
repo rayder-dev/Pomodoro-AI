@@ -7,7 +7,7 @@ body {
 }
 
 hr {
-  margin: 5px auto;
+  margin: 0.5em auto;
   width: 100%;
   border: 1px solid #1b2929;
   box-shadow: 0 -2px 3px #243a3bad;
@@ -21,20 +21,20 @@ hr {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background-color: #1f1e3c;
+  background-color: #1b2929; /* Darker background for the track */
   border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: #2d2d44;
+  background-color: #36c8bd; /* Lighter color for the thumb */
   border-radius: 20px;
-  border: 3px solid #1f1e3c;
+  border: 3px solid #444b4e; /* Border color that contrasts with thumb */
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #3a3a5b;
+  background-color: #36c8bd; /* Slightly darker color for hover effect */
 }
 
 /* By default, hide scrollbar */
@@ -52,7 +52,7 @@ body {
   body {
     overflow-y: auto; /* Show scrollbar when window is wider than 750px */
     scrollbar-width: thin; /* For Firefox: show thin scrollbar */
-    scrollbar-color: #2d2d44 #1f1e3c; /* Custom scrollbar colors */
+    scrollbar-color: #4e575a #1b2929; /* Custom scrollbar colors */
   }
 
   /* For WebKit browsers */
@@ -62,8 +62,8 @@ body {
 
   /* Scrollbar thumb retains original styling */
   ::-webkit-scrollbar-thumb {
-    background: #2d2d44;
+    background: #4e575a; /* Thumb color */
     border-radius: 20px; /* Circular scrollbar ends */
-    border: 3px solid #1f1e3c;
+    border: 3px solid #1b2929; /* Border matches track color */
   }
 }

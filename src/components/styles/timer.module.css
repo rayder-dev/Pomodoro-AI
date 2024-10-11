@@ -13,7 +13,7 @@
   position: relative;
   width: 340px;
   height: 340px;
-  background-color: #294142;
+  background-color: #1b2929;
   border-radius: 50%;
   box-shadow: inset 0 3px 3px rgba(255, 255, 255, 0.685),
     inset 0 0 15px rgba(0, 0, 0, 0.685), 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -95,7 +95,36 @@
   font-weight: 900;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
+  .clock-outer {
+    width: 440px;
+    height: 440px;
+  }
+
+  .clock-inner {
+    width: 400px;
+    height: 400px;
+  }
+
+  .clock-inner::before {
+    width: 380px;
+    height: 380px;
+  }
+
+  .clock-inner::after {
+    width: 325px;
+    height: 325px;
+  }
+
+  .clock-inner .clock-center .time {
+    font-size: 6.5em;
+  }
+  .clock-inner .clock-center .label {
+    font-size: 1.4em;
+  }
+}
+
+@media (min-width: 1000px) {
   .clock-outer {
     width: 600px;
     height: 600px;

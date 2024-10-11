@@ -4,7 +4,9 @@ import Styles from './styles/timing-button.module.css';
 const BreakTimingBtn = () => {
   return (
     <>
-      <h2 className={Styles['dial-label']}>Break Time</h2>
+      <h2 className={`${Styles['dial-label']} ${Styles['break']}`}>
+        Break Time
+      </h2>
       <hr />
       <div className={Styles['timing-container']}>
         <button className={Styles['minus-minute']}> - </button>
