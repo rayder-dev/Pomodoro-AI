@@ -1,0 +1,26 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8em;
+  height: 100vh;
+  padding-bottom: 6em;
+}
+
+.login-subtext {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.login-card {
+  background: rgb(236, 236, 236);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+@media (min-width: 1024px) {
+  .login-card {
+    width: 35%;
+  }
+}

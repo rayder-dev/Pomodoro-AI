@@ -11,7 +11,7 @@ function PomodoroLogo({ to, className = '' }: PomodoroLogoProps) {
     <Link to={to} className={`${Styles['site-logo']} ${className}`}>
       <img src="/assets/logo.png" alt="img2" className={Styles['img-logo']} />
       <span>
-        <span className={Styles['visually-hidden']}>P</span>omodoro
+        <span className={Styles['website-name']}>P</span>omodoro
       </span>
     </Link>
   );

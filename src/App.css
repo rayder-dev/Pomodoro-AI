@@ -1,8 +1,11 @@
+@import '@mantine/core/styles.css';
+
 body {
   margin: 0;
   font-family: sans-serif;
   /* Enable touch scrolling while hiding the scrollbar */
   -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  background: #fffcf0;
 }
 
 hr {

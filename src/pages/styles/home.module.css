@@ -40,7 +40,7 @@ Main Layout
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
-  border-radius: 1em;
+  /* border-radius: 1em; */
   border-bottom: 3px solid #1b2929;
   margin: 0;
 }
@@ -73,7 +73,7 @@ section:last-child {
 
 @media (min-width: 680px) {
   .grid-container {
-    grid-template: 1fr 0.3fr 0.7fr / 1fr 1fr; /* 3 rows 2 columns */
+    grid-template: 0.6fr 0.7fr 0.6fr / 1fr 1fr; /* swap space of 1st & 2nd row */
     box-shadow: 0 2em #444b4d, inset 0 -2px #243a3bad;
   }
 
@@ -81,33 +81,16 @@ section:last-child {
     margin: 1em;
   }
 
-  .item-timing {
-    flex-direction: row;
-    grid-area: 2 / 1 / 3 / span 2; /* give timing 2 column space */
-  }
-
-  .item-note {
-    grid-column: span 2; /* give notepad 2 column space */
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid-container {
-    grid-template: 0.6fr 0.7fr 0.6fr / 1fr 1fr; /* swap space of 1st & 2nd row */
-    box-shadow: 0 2em #444b4d, inset 0 -2px #243a3bad;
-  }
-
   .item-clock {
     grid-row: span 2; /* give clock 2 row space */
   }
 
   .item-timing {
-    flex-direction: column;
     grid-area: auto; /* give timing 2 column space */
   }
 
-  .item-task {
-    grid-area: auto; /* give task 2 row space */
+  .item-note {
+    grid-column: span 2; /* give notepad 2 column space */
   }
 }
 

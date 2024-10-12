@@ -30,7 +30,7 @@ img {
 }
 
 /* Hidden but still accessible to screen readers and SEO */
-.visually-hiddens {
+.website-name {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -39,6 +39,11 @@ img {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.site-logo span:hover,
+.site-logo span:focus {
+  color: #23bab1;
 }
 
 @media (min-width: 575px) {
