@@ -1,34 +1,38 @@
+.timing-container {
+  width: 100%;
+}
+
 .dial-label {
+  font-size: 1rem;
   color: #fff;
   margin: 0 auto;
-  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 1px;
+  text-align: center;
 }
 
-.timing-container {
+.timing-btn-container {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
-  padding: 0;
 }
 
-.timing-container > button,
+.timing-btn-container > button,
 .time-set {
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   font-weight: 900;
-  height: 50px;
-  width: 60px;
+  height: 40px;
+  width: 50px;
   border: none;
   box-shadow: 0px 4px 0px #658485; /* Adding solid shadow for 3D effect */
   transition: transform 0.1s, box-shadow 0.1s; /* Smooth transition */
 }
 
-.timing-container > button:active {
+.timing-btn-container > button:active {
   transform: translateY(6px); /* Move button down */
   box-shadow: 0px 3px 0px #666; /* Reduce shadow */
 }
@@ -55,4 +59,17 @@
 
 .break {
   margin-top: 1em;
+}
+
+@media (min-width: 680px) {
+  .dial-label {
+    font-size: 1.5rem;
+  }
+
+  .timing-btn-container > button,
+  .time-set {
+    font-size: 1.3rem;
+    height: 50px;
+    width: 60px;
+  }
 }

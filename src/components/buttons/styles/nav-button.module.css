@@ -7,11 +7,9 @@ Nav Button Design
   position: relative;
   overflow: hidden;
   height: 2rem;
-  padding: 0.05em 0.5em;
   border-radius: 1.5em;
   background: transparent;
   background-size: 400%;
-  /* border: none; */
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -45,6 +43,12 @@ Nav Button Design
 
 .nav-btn:active {
   scale: 0.8;
+}
+
+@media (min-width: 290px) {
+  .nav-btn {
+    padding: 0.05em 0.5em;
+  }
 }
 
 @media (min-width: 1100px) {

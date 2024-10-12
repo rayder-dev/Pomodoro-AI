@@ -14,21 +14,19 @@ function Home() {
         <section>
           <div className={Styles['bg-container']}>
             <div className={Styles['grid-container']}>
-              <div
-                className={`${Styles['grid-items']} ${Styles['item-clock']}`}
-              >
+              <div className={`${Styles['grid-item']} ${Styles['item-clock']}`}>
                 <Timer />
               </div>
               <div
-                className={`${Styles['grid-items']} ${Styles['item-button']}`}
+                className={`${Styles['grid-item']} ${Styles['item-timing']}`}
               >
                 <PomodoroBtn />
                 <BreakBtn />
               </div>
-              <div className={`${Styles['grid-items']} ${Styles['item-task']}`}>
-                <Music />
+              <div className={`${Styles['grid-item']} ${Styles['item-task']}`}>
+                <BookCard />
               </div>
-              <div className={`${Styles['grid-items']} ${Styles['item-note']}`}>
+              <div className={`${Styles['grid-item']} ${Styles['item-note']}`}>
                 <BookCard />
               </div>
             </div>

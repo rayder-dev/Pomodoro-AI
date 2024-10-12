@@ -2,7 +2,8 @@
 START BUTTON
 =============*/
 .start-btn {
-  width: 7em;
+  width: 5em;
+  font-size: 1rem;
   position: relative;
   height: 2.3em;
   border: 3px ridge #23bab1;
@@ -12,7 +13,6 @@ START BUTTON
   font-weight: 900;
   transition: 1s;
   border-radius: 0.3em;
-  font-size: 20px;
   cursor: pointer;
 }
 
@@ -23,7 +23,7 @@ START BUTTON
   left: 10%;
   width: 80%;
   height: 40%;
-  background-color: #ffff;
+  background-color: #fff;
   transition: 0.5s;
   transform-origin: center;
 }
@@ -36,7 +36,7 @@ START BUTTON
   left: 10%;
   width: 80%;
   height: 40%;
-  background-color: #ffff;
+  background-color: #fff;
   transition: 0.5s;
 }
 
@@ -49,8 +49,27 @@ START BUTTON
   box-shadow: inset 0px 0px 25px #23ba67;
 }
 
+@media (min-width: 350px) {
+  .start-btn {
+    height: 3em;
+  }
+}
+
 @media (min-width: 700px) {
   .start-btn {
+    margin-top: 1em;
+    height: 3em;
+  }
+
+  .start-btn::after {
+    top: -12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .start-btn {
+    width: 6em;
+    font-size: 1.2rem;
     margin-top: 1em;
     height: 3em;
   }

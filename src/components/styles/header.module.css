@@ -15,13 +15,12 @@ header {
 
 .header-container {
   padding: 1em 0;
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 nav ul {
@@ -36,7 +35,7 @@ nav ul {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   /* remove the default left padding caused by the 'UL' bullet */
   padding: 0;
   margin: 0;
