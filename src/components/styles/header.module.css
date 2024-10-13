@@ -10,11 +10,11 @@ Navigation
 header {
   background-color: #fffcf0;
   box-shadow: 0 3px 30px rgba(0, 0, 0, 0.377);
-  position: relative;
+  width: 100%;
 }
 
 .header-container {
-  padding: 1em 0;
+  padding: 1em 0 0.5em;
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -41,11 +41,7 @@ nav ul {
   margin: 0;
 }
 
-@media (min-width: 520px) {
-  /* .header-container {
-    width: 95%;
-  } */
-
+@media (min-width: 575px) {
   nav ul {
     gap: 1em;
   }

@@ -2,20 +2,20 @@
 Pomodoro Logo
 ==================*/
 .site-logo {
-  margin-top: -5px;
+  margin-top: -0.3em;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #404040;
   font-family: 'Segoe UI';
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: 800;
   text-decoration: none;
 }
 
 img {
-  margin-top: -3px;
-  max-width: 50px;
+  margin-top: 0;
+  max-width: 1.3em;
 }
 
 .site-logo span {
@@ -30,7 +30,7 @@ img {
 }
 
 /* Hidden but still accessible to screen readers and SEO */
-.website-name {
+.hidden-p {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -56,5 +56,9 @@ img {
     overflow: visible; /* Show overflow */
     clip: auto; /* Remove the clipping */
     border: none; /* Reset border */
+  }
+
+  img {
+    margin-top: -0.1em;
   }
 }

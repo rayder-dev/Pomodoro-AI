@@ -31,7 +31,7 @@ Main Layout
 
 .bg-container {
   background: linear-gradient(#565f6262 10.8%, #565f6262 94.3%),
-    url('/assets/Vector.png');
+    url('/assets/img/Vector.png');
   background-position: center; /* Center the background image */
   background-size: contain; /* Make the image cover the entire area */
   background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -134,8 +134,14 @@ section:last-child {
 /* ============
 Article Layout 
 =============*/
-.article-container {
-  margin: 0 auto;
+
+article {
   width: 90%;
+  margin: 0 auto;
   padding: 2em 0;
+}
+.wrapper {
+  margin: 0 auto;
+  min-height: 75vh;
+  width: 60%;
 }

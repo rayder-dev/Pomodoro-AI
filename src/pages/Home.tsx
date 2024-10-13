@@ -1,17 +1,17 @@
 import Styles from './styles/home.module.css';
 import Header from '../components/Header';
 import Timer from '../components/Timer';
-import Music from '../components/Music';
 import BookCard from '../components/cards/Book-Card';
 import PomodoroBtn from '../components/buttons/Pomodoro-Timing-Btn';
 import BreakBtn from '../components/buttons/Break-Timing-Btn';
+import Footer from '../components/Footer';
 
 function Home() {
   return (
     <>
       <Header />
       <main>
-        <section>
+        <section id="top">
           <div className={Styles['bg-container']}>
             <div className={Styles['grid-container']}>
               <div className={`${Styles['grid-item']} ${Styles['item-clock']}`}>
@@ -95,6 +95,7 @@ function Home() {
           </article>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

@@ -7,11 +7,24 @@ interface PomodoroLogoProps {
 }
 
 function PomodoroLogo({ to, className = '' }: PomodoroLogoProps) {
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   return (
-    <Link to={to} className={`${Styles['site-logo']} ${className}`}>
-      <img src="/assets/logo.png" alt="img2" className={Styles['img-logo']} />
+    <Link
+      to={to}
+      onClick={scrollToTop}
+      className={`${Styles['site-logo']} ${className}`}
+    >
+      <img
+        src="/assets/img/logo.png"
+        alt="img2"
+        className={Styles['img-logo']}
+      />
       <span>
-        <span className={Styles['website-name']}>P</span>omodoro
+        <span className={Styles['hidden-p']}> P</span>
+        omodoro
       </span>
     </Link>
   );

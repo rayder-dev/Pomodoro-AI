@@ -12,6 +12,7 @@ SignIn Button
   transition: all 0.5s;
   border: none;
   background-color: transparent;
+  padding: 0.1em 0;
 }
 
 .signin-btn span {
@@ -64,6 +65,6 @@ SignIn Button
   }
 
   .signin-btn span {
-    padding: 0.45em 0.3em;
+    padding: 0.15em 0.3em;
   }
 }
