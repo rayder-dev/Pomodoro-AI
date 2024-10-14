@@ -1,0 +1,147 @@
+/* ============
+Typography 
+=============*/
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  color: #243a3b;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 0.5em;
+}
+
+strong {
+  color: #fb786e;
+  font-weight: 700;
+}
+
+/* ============
+Main Layout 
+=============*/
+
+.bg-container {
+  background: linear-gradient(#565f6262 10.8%, #565f6262 94.3%),
+    url('/assets/images/Vector.png');
+  background-position: center; /* Center the background image */
+  background-size: contain; /* Make the image cover the entire area */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* border-radius: 1em; */
+  border-bottom: 3px solid #1b2929;
+  margin: 0;
+}
+
+.grid-item {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-timing {
+  justify-content: space-evenly;
+  gap: 1em;
+}
+
+section:first-child {
+  background: #393f41;
+}
+
+section:last-child {
+  background-color: #fffcf0;
+}
+@media (min-width: 230px) {
+  .bg-container {
+    padding: 1em;
+  }
+}
+
+@media (min-width: 680px) {
+  .grid-container {
+    grid-template: 0.6fr 0.7fr 0.6fr / 1fr 1fr; /* swap space of 1st & 2nd row */
+    box-shadow: 0 2em #444b4d, inset 0 -2px #243a3bad;
+  }
+
+  .grid-item {
+    margin: 1em;
+  }
+
+  .item-clock {
+    grid-row: span 2; /* give clock 2 row space */
+  }
+
+  .item-timing {
+    grid-area: auto; /* give timing 2 column space */
+  }
+
+  .item-note {
+    grid-column: span 2; /* give notepad 2 column space */
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid-container {
+    grid-template: 0.5fr 1fr / 1fr 1fr 1fr; /* make 3rows & 3columns */
+  }
+
+  .item-timing,
+  .item-task {
+    order: -1;
+  }
+
+  .item-task {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .item-clock {
+    grid-area: span 2;
+  }
+
+  .item-note {
+    grid-area: span 2;
+  }
+}
+
+@media (min-width: 1400px) {
+  .bg-container {
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 25em 0 #444b4d, -25em 0 #444b4d;
+  }
+}
+
+@media (min-width: 1700px) {
+  .grid-item {
+    margin: 1em 3em;
+  }
+}
+
+/* ============
+Article Layout 
+=============*/
+
+article {
+  width: 90%;
+  margin: 0 auto;
+  padding: 2em 0;
+}
+.wrapper {
+  margin: 0 auto;
+  min-height: 75vh;
+  width: 60%;
+}
