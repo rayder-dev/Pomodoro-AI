@@ -13,23 +13,19 @@ const Home: React.FC = () => {
       <Header />
       <main>
         <section id="top">
-          <div className={Styles['bg-container']}>
-            <div className={Styles['grid-container']}>
-              <div className={`${Styles['grid-item']} ${Styles['item-clock']}`}>
-                <Timer />
-              </div>
-              <div
-                className={`${Styles['grid-item']} ${Styles['item-timing']}`}
-              >
-                <PomodoroBtn />
-                <BreakBtn />
-              </div>
-              <div className={`${Styles['grid-item']} ${Styles['item-task']}`}>
-                <Todo />
-              </div>
-              <div className={`${Styles['grid-item']} ${Styles['item-note']}`}>
-                <BookCard />
-              </div>
+          <div className={Styles['grid-container']}>
+            <div className={`${Styles['grid-item']} ${Styles['item-clock']}`}>
+              <Timer />
+            </div>
+            <div className={`${Styles['grid-item']} ${Styles['item-timing']}`}>
+              <PomodoroBtn />
+              <BreakBtn />
+            </div>
+            <div className={`${Styles['grid-item']} ${Styles['item-task']}`}>
+              <Todo />
+            </div>
+            <div className={`${Styles['grid-item']} ${Styles['item-note']}`}>
+              <BookCard />
             </div>
           </div>
         </section>

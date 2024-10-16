@@ -43,7 +43,7 @@ const Contact: React.FC = () => {
                 <TextInput label="Your name" placeholder="Your name" />
                 <TextInput
                   label="Your email"
-                  placeholder="hello@mantine.dev"
+                  placeholder="yahoo@gmail.com"
                   required
                 />
               </SimpleGrid>

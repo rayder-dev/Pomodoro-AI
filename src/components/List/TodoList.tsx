@@ -1,31 +1,45 @@
 import Styles from '../Todo/todo.module.css';
+import { IconCircleCheck } from '@tabler/icons-react';
 import { IconEdit } from '@tabler/icons-react';
 import { IconTrash } from '@tabler/icons-react';
 import { Todo } from '../Todo/Todo';
 
 interface TodoListProps {
   task: Todo;
-  toggleComplete: (id: string) => void;
-  deleteTodo: (id: string) => void;
-  editTodo: (id: string) => void;
+  handleComplete: (id: string) => void;
+  handleEdit: (id: string) => void;
+  handleDelete: (id: string) => void;
 }
 
 const TodoList: React.FC<TodoListProps> = ({
   task,
-  toggleComplete,
-  deleteTodo,
-  editTodo,
+  handleComplete,
+  handleEdit,
+  handleDelete,
 }) => {
-  const taskClassName = task.completed ? Styles.complete : '';
+  const isCompleted = task.completed ? Styles.complete : '';
+  const isEditing = task.isEditing ? Styles.edit : '';
 
   return (
     <div className={Styles['todo-list']}>
-      <p onClick={() => toggleComplete(task.id)} className={taskClassName}>
-        {task.task}
-      </p>
       <div className={Styles['todo-actions']}>
-        <IconEdit onClick={() => editTodo(task.id)} />
-        <IconTrash onClick={() => deleteTodo(task.id)} />
+        <IconCircleCheck
+          className={`${Styles['complete-button']} ${isCompleted} `}
+          onClick={() => handleComplete(task.id)}
+        />
+        <p className={`${Styles['todo-task']} ${isCompleted} ${isEditing}`}>
+          {task.task}
+        </p>
+      </div>
+      <div className={Styles['todo-actions']}>
+        <IconEdit
+          className={Styles['edit-button']}
+          onClick={() => handleEdit(task.id)}
+        />
+        <IconTrash
+          className={Styles['delete-button']}
+          onClick={() => handleDelete(task.id)}
+        />
       </div>
     </div>
   );

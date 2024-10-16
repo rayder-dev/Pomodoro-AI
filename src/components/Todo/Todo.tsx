@@ -13,18 +13,28 @@ interface Todo {
 
 const Todo: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [editTodo, setEditTodo] = useState<Todo | null>(null);
 
   const addTodo = (task: string) => {
-    const newTodo: Todo = {
-      id: uuidv4(),
-      task,
-      completed: false,
-      isEditing: false,
-    };
-    setTodos((prevTodos) => [...prevTodos, newTodo]);
+    if (!editTodo) {
+      const newTodo: Todo = {
+        id: uuidv4(),
+        task,
+        completed: false,
+        isEditing: false,
+      };
+      setTodos((prevTodos) => [...prevTodos, newTodo]);
+    } else {
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) =>
+          todo.id === editTodo.id ? { ...todo, task, isEditing: false } : todo
+        )
+      );
+      setEditTodo(null); // Reset after editing
+    }
   };
 
-  const toggleComplete = (id: string) => {
+  const handleComplete = (id: string) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -32,31 +42,43 @@ const Todo: React.FC = () => {
     );
   };
 
-  const deleteTodo = (id: string) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  const handleDelete = (id: string) => {
+    if (!editTodo) {
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    } else {
+      console.log('Cant Delete while editing');
+    }
   };
 
-  const editTodo = (id: string) => {
+  const handleEdit = (id: string) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+        todo.id === id
+          ? { ...todo, isEditing: true }
+          : { ...todo, isEditing: false }
       )
     );
+    const todoToEdit = todos.find((todo) => todo.id === id);
+    if (todoToEdit) {
+      setEditTodo(todoToEdit);
+    }
   };
 
   return (
     <div className={Styles['todo-wrapper']}>
       <h2>Get Things Done!</h2>
-      <TodoForm addTodo={addTodo} />
-      {todos.map((todo) => (
-        <TodoList
-          key={todo.id}
-          task={todo}
-          toggleComplete={toggleComplete}
-          deleteTodo={deleteTodo}
-          editTodo={editTodo}
-        />
-      ))}
+      <TodoForm addTodo={addTodo} editTodo={editTodo} />
+      <div className={Styles['list-wrapper']}>
+        {todos.map((todo) => (
+          <TodoList
+            key={todo.id}
+            task={todo}
+            handleComplete={handleComplete}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+        ))}
+      </div>
     </div>
   );
 };
