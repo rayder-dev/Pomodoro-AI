@@ -18,7 +18,7 @@ const PomodoroLogo: React.FC<PomodoroLogoProps> = ({ to, className = '' }) => {
       className={`${Styles['site-logo']} ${className}`}
     >
       <img
-        src="/assets/images/logo.png"
+        src="/assets/images/logo-light.png"
         alt="img2"
         className={Styles['img-logo']}
       />

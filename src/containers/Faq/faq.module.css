@@ -1,6 +1,7 @@
 .wrapper {
   margin: 0 auto;
   min-height: 75vh;
+  padding-top: 4em;
 }
 
 .faq-container {

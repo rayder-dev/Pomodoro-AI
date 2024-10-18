@@ -2,8 +2,6 @@ import Styles from './home.module.css';
 import Header from '../../components/Header/Header';
 import Timer from '../../components/Timer/Timer';
 import BookCard from '../../components/Cards/BookCard';
-import PomodoroBtn from '../../components/Buttons/PomodoroButton';
-import BreakBtn from '../../components/Buttons/BreakButton';
 import Footer from '../../components/Footer/Footer';
 import Todo from '../../components/Todo/Todo';
 
@@ -16,10 +14,6 @@ const Home: React.FC = () => {
           <div className={Styles['grid-container']}>
             <div className={`${Styles['grid-item']} ${Styles['item-clock']}`}>
               <Timer />
-            </div>
-            <div className={`${Styles['grid-item']} ${Styles['item-timing']}`}>
-              <PomodoroBtn />
-              <BreakBtn />
             </div>
             <div className={`${Styles['grid-item']} ${Styles['item-task']}`}>
               <Todo />

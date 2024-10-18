@@ -4,14 +4,14 @@
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  background: #fff;
+  background: #404040;
   border-top: 1px solid
     light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
 }
 
 .inner {
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,14 +19,13 @@
 }
 
 .footer-logo {
-  margin-left: -4em;
-  transform: scale(0.6);
+  transform: scale(0.9);
 }
 
 .links a {
   text-decoration: none;
   font-weight: 600;
-  color: #404040;
+  color: #fff;
 }
 
 @media (max-width: 575px) {

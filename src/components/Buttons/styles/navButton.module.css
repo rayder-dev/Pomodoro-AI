@@ -3,11 +3,12 @@ Nav Button Design
 ==================*/
 .nav-btn {
   text-decoration: none;
-  color: #404040;
+  color: #fff;
   position: relative;
   overflow: hidden;
   height: 2rem;
   border-radius: 1.5em;
+  font-size: 1rem;
   background: transparent;
   background-size: 400%;
   cursor: pointer;
@@ -24,6 +25,7 @@ Nav Button Design
 }
 
 .text {
+  margin-left: 5px;
   display: none;
 }
 

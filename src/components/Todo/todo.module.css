@@ -10,8 +10,9 @@ TODO WRAPPER STYLE
 }
 
 .list-wrapper {
-  max-height: 200px;
-  overflow-y: scroll;
+  margin-top: 0.5em;
+  max-height: 395px;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #444b4e #1b2929;
 }
@@ -44,6 +45,16 @@ TODO FORM STYLE
 ====================*/
 .todo-form {
   display: flex;
+}
+
+.todo-btn {
+  background: rgba(75, 75, 75, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 10px;
 }
 
 .todo-input {
@@ -107,6 +118,7 @@ TODO LIST STYLE
   display: flex;
   justify-content: space-between;
   margin: 0.5em auto;
+  color: #fff;
 }
 
 .todo-actions {
@@ -118,7 +130,6 @@ TODO LIST STYLE
 }
 
 .todo-actions p {
-  color: #fff;
   margin: 0.1em auto;
   user-select: none; /* Standard CSS property */
   -webkit-user-select: none; /* For Safari */

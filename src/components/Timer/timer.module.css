@@ -13,7 +13,9 @@
   position: relative;
   width: 220px;
   height: 220px;
-  background-color: #1b2929;
+  background: rgba(41, 41, 41, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border-radius: 50%;
   box-shadow: inset 0 3px 3px rgba(255, 255, 255, 0.685),
     inset 0 0 15px rgba(0, 0, 0, 0.685), 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -27,7 +29,9 @@
   position: relative;
   width: 207px;
   height: 207px;
-  background-color: #f7e9e7;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border-radius: 50%;
   box-shadow: 0 0 35px rgba(0, 0, 0, 0.685), inset 0 0 4px rgba(0, 0, 0, 0.685);
   z-index: 1;
@@ -39,6 +43,8 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   background: conic-gradient(
     #293135 0% 0.325%,
     #f98276 0.325% 8.05%,
@@ -51,17 +57,17 @@
     #293135 33.055% 33.355%,
     #fb786c 33.355% 41.385%,
     #293135 41.385% 41.685%,
-    #f69d6d 41.685% 49.715%,
+    #51e0d4 41.685% 49.715%,
     #293135 49.715% 50.015%,
-    #f5a171 50.015% 58.045%,
+    #36c8bd 50.015% 58.045%,
     #293135 58.045% 58.345%,
-    #2278a0 58.345% 66.375%,
+    #2083b0 58.345% 66.375%,
     #293135 66.375% 66.675%,
-    #2083b0 66.675% 74.705%,
+    #2278a0 66.675% 74.705%,
     #293135 74.705% 75.005%,
-    #36c8bd 75.005% 83.035%,
+    #f5a171 75.005% 83.035%,
     #293135 83.035% 83.335%,
-    #a1e6e2 83.335% 91.365%,
+    #f9a976 83.335% 91.365%,
     #293135 91.365% 91.665%,
     #f9a976 91.665% 99.695%
   );

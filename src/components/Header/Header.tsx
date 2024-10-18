@@ -18,20 +18,20 @@ const Header: React.FC = () => {
           <ul>
             <NavButton
               to="/"
-              icon={<StickyNote2Icon sx={{ fontSize: '23px', mb: '-3px' }} />}
+              icon={<StickyNote2Icon sx={{ fontSize: '18px', mb: '-3px' }} />}
               text="Notes"
             />
             <NavButton
               to="/"
               icon={
-                <AssessmentRoundedIcon sx={{ fontSize: '23px', mb: '-3px' }} />
+                <AssessmentRoundedIcon sx={{ fontSize: '18px', mb: '-3px' }} />
               }
               text="Stats"
             />
             <NavButton
               to="/"
               icon={
-                <SettingsRoundedIcon sx={{ fontSize: '23px', mb: '-3px' }} />
+                <SettingsRoundedIcon sx={{ fontSize: '18px', mb: '-3px' }} />
               }
               text="Setting"
             />
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
               to="/sign-in"
               icon={
                 <AccountCircleRoundedIcon
-                  sx={{ fontSize: '23px', mb: '-3px' }}
+                  sx={{ fontSize: '18px', mb: '-3px' }}
                 />
               }
               text="Sign In"

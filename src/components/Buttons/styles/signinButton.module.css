@@ -4,13 +4,14 @@ SignIn Button
 .signin-btn {
   --color: #f9a976;
   text-decoration: none;
-  color: #404040;
+  color: #fff;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.5s;
   border: none;
+  font-size: 1rem;
   background-color: transparent;
   padding: 0.1em 0;
 }
