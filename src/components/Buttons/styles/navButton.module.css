@@ -2,73 +2,45 @@
 Nav Button Design
 ==================*/
 .nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: #fff;
-  position: relative;
   overflow: hidden;
-  height: 2rem;
-  border-radius: 1.5em;
+  border-radius: 5px;
   font-size: 1rem;
-  background: transparent;
-  background-size: 400%;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  padding: 0.4em 3px;
 }
 
-.nav-btn:hover::before {
-  transform: scaleY(1);
+.nav-btn:hover,
+.nav-btn:active {
+  background-color: rgba(95, 95, 95, 0.5);
 }
 
-.nav-btn span {
-  position: relative;
-  z-index: 1;
-}
-
-.text {
+.nav-text {
   margin-left: 5px;
   display: none;
 }
 
-.nav-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  width: 100%;
-  height: inherit;
-  border-radius: inherit;
-  background: linear-gradient(82.3deg, #0abde2 10.8%, #0ae2d7 94.3%);
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.nav-btn:active {
-  scale: 0.8;
-}
-
 @media (min-width: 290px) {
   .nav-btn {
-    padding: 0.05em 0.5em;
+    padding: 0.4em 0.5em;
   }
 }
 
 @media (min-width: 1100px) {
-  .text {
-    display: inline;
-  }
-
   .nav-btn {
-    padding: 0.05em 1em;
+    padding: 0.4em 1em;
+  }
+  .nav-text {
+    display: inline;
   }
 }
 
 @media (min-width: 1300px) {
-  .text {
-    display: inline;
-  }
-
   .nav-btn {
-    padding: 0.05em 2em;
+    padding: 0.4em 2em;
   }
 }

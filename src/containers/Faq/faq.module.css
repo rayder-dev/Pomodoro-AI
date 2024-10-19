@@ -1,13 +1,12 @@
 .wrapper {
   margin: 0 auto;
-  min-height: 75vh;
-  padding-top: 4em;
+  min-height: 100vh;
+  padding-top: 0.1em;
 }
 
 .faq-container {
   padding-top: calc(var(--mantine-spacing-xl) * 2);
   min-height: rem(700px);
-  background-image: radial-gradient(#23bab1 0%, #23a3ba 100%);
   background-repeat: no-repeat;
   background-position: top left;
   position: relative;
@@ -15,7 +14,7 @@
 }
 
 .title {
-  color: var(--mantine-color-white);
+  color: #404040;
   font-size: 52px;
   font-family: Greycliff CF, var(--mantine-font-family);
   margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);

@@ -6,19 +6,20 @@ import {
   IconBrandInstagram,
 } from '@tabler/icons-react';
 import Styles from './footer.module.css';
-import PomodoroLogo from '../Logo/PomodoroLogo';
 
 const links = [
   { link: '/contact', label: 'Contact' },
   { link: '/terms', label: 'Terms' },
   { link: '/privacy', label: 'Privacy' },
   { link: '/faq', label: 'FAQ' },
-  { link: '/gallery', label: 'Gallery' },
+  { link: '/404', label: 'Gallery' },
 ];
+
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
 const Footer: React.FC = () => {
   const items = links.map((link) => (
-    <Link key={link.label} to={link.link}>
+    <Link key={link.label} to={link.link} onClick={scrollToTop}>
       {link.label}
     </Link>
   ));
@@ -27,11 +28,9 @@ const Footer: React.FC = () => {
     <footer>
       <div className={Styles.footer}>
         <div className={Styles.inner}>
-          <span className={Styles['footer-logo']}>
+          {/* <span className={Styles['footer-logo']}>
             <PomodoroLogo to="/" />
-          </span>
-
-          <Group className={Styles.links}>{items}</Group>
+          </span> */}
 
           <Group gap="xs" justify="flex-end" wrap="nowrap">
             <Link to="https://www.youtube.com/watch?v=arj7oStGLkU">
@@ -59,6 +58,7 @@ const Footer: React.FC = () => {
               </ActionIcon>
             </Link>
           </Group>
+          <Group className={Styles.links}>{items}</Group>
         </div>
       </div>
     </footer>

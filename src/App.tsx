@@ -6,6 +6,7 @@ import Contact from './containers/Contact/Contact';
 import Privacy from './containers/Privacy/Privacy';
 import Terms from './containers/Terms/Terms';
 import Faq from './containers/Faq/Faq';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/404" element={<NotFound />} />
       </Routes>
     </Router>
   );

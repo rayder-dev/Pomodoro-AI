@@ -18,9 +18,9 @@ const NavButton: React.FC<NavButtonProps> = ({
   return (
     <li>
       <Link to={to} className={`${Styles['nav-btn']} ${className}`}>
-        <span>
+        <span className={Styles['nav-wrapper']}>
           {icon}
-          <span className={Styles['text']}>{text}</span>
+          <span className={Styles['nav-text']}>{text}</span>
         </span>
       </Link>
     </li>

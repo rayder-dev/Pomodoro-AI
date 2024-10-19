@@ -7,15 +7,18 @@ Pomodoro Logo
   align-items: center;
   justify-content: center;
   gap: 0.5em;
-  color: #fff;
+  color: #404040;
   font-family: 'Segoe UI';
   font-size: 1.5rem;
   font-weight: 700;
   text-decoration: none;
 }
 
+.dark-mode {
+  color: #fff;
+}
+
 .img-logo {
-  margin-top: 3px;
   max-width: 1.3em;
 }
 

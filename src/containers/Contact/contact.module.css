@@ -1,12 +1,26 @@
 .contact-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-top: 6em;
   height: 100vh;
 }
 
+.paper {
+  background: none;
+  box-shadow: none;
+}
+
+.title {
+  color: #404040;
+  font-size: 52px;
+  font-family: Greycliff CF, var(--mantine-font-family);
+  margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);
+}
+
 .wrapper {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   display: flex;
   background-color: light-dark(
     var(--mantine-color-white),
@@ -72,15 +86,6 @@
   @media (max-width: $mantine-breakpoint-sm) {
     margin-bottom: var(--mantine-spacing-sm);
     padding-left: var(--mantine-spacing-md);
-  }
-}
-
-.title {
-  margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);
-  font-family: Greycliff CF, var(--mantine-font-family);
-
-  @media (max-width: $mantine-breakpoint-sm) {
-    margin-bottom: var(--mantine-spacing-xl);
   }
 }
 

@@ -1,3 +1,4 @@
+import { Title } from '@mantine/core';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Styles from '../Home/home.module.css';
@@ -8,7 +9,7 @@ const Privacy: React.FC = () => {
       <Header />
       <article>
         <div className={Styles['wrapper']}>
-          <h1>Privacy Policy</h1>
+          <Title className={Styles['title']}>Privacy Policy</Title>
           <p>
             <strong>Effective Date:</strong> November 13, 2024
           </p>

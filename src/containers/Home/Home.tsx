@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     <>
       <Header />
       <main>
-        <section id="top">
+        <section>
           <div className={Styles['grid-container']}>
             <div className={`${Styles['grid-item']} ${Styles['item-clock']}`}>
               <Timer />

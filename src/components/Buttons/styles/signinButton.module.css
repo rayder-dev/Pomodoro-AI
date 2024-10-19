@@ -2,70 +2,63 @@
 SignIn Button
 ==================*/
 .signin-btn {
-  --color: #f9a976;
   text-decoration: none;
-  color: #fff;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.5s;
+  width: 80px;
+  height: 40px;
+  border-radius: 30px;
   border: none;
-  font-size: 1rem;
-  background-color: transparent;
-  padding: 0.1em 0;
-}
-
-.signin-btn span {
-  background: var(--color);
-  border-radius: 2rem;
-}
-
-.signin-btn::before {
-  content: '';
-  z-index: -1;
-  background-color: var(--color);
-  border: 2px solid #404040;
-  border-radius: 2em;
-  width: 110%;
-  height: 100%;
-  position: absolute;
-  transform: rotate(10deg);
-  transition: 0.5s;
-  opacity: 0.2;
-}
-
-.signin-btn:hover {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 13px;
+  gap: 9px;
+  color: white;
+  position: relative;
   cursor: pointer;
-  filter: brightness(1.2);
-  transform: scale(1.1);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.212);
+  font-size: 1rem;
 }
 
-.signin-btn:hover::before {
-  transform: rotate(0deg);
-  opacity: 1;
+.signin-arrow {
+  position: absolute;
+  right: 7.5px;
+  background-color: rgb(255, 255, 255);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  transition: all 0.5s ease;
 }
 
-.signin-btn:active {
-  filter: brightness(1.4);
+.signin-btn:hover .signin-arrow {
+  width: calc(80px - (7.5px) * 2);
 }
 
-.text {
-  display: none;
-  padding: 0;
-}
-
-@media (min-width: 700px) {
-  .container {
-    flex-direction: row;
-    justify-content: space-between;
+@media (max-width: 400px) {
+  .signin-btn {
+    width: auto;
+    padding: 3px;
   }
 
-  .text {
+  .signin-arrow,
+  .signin-text {
+    display: none;
+    padding: 0;
+  }
+}
+
+@media (min-width: 400px) {
+  .signin-btn {
+    width: 153px;
+  }
+
+  .signin-btn:hover .signin-arrow {
+    width: calc(153px - (7.5px) * 2);
+  }
+
+  .signin-text {
     display: inline;
-  }
-
-  .signin-btn span {
-    padding: 0.15em 0.3em;
   }
 }
