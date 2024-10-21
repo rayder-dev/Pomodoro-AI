@@ -36,7 +36,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ addTodo, editTodo }) => {
             type="text"
             className={`${Styles['todo-input']} ${Styles['todo-input-alt']}`}
             value={value}
-            placeholder="What are you working on?"
+            placeholder="What are you working on today?"
             onChange={(e) => setValue((e.target as HTMLInputElement).value)}
           />
           <span

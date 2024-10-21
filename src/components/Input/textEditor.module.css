@@ -1,0 +1,12 @@
+.editor-wrapper {
+  border: none;
+  min-height: 300px;
+  background-color: #fff;
+}
+
+.editor-content {
+  background-color: transparent !important;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  /* word-break: break-all; */
+}

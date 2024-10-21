@@ -1,25 +1,30 @@
 import Styles from './home.module.css';
 import Header from '../../components/Header/Header';
 import Timer from '../../components/Timer/Timer';
-import BookCard from '../../components/Cards/BookCard';
 import Footer from '../../components/Footer/Footer';
 import Todo from '../../components/Todo/Todo';
+import Tabs from '../../components/Tabs/Tabs';
+import Length from '../../components/Time/Length';
 
 const Home: React.FC = () => {
   return (
     <>
       <Header />
-      <main>
-        <section>
+      <main className={Styles['scroll-container']}>
+        <section className={Styles['section-main']}>
+          <div className={Styles['stars']} />
+          <div className={Styles['twinkling']} />
           <div className={Styles['grid-container']}>
             <div className={`${Styles['grid-item']} ${Styles['item-clock']}`}>
+              <Tabs />
               <Timer />
             </div>
             <div className={`${Styles['grid-item']} ${Styles['item-task']}`}>
               <Todo />
             </div>
             <div className={`${Styles['grid-item']} ${Styles['item-note']}`}>
-              <BookCard />
+              <Length />
+              <Length />
             </div>
           </div>
         </section>
@@ -60,8 +65,10 @@ const Home: React.FC = () => {
               <li>
                 <strong>Procrastinator Life Calendar</strong>: Inspired by Tim
                 Urban's TED Talk "
-                <strong>Inside the Mind of a Master Procrastinator</strong>",
-                this powerful visual tool helps you track and reflect on how
+                <a href="https://www.youtube.com/watch?v=arj7oStGLkU">
+                  <strong>Inside the Mind of a Master Procrastinator</strong>
+                </a>
+                ", this powerful visual tool helps you track and reflect on how
                 you've spent each week of your life. Each week of a 90-year
                 lifespan is represented by a single box, creating a long-term
                 view of your productivity. It automatically logs the tasks

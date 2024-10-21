@@ -4,7 +4,7 @@
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  background: #404040;
+  background: #cecece;
   border-top: 1px solid
     light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
 }
@@ -26,10 +26,10 @@
 
 .links a {
   text-decoration: none;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 500;
+  color: #404040;
   letter-spacing: 2px;
-  margin: var(--mantine-spacing-lg) 0.5em 0;
+  margin: 10px 0.5em var(--mantine-spacing-lg);
 }
 
 @media (max-width: 575px) {

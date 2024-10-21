@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   IconBrandYoutube,
   IconBrandGithub,
-  IconBrandInstagram,
+  IconBrandTiktok,
 } from '@tabler/icons-react';
 import Styles from './footer.module.css';
 
@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
           {/* <span className={Styles['footer-logo']}>
             <PomodoroLogo to="/" />
           </span> */}
-
+          <Group className={Styles.links}>{items}</Group>
           <Group gap="xs" justify="flex-end" wrap="nowrap">
             <Link to="https://www.youtube.com/watch?v=arj7oStGLkU">
               <ActionIcon size="lg" variant="default" radius="xl">
@@ -49,16 +49,15 @@ const Footer: React.FC = () => {
                 />
               </ActionIcon>
             </Link>
-            <Link to="https://github.com/hernandezraymondm/Pomodoro">
+            <Link to="https://www.tiktok.com/@inspectorelement">
               <ActionIcon size="lg" variant="default" radius="xl">
-                <IconBrandInstagram
+                <IconBrandTiktok
                   style={{ width: rem(18), height: rem(18) }}
                   stroke={1.5}
                 />
               </ActionIcon>
             </Link>
           </Group>
-          <Group className={Styles.links}>{items}</Group>
         </div>
       </div>
     </footer>

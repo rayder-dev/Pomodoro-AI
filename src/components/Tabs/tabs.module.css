@@ -1,0 +1,103 @@
+:root {
+  --primary-color: #000000;
+  --secondary-color: #f77170;
+}
+
+.tabContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabs {
+  display: flex;
+  position: relative;
+  color: #fff;
+  background-color: #2d2834;
+  box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15),
+    0 6px 12px 0 rgba(24, 94, 224, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem;
+  border-radius: 99px;
+  z-index: 1;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  width: 70px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: color 0.15s ease-in;
+  z-index: 2;
+}
+
+.tabNotification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  transition: 0.15s ease-in;
+}
+
+input[type='radio']:checked + label {
+  color: var(--primary-color);
+}
+
+input[type='radio']:checked + label .tabNotification {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+input[id='radio-1']:checked ~ .glider {
+  transform: translateX(0);
+}
+
+input[id='radio-2']:checked ~ .glider {
+  transform: translateX(100%);
+}
+
+input[id='radio-3']:checked ~ .glider {
+  transform: translateX(200%);
+}
+
+.glider {
+  position: absolute;
+  display: flex;
+  height: 25px;
+  width: 70px;
+  background-color: var(--secondary-color);
+  z-index: 1;
+  border-radius: 99px;
+  transition: 0.25s ease-out;
+}
+
+@media (min-width: 480px) {
+  .tab,
+  .glider {
+    font-size: 1rem;
+    height: 30px;
+    width: 120px;
+  }
+}
+
+@media (min-width: 700px) {
+  .tab,
+  .glider {
+    font-size: 1.25rem;
+    height: 40px;
+    width: 182px;
+  }
+}

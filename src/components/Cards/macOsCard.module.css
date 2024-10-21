@@ -1,0 +1,89 @@
+/* ============
+MACOS CARD
+=============*/
+/* ------- */
+/* glass */
+
+#about {
+  display: block;
+}
+
+.glass-container {
+  background: #2d2834;
+  box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15),
+    0 6px 12px 0 rgba(24, 94, 224, 0.15);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: auto;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 415px;
+}
+
+.glass-header {
+  position: relative;
+  display: flex;
+  /* justify-content: center; */
+  gap: 8px;
+  font-weight: 600;
+  padding: 15px 20px 10px;
+  font-size: 1.2rem;
+}
+
+.glass-body-wrapper {
+  padding-bottom: 1em;
+}
+
+.glass-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 20px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.circle-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 0;
+  outline: 0;
+}
+
+.red {
+  background-color: #fc7f73;
+}
+
+.yellow {
+  background-color: #f9a976;
+}
+
+.green {
+  background-color: #36c890;
+}
+
+/* --------- */
+/* SCROLLBAR */
+
+.glass-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.glass-body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.375rem rgb(79, 78, 78);
+  border-radius: 0.8rem;
+}
+
+.glass-body::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0.375rem rgba(238, 238, 238, 0.9);
+  outline: none;
+  border-radius: 0.8rem;
+}

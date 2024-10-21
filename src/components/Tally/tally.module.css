@@ -1,0 +1,20 @@
+.tally-container {
+  width: 100%;
+}
+
+.tally-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  letter-spacing: 1px;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.tally-container strong {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  margin: auto 5px;
+}

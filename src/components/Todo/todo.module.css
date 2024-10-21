@@ -1,7 +1,16 @@
 /* ===================
 TODO WRAPPER STYLE
 ====================*/
+.todo-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 414px;
+  row-gap: 0.5em;
+}
+
 .todo-wrapper h2 {
+  margin-top: 0;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
@@ -12,32 +21,6 @@ TODO WRAPPER STYLE
 .list-wrapper {
   margin-top: 0.5em;
   max-height: 395px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #444b4e #1b2929;
-}
-
-/* Scrollbar styles */
-.list-wrapper::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-.list-wrapper::-webkit-scrollbar-track {
-  background-color: #1b2929; /* Darker background for the track */
-  border-radius: 10px;
-}
-
-/* Handle */
-.list-wrapper::-webkit-scrollbar-thumb {
-  background-color: #36c8bd; /* Lighter color for the thumb */
-  border-radius: 20px;
-  border: 3px solid #444b4e; /* Border color that contrasts with thumb */
-}
-
-/* Handle on hover */
-.list-wrapper::-webkit-scrollbar-thumb:hover {
-  background-color: #36c8bd; /* Slightly darker color for hover effect */
 }
 
 /* ===================
@@ -45,6 +28,8 @@ TODO FORM STYLE
 ====================*/
 .todo-form {
   display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .todo-btn {
@@ -55,6 +40,7 @@ TODO FORM STYLE
   font-weight: 600;
   color: #fff;
   padding: 10px;
+  white-space: nowrap;
 }
 
 .todo-input {
@@ -90,6 +76,8 @@ TODO FORM STYLE
 }
 
 .form-control {
+  width: 100%;
+  max-width: 315px;
   position: relative;
   --width-of-input: 300px;
 }

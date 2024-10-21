@@ -30,8 +30,12 @@ Main Layout
 =============*/
 
 .grid-container {
-  background: none;
+  /* background: url('/assets/images/Vector.png');
+  background-position: center;
+  background-size: contain; 
+  background-repeat: no-repeat; */
   display: grid;
+  justify-content: center;
   grid-template-columns: 1fr;
   width: 90%;
   margin: 0 auto;
@@ -43,39 +47,43 @@ Main Layout
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1em;
 }
 
 section:first-child {
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    rgb(67, 54, 74) 16.4%,
+    rgb(47, 48, 67) 68.2%,
+    rgb(27, 23, 36) 99.1%
+  );
   padding-top: 5em;
-  background: #404040;
+  padding-bottom: 1em;
 }
 
 section:last-child {
-  background-color: #f0f2f5;
+  background-color: #e8e8e8;
 }
+
 @media (min-width: 230px) {
   .grid-container {
     gap: 1em;
   }
 }
-
-@media (min-width: 680px) {
+@media (min-width: 768px) {
   .grid-container {
-    grid-template: 1fr 1fr / 1fr 1fr;
-  }
-  .item-note {
-    grid-column: span 2; /* give notepad 2 column space */
+    grid-template-columns: 0.9fr;
+    gap: 1em 2em;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .grid-container {
-    background: url('/assets/images/Vector.png');
-    background-position: center; /* Center the background image */
-    background-size: contain; /* Make the image cover the entire area */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
+    grid-template-columns: 0.8fr;
   }
+}
 
+@media (min-width: 1335px) {
   .grid-container {
     grid-template: 1fr / 1fr 1fr 1fr; /* make 1row & 3columns */
   }
@@ -83,7 +91,7 @@ section:last-child {
   .item-task {
     grid-area: 1 / 1 / 2 / 2;
   }
-
+  .item-clock,
   .item-note {
     grid-area: auto;
   }
