@@ -5,7 +5,7 @@ TODO WRAPPER STYLE
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 414px;
+  /* max-width: 500px; */
   row-gap: 0.5em;
 }
 
@@ -20,7 +20,8 @@ TODO WRAPPER STYLE
 
 .list-wrapper {
   margin-top: 0.5em;
-  max-height: 395px;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 
 /* ===================
@@ -77,7 +78,7 @@ TODO FORM STYLE
 
 .form-control {
   width: 100%;
-  max-width: 315px;
+  /* max-width: 500px; */
   position: relative;
   --width-of-input: 300px;
 }
@@ -105,6 +106,7 @@ TODO LIST STYLE
 .todo-list {
   display: flex;
   justify-content: space-between;
+  padding: 0 1em;
   margin: 0.5em auto;
   color: #fff;
 }

@@ -1,7 +1,9 @@
-import AssessmentRoundedIcon from '@mui/icons-material/AssessmentRounded';
-import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
-import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import StickyNote2Icon from '@mui/icons-material/StickyNote2';
+import {
+  IconNotebook,
+  IconCalendarMonth,
+  IconSettings2,
+  IconLogin2,
+} from '@tabler/icons-react';
 import Styles from './header.module.css';
 import NavButton from '../Buttons/NavButton';
 import SigninButton from '../Buttons/SignInButton';
@@ -18,30 +20,31 @@ const Header: React.FC = () => {
           <ul>
             <NavButton
               to="/"
-              icon={<StickyNote2Icon sx={{ fontSize: '18px', mb: '-3px' }} />}
+              icon={
+                <IconNotebook size="1rem" style={{ marginBottom: '-1px' }} />
+              }
               text="Notes"
             />
             <NavButton
               to="/"
               icon={
-                <AssessmentRoundedIcon sx={{ fontSize: '18px', mb: '-3px' }} />
+                <IconCalendarMonth
+                  size="1rem"
+                  style={{ marginBottom: '-1px' }}
+                />
               }
-              text="Stats"
+              text="Calendar"
             />
             <NavButton
               to="/"
               icon={
-                <SettingsRoundedIcon sx={{ fontSize: '18px', mb: '-3px' }} />
+                <IconSettings2 size="1rem" style={{ marginBottom: '-1px' }} />
               }
               text="Setting"
             />
             <SigninButton
               to="/sign-in"
-              icon={
-                <AccountCircleRoundedIcon
-                  sx={{ fontSize: '18px', mb: '-3px' }}
-                />
-              }
+              icon={<IconLogin2 size="1rem" style={{ marginBottom: '-1px' }} />}
               text="Sign In"
             />
           </ul>

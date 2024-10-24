@@ -1,6 +1,6 @@
 :root {
   --primary-color: #000000;
-  --secondary-color: #f77170;
+  /* --secondary-color: #f77170; */
 }
 
 .tabContainer {
@@ -22,10 +22,6 @@
   z-index: 1;
 }
 
-input[type='radio'] {
-  display: none;
-}
-
 .tab {
   display: flex;
   align-items: center;
@@ -40,37 +36,8 @@ input[type='radio'] {
   z-index: 2;
 }
 
-.tabNotification {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  margin-left: 0.75rem;
-  border-radius: 50%;
-  background-color: var(--secondary-color);
-  transition: 0.15s ease-in;
-}
-
-input[type='radio']:checked + label {
+.tab.active {
   color: var(--primary-color);
-}
-
-input[type='radio']:checked + label .tabNotification {
-  background-color: var(--primary-color);
-  color: #fff;
-}
-
-input[id='radio-1']:checked ~ .glider {
-  transform: translateX(0);
-}
-
-input[id='radio-2']:checked ~ .glider {
-  transform: translateX(100%);
-}
-
-input[id='radio-3']:checked ~ .glider {
-  transform: translateX(200%);
 }
 
 .glider {
@@ -78,7 +45,7 @@ input[id='radio-3']:checked ~ .glider {
   display: flex;
   height: 25px;
   width: 70px;
-  background-color: var(--secondary-color);
+  /* background-color: var(--secondary-color); */
   z-index: 1;
   border-radius: 99px;
   transition: 0.25s ease-out;

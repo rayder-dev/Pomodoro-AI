@@ -1,7 +1,6 @@
 /* ============
 Typography 
 =============*/
-
 h1,
 h2,
 h3 {
@@ -30,16 +29,16 @@ Main Layout
 =============*/
 
 .grid-container {
-  /* background: url('/assets/images/Vector.png');
-  background-position: center;
-  background-size: contain; 
-  background-repeat: no-repeat; */
   display: grid;
   justify-content: center;
   grid-template-columns: 1fr;
   width: 90%;
   margin: 0 auto;
-  padding: 1em 0;
+  /* padding: 1em 0; */
+  /* background: url('/assets/images/Vector.png');
+  background-position: center;
+  background-size: contain; 
+  background-repeat: no-repeat; */
 }
 
 .grid-item {
@@ -47,7 +46,18 @@ Main Layout
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1em;
+  /* column-gap: 1em; */
+}
+
+.item2,
+.item3 {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+.item3 {
+  flex-direction: row;
 }
 
 section:first-child {
@@ -58,7 +68,10 @@ section:first-child {
     rgb(27, 23, 36) 99.1%
   );
   padding-top: 5em;
-  padding-bottom: 1em;
+}
+
+section:nth-child(2) {
+  background-color: #e8e8e8;
 }
 
 section:last-child {
@@ -70,17 +83,8 @@ section:last-child {
     gap: 1em;
   }
 }
-@media (min-width: 768px) {
-  .grid-container {
-    grid-template-columns: 0.9fr;
-    gap: 1em 2em;
-  }
-}
 
-@media (min-width: 1024px) {
-  .grid-container {
-    grid-template-columns: 0.8fr;
-  }
+@media (min-width: 768px) {
 }
 
 @media (min-width: 1335px) {
@@ -88,19 +92,26 @@ section:last-child {
     grid-template: 1fr / 1fr 1fr 1fr; /* make 1row & 3columns */
   }
 
-  .item-task {
-    grid-area: 1 / 1 / 2 / 2;
+  .item3 {
+    order: -1;
   }
-  .item-clock,
-  .item-note {
+
+  .item1,
+  .item3 {
     grid-area: auto;
   }
 }
 
-@media (min-width: 1700px) {
-  .grid-container {
-    gap: 1em 3em;
-  }
+/* ============
+Tally Container
+=============*/
+.tally-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  gap: 10em;
+  margin: 0 auto;
 }
 
 /* ============

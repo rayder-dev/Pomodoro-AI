@@ -4,31 +4,63 @@ import Timer from '../../components/Timer/Timer';
 import Footer from '../../components/Footer/Footer';
 import Todo from '../../components/Todo/Todo';
 import Tabs from '../../components/Tabs/Tabs';
-import Length from '../../components/Time/Length';
+import Length from '../../components/Length/Length';
+import PomoTimeline from '../../components/Timeline/PomoTimeline';
+import TaskTally from '../../components/Tally/TaskTally';
+import { Divider } from '@mantine/core';
 
 const Home: React.FC = () => {
   return (
     <>
       <Header />
-      <main className={Styles['scroll-container']}>
-        <section className={Styles['section-main']}>
+      <main>
+        <section>
           <div className={Styles['stars']} />
           <div className={Styles['twinkling']} />
           <div className={Styles['grid-container']}>
-            <div className={`${Styles['grid-item']} ${Styles['item-clock']}`}>
+            <div className={`${Styles['grid-item']} ${Styles['item1']}`}>
               <Tabs />
               <Timer />
             </div>
-            <div className={`${Styles['grid-item']} ${Styles['item-task']}`}>
+            <div className={`${Styles['grid-item']} ${Styles['item2']}`}>
               <Todo />
             </div>
-            <div className={`${Styles['grid-item']} ${Styles['item-note']}`}>
+            <div className={`${Styles['grid-item']} ${Styles['item3']}`}>
               <Length />
-              <Length />
+              <PomoTimeline />
             </div>
           </div>
         </section>
 
+        <section>
+          <div className={Styles['tally-container']}>
+            <TaskTally
+              title="Task List"
+              value={346}
+              color="#f77170"
+              subtitle="Today's Ongoing tasks"
+            />
+            <TaskTally
+              title="Task Completed"
+              value={795}
+              color="#36c890"
+              subtitle="Total completed tasks"
+            />
+            <TaskTally
+              title="Current Streak"
+              value={83}
+              color="#f9a976"
+              subtitle="Current streak of daily productivity"
+            />
+            <TaskTally
+              title="Longest Streak"
+              value={257}
+              color="#2083b0"
+              subtitle="Longest streak of daily productivity"
+            />
+          </div>
+        </section>
+        <Divider size="xl" style={{ width: '90%', margin: '0 auto' }} />
         <section>
           <article>
             <h1>Boost Your Productivity with an Online Pomodoro Timer</h1>

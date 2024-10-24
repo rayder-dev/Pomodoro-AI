@@ -1,23 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './tabs.module.css';
 
 const Tabs: React.FC = () => {
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  const tabs = ['Session', 'Short Break', 'Long Break'];
+
+  const handleTabClick = (index: number) => {
+    setSelectedTab(index);
+  };
+
+  const gliderColor =
+    selectedTab === 1 ? '#36c890' : selectedTab === 2 ? '#2083b0' : '#f77170';
+
   return (
     <div className={styles.tabContainer}>
       <div className={styles.tabs}>
-        <input type="radio" id="radio-1" name="tabs" defaultChecked />
-        <label htmlFor="radio-1" className={styles.tab}>
-          Session
-        </label>
-        <input type="radio" id="radio-2" name="tabs" />
-        <label htmlFor="radio-2" className={styles.tab}>
-          Short Break
-        </label>
-        <input type="radio" id="radio-3" name="tabs" />
-        <label htmlFor="radio-3" className={styles.tab}>
-          Long Break
-        </label>
-        <span className={styles.glider}></span>
+        {tabs.map((tab, index) => (
+          <div
+            key={index}
+            className={`${styles.tab} ${
+              selectedTab === index ? styles.active : ''
+            }`}
+            onClick={() => handleTabClick(index)}
+          >
+            {tab}
+          </div>
+        ))}
+        <span
+          className={styles.glider}
+          style={{
+            transform: `translateX(${selectedTab * 100}%)`,
+            backgroundColor: gliderColor,
+          }}
+        ></span>
       </div>
     </div>
   );

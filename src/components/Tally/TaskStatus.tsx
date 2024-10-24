@@ -1,7 +1,7 @@
 import React from 'react';
-import Styles from './tally.module.css';
+import Styles from './taskStatus.module.css';
 
-const Tally: React.FC = () => {
+const TaskStatus: React.FC = () => {
   return (
     <div className={Styles['tally-container']}>
       <div className={Styles['tally-wrapper']}>
@@ -16,4 +16,4 @@ const Tally: React.FC = () => {
   );
 };
 
-export default Tally;
+export default TaskStatus;

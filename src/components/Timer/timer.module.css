@@ -11,8 +11,8 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 230px;
+  height: 230px;
   background: rgba(41, 41, 41, 0.2);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -161,7 +161,7 @@
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   .clock-outer {
     width: 440px;
     height: 440px;
@@ -190,7 +190,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .clock-outer {
     width: 500px;
     height: 500px;
@@ -219,7 +219,7 @@
   }
 }
 
-@media (min-width: 1335px) {
+@media (min-width: 1921px) {
   .clock-outer {
     width: 570px;
     height: 570px;

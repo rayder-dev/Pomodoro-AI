@@ -1,9 +1,22 @@
+.time-length h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
 .time-container {
   width: 100%;
   max-width: 415px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   /* border-top: 1px dotted #818184;
   border-bottom: 1px dotted #818184; */
-  /* padding: 1em 0 1.5em; */
+  padding: 1em 0 1.2em;
 }
 
 .time-wrapper {
@@ -14,23 +27,23 @@
 }
 
 .time-header {
-  color: #fff;
+  color: #f2a574;
   margin: 0 auto;
   margin-top: 0;
   margin-bottom: 5px;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
-.time-container button {
+.time-btn-wrapper button {
   background-color: #28232e;
-  /* box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15),
-    0 6px 12px 0 rgba(24, 94, 224, 0.15); */
+  box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15),
+    0 6px 12px 0 rgba(24, 94, 224, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 4px;
   color: #dadadb;
   transition: background-color 0.2s ease-in-out;
-  width: 60px;
+  width: 40px;
 }
 
 .time-btn-wrapper {
@@ -45,9 +58,9 @@
 }
 
 .time-container .time-session-display {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 8px;
   margin-top: 0;
   line-height: 1em;
-  color: #eb6841;
+  color: #fff;
 }

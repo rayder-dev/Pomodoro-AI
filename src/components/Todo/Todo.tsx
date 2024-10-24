@@ -4,7 +4,7 @@ import TodoList from '../List/TodoList';
 import Styles from './todo.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import MacOsCard from '../Cards/MacOsCard';
-import Tally from '../Tally/Tally';
+import TaskStatus from '../Tally/TaskStatus';
 
 interface Todo {
   id: string;
@@ -82,7 +82,7 @@ const Todo: React.FC = () => {
         ))}
       </div>
       <MacOsCard>
-        <Tally />
+        <TaskStatus />
       </MacOsCard>
     </div>
   );
