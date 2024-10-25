@@ -1,18 +1,34 @@
+import { FC, memo } from 'react';
+import {
+  IconPlayerPlayFilled,
+  IconPlayerPauseFilled,
+} from '@tabler/icons-react';
 import Styles from './styles/startButton.module.css';
-import { IconPlayerPlayFilled } from '@tabler/icons-react';
 
 interface StartButtonProps {
   text: string;
+  onClick: () => void;
   className?: string;
 }
 
-const StartButton: React.FC<StartButtonProps> = ({ text, className = '' }) => {
-  return (
-    <button className={`${Styles['start-btn']} ${className}`}>
-      <IconPlayerPlayFilled />
-      <span className={Styles['start-text']}>{text}</span>
-    </button>
-  );
-};
+const StartButton: FC<StartButtonProps> = memo(
+  ({ text, onClick, className = '' }) => {
+    return (
+      <button
+        type="button"
+        className={`${Styles['start-btn']} ${className}`}
+        onClick={onClick}
+        aria-label={text}
+      >
+        {text === 'START' ? (
+          <IconPlayerPlayFilled />
+        ) : (
+          <IconPlayerPauseFilled />
+        )}
+        <span className={Styles['start-text']}>{text}</span>
+      </button>
+    );
+  }
+);
 
 export default StartButton;

@@ -34,7 +34,6 @@ Main Layout
   grid-template-columns: 1fr;
   width: 90%;
   margin: 0 auto;
-  /* padding: 1em 0; */
   /* background: url('/assets/images/Vector.png');
   background-position: center;
   background-size: contain; 
@@ -70,10 +69,7 @@ section:first-child {
   padding-top: 5em;
 }
 
-section:nth-child(2) {
-  background-color: #e8e8e8;
-}
-
+section:nth-child(2),
 section:last-child {
   background-color: #e8e8e8;
 }
@@ -110,7 +106,6 @@ Tally Container
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  gap: 10em;
   margin: 0 auto;
 }
 

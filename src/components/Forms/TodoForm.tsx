@@ -1,5 +1,5 @@
-import { useState, useEffect, FormEvent, useRef } from 'react';
-import Styles from '../Todo/todo.module.css';
+import { FC, useState, useEffect, FormEvent, useRef } from 'react';
+import styles from '../Todo/todo.module.css';
 import { Todo } from '../Todo/Todo';
 
 interface TodoFormProps {
@@ -7,7 +7,7 @@ interface TodoFormProps {
   editTodo: Todo | null;
 }
 
-const TodoForm: React.FC<TodoFormProps> = ({ addTodo, editTodo }) => {
+const TodoForm: FC<TodoFormProps> = ({ addTodo, editTodo }) => {
   const [value, setValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -29,21 +29,26 @@ const TodoForm: React.FC<TodoFormProps> = ({ addTodo, editTodo }) => {
 
   return (
     <div>
-      <form className={Styles['todo-form']} onSubmit={handleSubmit}>
-        <div className={Styles['form-control']}>
+      <form className={styles['todo-form']} onSubmit={handleSubmit}>
+        <div className={styles['form-control']}>
           <input
             ref={inputRef}
             type="text"
-            className={`${Styles['todo-input']} ${Styles['todo-input-alt']}`}
+            className={`${styles['todo-input']} ${styles['todo-input-alt']}`}
             value={value}
             placeholder="What are you working on today?"
             onChange={(e) => setValue((e.target as HTMLInputElement).value)}
           />
           <span
-            className={`${Styles['input-border']} ${Styles['input-border-alt']}`}
+            className={`${styles['input-border']} ${styles['input-border-alt']}`}
           />
         </div>
-        <button type="submit" className={Styles['todo-btn']}>
+        <button
+          type="submit"
+          className={styles['todo-btn']}
+          data-text={editTodo ? 'Update' : 'Add Task'}
+          // dynamic button text
+        >
           {editTodo ? 'Update' : 'Add Task'}
         </button>
       </form>

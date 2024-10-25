@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './tabs.module.css';
 
-const Tabs: React.FC = () => {
-  const [selectedTab, setSelectedTab] = useState(0);
+interface TabsProps {
+  selected: number;
+  onSelect: (value: number) => void;
+}
 
+const Tabs: FC<TabsProps> = ({ selected, onSelect }) => {
+  const [selectedTab, setSelectedTab] = useState(selected);
   const tabs = ['Session', 'Short Break', 'Long Break'];
+
+  const tabColors = ['#f77170', '#36c890', '#2083b0'];
 
   const handleTabClick = (index: number) => {
     setSelectedTab(index);
+    onSelect(index);
   };
-
-  const gliderColor =
-    selectedTab === 1 ? '#36c890' : selectedTab === 2 ? '#2083b0' : '#f77170';
+  const gliderColor = tabColors[selectedTab];
 
   return (
     <div className={styles.tabContainer}>

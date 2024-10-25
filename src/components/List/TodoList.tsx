@@ -1,7 +1,10 @@
 import Styles from '../Todo/todo.module.css';
-import { IconCircleCheck } from '@tabler/icons-react';
-import { IconEdit } from '@tabler/icons-react';
-import { IconTrash } from '@tabler/icons-react';
+import {
+  IconCircleCheck,
+  IconEdit,
+  IconTrash,
+  IconCaretRight,
+} from '@tabler/icons-react';
 import { Todo } from '../Todo/Todo';
 
 interface TodoListProps {
@@ -23,8 +26,8 @@ const TodoList: React.FC<TodoListProps> = ({
   return (
     <div className={Styles['todo-list']}>
       <div className={Styles['todo-actions']}>
-        <IconCircleCheck
-          className={`${Styles['complete-button']} ${isCompleted} `}
+        <IconCaretRight
+          className={`${Styles['select-button']} ${isCompleted} `}
           onClick={() => handleComplete(task.id)}
         />
         <p className={`${Styles['todo-task']} ${isCompleted} ${isEditing}`}>
@@ -32,6 +35,10 @@ const TodoList: React.FC<TodoListProps> = ({
         </p>
       </div>
       <div className={Styles['todo-actions']}>
+        <IconCircleCheck
+          className={`${Styles['complete-button']} ${isCompleted} `}
+          onClick={() => handleComplete(task.id)}
+        />
         <IconEdit
           className={Styles['edit-button']}
           onClick={() => handleEdit(task.id)}

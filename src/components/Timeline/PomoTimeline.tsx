@@ -4,7 +4,7 @@ import {
   IconPlayerPause,
   IconRefresh,
   IconPlayerPauseFilled,
-  IconReload,
+  IconRotateClockwise,
 } from '@tabler/icons-react';
 
 const PomoTimeline: React.FC = () => {
@@ -14,7 +14,8 @@ const PomoTimeline: React.FC = () => {
       bulletSize={40}
       align="right"
       active={0}
-      color="#f77170"
+      color="#23bab1"
+      style={{ width: '100%' }}
     >
       <Timeline.Item
         title={<Text style={{ color: '#de986f' }}>Session</Text>}
@@ -28,11 +29,15 @@ const PomoTimeline: React.FC = () => {
               color: 'white',
             }}
           >
-            <IconPlayerPlay size="0.8rem" color="#f77170" />
+            <IconPlayerPlay size="1.5rem" color="#f77170" />
           </ThemeIcon>
         }
       >
-        <Text c="dimmed" size="sm">
+        <Text
+          c="dimmed"
+          size="sm"
+          style={{ maxWidth: '200px', justifySelf: 'flex-end' }}
+        >
           Start a pomodoro session and work on your task
         </Text>
       </Timeline.Item>
@@ -52,7 +57,7 @@ const PomoTimeline: React.FC = () => {
               color: 'white',
             }}
           >
-            <IconPlayerPause size="0.8rem" color="#36c890" />
+            <IconPlayerPause size="1.5rem" color="#36c890" />
           </ThemeIcon>
         }
       >
@@ -76,7 +81,7 @@ const PomoTimeline: React.FC = () => {
               color: 'white',
             }}
           >
-            <IconRefresh size="0.8rem" />
+            <IconRefresh size="1.5rem" />
           </ThemeIcon>
         }
       >
@@ -100,7 +105,7 @@ const PomoTimeline: React.FC = () => {
               color: 'white',
             }}
           >
-            <IconPlayerPauseFilled size="0.8rem" color="#2083b0" />
+            <IconPlayerPauseFilled size="1.5rem" color="#2083b0" />
           </ThemeIcon>
         }
       >
@@ -120,7 +125,7 @@ const PomoTimeline: React.FC = () => {
               color: 'white',
             }}
           >
-            <IconReload size="0.8rem" />
+            <IconRotateClockwise size="1.5rem" />
           </ThemeIcon>
         }
       >

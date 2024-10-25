@@ -1,31 +1,33 @@
-import Styles from './home.module.css';
-import Header from '../../components/Header/Header';
-import Timer from '../../components/Timer/Timer';
+import { FC, useEffect, useMemo, useState } from 'react';
+import { Divider } from '@mantine/core';
+import styles from './home.module.css';
+
 import Footer from '../../components/Footer/Footer';
-import Todo from '../../components/Todo/Todo';
-import Tabs from '../../components/Tabs/Tabs';
+import Header from '../../components/Header/Header';
 import Length from '../../components/Length/Length';
 import PomoTimeline from '../../components/Timeline/PomoTimeline';
+import Tabs from '../../components/Tabs/Tabs';
 import TaskTally from '../../components/Tally/TaskTally';
-import { Divider } from '@mantine/core';
+import Timer from '../../components/Timer/Timer';
+import Todo from '../../components/Todo/Todo';
 
-const Home: React.FC = () => {
+const Home: FC = () => {
+  const [selectedTab, setSelectedTab] = useState(0);
+
   return (
     <>
       <Header />
       <main>
         <section>
-          <div className={Styles['stars']} />
-          <div className={Styles['twinkling']} />
-          <div className={Styles['grid-container']}>
-            <div className={`${Styles['grid-item']} ${Styles['item1']}`}>
-              <Tabs />
-              <Timer />
+          <div className={styles['grid-container']}>
+            <div className={`${styles['grid-item']} ${styles['item1']}`}>
+              <Tabs selected={selectedTab} onSelect={setSelectedTab} />
+              <Timer selectedTab={selectedTab} />
             </div>
-            <div className={`${Styles['grid-item']} ${Styles['item2']}`}>
+            <div className={`${styles['grid-item']} ${styles['item2']}`}>
               <Todo />
             </div>
-            <div className={`${Styles['grid-item']} ${Styles['item3']}`}>
+            <div className={`${styles['grid-item']} ${styles['item3']}`}>
               <Length />
               <PomoTimeline />
             </div>
@@ -33,7 +35,7 @@ const Home: React.FC = () => {
         </section>
 
         <section>
-          <div className={Styles['tally-container']}>
+          <div className={styles['tally-container']}>
             <TaskTally
               title="Task List"
               value={346}
@@ -60,7 +62,9 @@ const Home: React.FC = () => {
             />
           </div>
         </section>
-        <Divider size="xl" style={{ width: '90%', margin: '0 auto' }} />
+
+        <Divider size="xl" />
+
         <section>
           <article>
             <h1>Boost Your Productivity with an Online Pomodoro Timer</h1>
@@ -85,10 +89,14 @@ const Home: React.FC = () => {
             <ol>
               <li>Add tasks to work on today</li>
               <li>Select a task to work on</li>
-              <li>Start timer and focus on the task for 25 minutes</li>
-              <li>Take a break for 5 minutes when the alarm ring</li>
               <li>
-                After every 4 pomodoros, take a longer break of 10 minutes.
+                Start <b>session</b> timer and focus on the task
+              </li>
+              <li>
+                Take a <b>short break</b> when the alarm rings
+              </li>
+              <li>
+                After every 4 pomodoros, take a <b>long break</b>.
               </li>
               <li>Iterate until you finish the tasks</li>
             </ol>

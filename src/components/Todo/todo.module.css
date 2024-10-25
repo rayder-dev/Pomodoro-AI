@@ -21,7 +21,7 @@ TODO WRAPPER STYLE
 .list-wrapper {
   margin-top: 0.5em;
   max-height: 200px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 /* ===================
@@ -34,15 +34,55 @@ TODO FORM STYLE
 }
 
 .todo-btn {
-  background: rgba(75, 75, 75, 0.3);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
   padding: 10px;
   white-space: nowrap;
 }
+
+/* Todo Button Style*/
+.todo-btn {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #2d2834;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 24px;
+  position: relative;
+  line-height: 24px;
+  border-radius: 0 9px 9px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
+  transform: scale(var(--s, 1)) perspective(600px) rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
+  perspective: 600px;
+  transition: background-color 0.3s, transform 0.1s, color 0.3s;
+}
+
+.todo-btn:hover {
+  color: transparent;
+}
+
+.todo-btn:hover::before {
+  content: attr(data-text);
+  background: linear-gradient(90deg, #f77170, #f9a976, #36c890, #2083b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* Todo Button End */
 
 .todo-input {
   color: #fff;
@@ -92,7 +132,13 @@ TODO FORM STYLE
 
 .input-border-alt {
   height: 3px;
-  background: linear-gradient(90deg, #ff6464 0%, #ffbf59 50%, #47c9ff 100%);
+  background: linear-gradient(
+    90deg,
+    #f77170 0%,
+    #f9a976 33.3%,
+    #36c890 66.3%,
+    #2083b0 100%
+  );
   transition: transform 0.4s cubic-bezier(0.42, 0, 0.58, 1);
 }
 
@@ -111,11 +157,18 @@ TODO LIST STYLE
   color: #fff;
 }
 
+.todo-task {
+  max-width: 250px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
 .todo-actions {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 0.5em;
   font-size: 1.5rem;
 }
 
