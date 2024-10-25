@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import Styles from './music.module.css';
 
-const Music: React.FC = () => {
+const Music: FC = () => {
   return (
     <div className={Styles['music-container']}>
       <div className={Styles['current-playing']}>

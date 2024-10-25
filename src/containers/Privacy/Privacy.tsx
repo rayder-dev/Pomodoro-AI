@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import { Title } from '@mantine/core';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Styles from '../Home/home.module.css';
 
-const Privacy: React.FC = () => {
+const Privacy: FC = () => {
   return (
     <>
       <Header />

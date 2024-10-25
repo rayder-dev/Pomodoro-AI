@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import Styles from './styles/signinButton.module.css';
 
@@ -9,7 +9,7 @@ interface SigninButtonProps {
   className?: string;
 }
 
-const SigninButton: React.FC<SigninButtonProps> = ({
+const SigninButton: FC<SigninButtonProps> = ({
   to,
   icon,
   text,

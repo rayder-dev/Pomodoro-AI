@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import {
   Title,
   Paper,
@@ -14,7 +15,7 @@ import Styles from './contact.module.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 
-const Contact: React.FC = () => {
+const Contact: FC = () => {
   return (
     <>
       <Header />

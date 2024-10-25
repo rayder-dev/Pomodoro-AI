@@ -2,8 +2,9 @@ import { Container, Title, Text, Button, Group } from '@mantine/core';
 import Illustration from './Illustration';
 import Styles from './notFound.module.css';
 import { Link } from 'react-router-dom';
+import { FC } from 'react';
 
-const NotFound: React.FC = () => {
+const NotFound: FC = () => {
   return (
     <Container className={Styles.root}>
       <div className={Styles.inner}>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import Styles from './styles/navButton.module.css';
 
 interface NavButtonProps {
@@ -9,12 +9,7 @@ interface NavButtonProps {
   className?: string;
 }
 
-const NavButton: React.FC<NavButtonProps> = ({
-  to,
-  icon,
-  text,
-  className = '',
-}) => {
+const NavButton: FC<NavButtonProps> = ({ to, icon, text, className = '' }) => {
   return (
     <li>
       <Link to={to} className={`${Styles['nav-btn']} ${className}`}>

@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import Styles from './login.module.css';
 import AuthenticationForm from '../../components/Forms/AuthForm';
 import PomodoroLogo from '../../components/Logo/PomodoroLogo';
 
-const Login: React.FC = () => {
+const Login: FC = () => {
   return (
     <div className={Styles['login-container']}>
       <PomodoroLogo to="/" isDarkMode={false} />

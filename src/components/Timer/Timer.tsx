@@ -13,10 +13,10 @@ interface Tab {
 
 interface TimerProps {
   selectedTab: number;
+  alarmSound: HTMLAudioElement;
 }
 
-const Timer: FC<TimerProps> = ({ selectedTab }) => {
-  const alarmSound = useMemo(() => new Audio('/assets/sounds/alarm.mp3'), []);
+const Timer: FC<TimerProps> = ({ selectedTab, alarmSound }) => {
   const ringSize = useResponsiveSize();
 
   const tabs: Tab[] = useMemo(

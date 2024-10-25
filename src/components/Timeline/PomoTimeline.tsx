@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { ThemeIcon, Text, Timeline } from '@mantine/core';
 import {
   IconPlayerPlay,
@@ -7,7 +8,7 @@ import {
   IconRotateClockwise,
 } from '@tabler/icons-react';
 
-const PomoTimeline: React.FC = () => {
+const PomoTimeline: FC = () => {
   return (
     <Timeline
       lineWidth={2}

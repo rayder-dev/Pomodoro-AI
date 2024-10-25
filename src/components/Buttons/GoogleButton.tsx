@@ -1,6 +1,7 @@
 import { Button, ButtonProps } from '@mantine/core';
+import { FC, ComponentPropsWithoutRef } from 'react';
 
-const GoogleIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = (props) => {
+const GoogleIcon: FC<React.ComponentPropsWithoutRef<'svg'>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -29,9 +30,9 @@ const GoogleIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = (props) => {
   );
 };
 
-const GoogleButton: React.FC<
-  ButtonProps & React.ComponentPropsWithoutRef<'button'>
-> = (props) => {
+const GoogleButton: FC<ButtonProps & ComponentPropsWithoutRef<'button'>> = (
+  props
+) => {
   return <Button leftSection={<GoogleIcon />} variant="default" {...props} />;
 };
 

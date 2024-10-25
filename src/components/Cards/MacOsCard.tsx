@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import Styles from './macOsCard.module.css';
 
 interface MacOsCard {
   children: ReactNode;
 }
 
-const MacOsCard: React.FC<MacOsCard> = ({ children }) => {
+const MacOsCard: FC<MacOsCard> = ({ children }) => {
   return (
     <div className={Styles['glass-container']}>
       <div className={Styles['glass-header']}>

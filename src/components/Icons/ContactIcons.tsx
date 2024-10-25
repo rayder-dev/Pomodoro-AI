@@ -1,15 +1,16 @@
 import { Text, Box, Stack, rem } from '@mantine/core';
 import { IconSun, IconPhone, IconMapPin, IconAt } from '@tabler/icons-react';
 import Styles from './icons.module.css';
+import { ComponentPropsWithoutRef, FC, ReactNode } from 'react';
 
 interface ContactIconProps
-  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
+  extends Omit<ComponentPropsWithoutRef<'div'>, 'title'> {
   icon: typeof IconSun;
-  title: React.ReactNode;
-  description: React.ReactNode;
+  title: ReactNode;
+  description: ReactNode;
 }
 
-const ContactIcon: React.FC<ContactIconProps> = ({
+const ContactIcon: FC<ContactIconProps> = ({
   icon: Icon,
   title,
   description,
@@ -42,7 +43,7 @@ const MOCKDATA = [
   { title: 'Working hours', description: '8 a.m. – 11 p.m.', icon: IconSun },
 ];
 
-const ContactIconsList: React.FC = () => {
+const ContactIconsList: FC = () => {
   const items = MOCKDATA.map((item, index) => (
     <ContactIcon key={index} {...item} />
   ));

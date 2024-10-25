@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { RichTextEditor, Link } from '@mantine/tiptap';
 import { useEditor } from '@tiptap/react';
 import Highlight from '@tiptap/extension-highlight';
@@ -11,7 +12,7 @@ import Styles from './textEditor.module.css';
 
 const content = '';
 
-const TextEditor: React.FC = () => {
+const TextEditor: FC = () => {
   const editor = useEditor({
     extensions: [
       StarterKit,

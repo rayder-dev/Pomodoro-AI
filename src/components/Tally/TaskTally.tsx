@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import styles from './taskTally.module.css';
 import { Badge } from '@mantine/core';
 
@@ -9,7 +9,7 @@ interface TaskTallyProps {
   subtitle?: string;
 }
 
-const TaskTally: React.FC<TaskTallyProps> = ({
+const TaskTally: FC<TaskTallyProps> = ({
   title,
   value,
   color,

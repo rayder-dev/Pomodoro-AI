@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Styles from '../Todo/todo.module.css';
 import {
   IconCircleCheck,
@@ -14,7 +15,7 @@ interface TodoListProps {
   handleDelete: (id: string) => void;
 }
 
-const TodoList: React.FC<TodoListProps> = ({
+const TodoList: FC<TodoListProps> = ({
   task,
   handleComplete,
   handleEdit,

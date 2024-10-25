@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import {
   IconNotebook,
   IconCalendarMonth,
@@ -9,7 +10,7 @@ import NavButton from '../Buttons/NavButton';
 import SigninButton from '../Buttons/SignInButton';
 import PomodoroLogo from '../Logo/PomodoroLogo';
 
-const Header: React.FC = () => {
+const Header: FC = () => {
   return (
     <header>
       <div className={Styles['header-container']}>

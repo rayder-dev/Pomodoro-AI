@@ -131,3 +131,8 @@ article {
   font-family: Greycliff CF, var(--mantine-font-family);
   margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);
 }
+
+.alarm-text {
+  border-bottom: 1px solid #551a8b;
+  cursor: pointer;
+}

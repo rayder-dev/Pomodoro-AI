@@ -1,7 +1,7 @@
-import React from 'react';
+import { FC } from 'react';
 import Styles from './taskStatus.module.css';
 
-const TaskStatus: React.FC = () => {
+const TaskStatus: FC = () => {
   return (
     <div className={Styles['tally-container']}>
       <div className={Styles['tally-wrapper']}>

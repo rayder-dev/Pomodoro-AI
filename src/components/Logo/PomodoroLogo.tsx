@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Styles from './pomodoroLogo.module.css';
+import { FC } from 'react';
 
 interface PomodoroLogoProps {
   to: string;
@@ -7,7 +8,7 @@ interface PomodoroLogoProps {
   isDarkMode?: boolean;
 }
 
-const PomodoroLogo: React.FC<PomodoroLogoProps> = ({
+const PomodoroLogo: FC<PomodoroLogoProps> = ({
   to,
   className = '',
   isDarkMode = true,

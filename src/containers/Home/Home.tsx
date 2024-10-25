@@ -1,5 +1,6 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { Divider } from '@mantine/core';
+import { IconVolume } from '@tabler/icons-react';
 import styles from './home.module.css';
 
 import Footer from '../../components/Footer/Footer';
@@ -12,6 +13,7 @@ import Timer from '../../components/Timer/Timer';
 import Todo from '../../components/Todo/Todo';
 
 const Home: FC = () => {
+  const alarm = useMemo(() => new Audio('/assets/sounds/alarm.mp3'), []);
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
@@ -22,7 +24,7 @@ const Home: FC = () => {
           <div className={styles['grid-container']}>
             <div className={`${styles['grid-item']} ${styles['item1']}`}>
               <Tabs selected={selectedTab} onSelect={setSelectedTab} />
-              <Timer selectedTab={selectedTab} />
+              <Timer selectedTab={selectedTab} alarmSound={alarm} />
             </div>
             <div className={`${styles['grid-item']} ${styles['item2']}`}>
               <Todo />
@@ -93,7 +95,20 @@ const Home: FC = () => {
                 Start <b>session</b> timer and focus on the task
               </li>
               <li>
-                Take a <b>short break</b> when the alarm rings
+                Take a <b>short break</b> when the{' '}
+                <span
+                  onClick={() => alarm.play()}
+                  className={styles['alarm-text']}
+                >
+                  <strong>
+                    <IconVolume
+                      size="1.2rem"
+                      style={{ marginBottom: '-2px', marginRight: '2px' }}
+                    />
+                    alarm
+                  </strong>
+                </span>{' '}
+                rings
               </li>
               <li>
                 After every 4 pomodoros, take a <b>long break</b>.

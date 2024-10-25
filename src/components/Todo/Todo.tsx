@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import TodoForm from '../Forms/TodoForm';
 import TodoList from '../List/TodoList';
 import Styles from './todo.module.css';
@@ -13,7 +13,7 @@ interface Todo {
   isEditing: boolean;
 }
 
-const Todo: React.FC = () => {
+const Todo: FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [editTodo, setEditTodo] = useState<Todo | null>(null);
 

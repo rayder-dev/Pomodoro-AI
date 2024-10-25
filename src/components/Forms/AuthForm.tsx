@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useToggle, upperFirst } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 import {
@@ -15,7 +16,7 @@ import {
 } from '@mantine/core';
 import GoogleButton from '../Buttons/GoogleButton';
 
-const AuthenticationForm: React.FC<PaperProps> = (props) => {
+const AuthenticationForm: FC<PaperProps> = (props) => {
   const [type, toggle] = useToggle(['login', 'register']);
   const form = useForm({
     initialValues: {

@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import { Title } from '@mantine/core';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Styles from '../Home/home.module.css';
 
-const Terms: React.FC = () => {
+const Terms: FC = () => {
   return (
     <>
       <Header />

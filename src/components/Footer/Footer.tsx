@@ -6,6 +6,7 @@ import {
   IconBrandTiktok,
 } from '@tabler/icons-react';
 import Styles from './footer.module.css';
+import { FC } from 'react';
 
 const links = [
   { link: '/contact', label: 'Contact' },
@@ -17,7 +18,7 @@ const links = [
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   const items = links.map((link) => (
     <Link key={link.label} to={link.link} onClick={scrollToTop}>
       {link.label}
