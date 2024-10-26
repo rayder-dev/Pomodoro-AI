@@ -1,0 +1,38 @@
+.modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1.5em;
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.circle-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 0;
+  outline: 0;
+}
+
+.red {
+  background-color: #fc7f73;
+}
+
+.yellow {
+  background-color: #f9a976;
+}
+
+.green {
+  background-color: #36c890;
+}

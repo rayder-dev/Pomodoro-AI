@@ -1,0 +1,31 @@
+/* From Uiverse.io by alexmaracinaru */
+.continue-button {
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: #23bab1;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.continue-button:hover {
+  background: #36c890;
+}
+
+.continue-button > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.continue-button:hover svg {
+  transform: translateX(5px);
+}
+
+.continue-button:active {
+  transform: scale(0.95);
+}

@@ -11,6 +11,7 @@ import Tabs from '../../components/Tab/Tab';
 import PomoTally from '../../components/Tally/PomoTally';
 import Timer from '../../components/Timer/Timer';
 import Todo from '../../components/Todo/Todo';
+import ModalWrapper from '../../components/Modal/ModalWrapper';
 
 interface TimerLength {
   session: number;
@@ -20,11 +21,13 @@ interface TimerLength {
 
 const Home: FC = () => {
   const alarm = useMemo(() => new Audio('/assets/sounds/alarm.mp3'), []);
+  const [modalOpen, setModalOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
+  const [timerReset, setTimerReset] = useState(false);
   const [timerLength, setTimerLength] = useState<TimerLength>({
-    session: 1,
-    shortBreak: 1,
-    longBreak: 1,
+    session: 3,
+    shortBreak: 3,
+    longBreak: 600,
   });
   const [cycleCount, setCycleCount] = useState(0);
   const [timelineIndex, setTimelineIndex] = useState(0);
@@ -46,6 +49,16 @@ const Home: FC = () => {
     }
   }, [selectedTab, cycleCount]);
 
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+    cycleTab();
+    setTimerReset(true);
+  };
+
   return (
     <>
       <Header />
@@ -56,9 +69,9 @@ const Home: FC = () => {
               <Tabs selected={selectedTab} onSelect={setSelectedTab} />
               <Timer
                 selectedTab={selectedTab}
-                alarmSound={alarm}
                 timerLength={timerLength}
-                onTabCycle={cycleTab}
+                modalOpen={handleModalOpen}
+                reset={timerReset}
               />
             </div>
             <div className={`${styles['grid-item']} ${styles['item2']}`}>
@@ -187,6 +200,11 @@ const Home: FC = () => {
         </section>
       </main>
       <Footer />
+      <ModalWrapper
+        opened={modalOpen}
+        alarmSound={alarm}
+        close={handleModalClose}
+      />
     </>
   );
 };

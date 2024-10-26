@@ -59,7 +59,7 @@ Main Layout
   flex-direction: row;
 }
 
-section:first-child {
+main section:first-child {
   background-image: radial-gradient(
     circle at 50% 0%,
     rgb(67, 54, 74) 16.4%,
@@ -69,8 +69,8 @@ section:first-child {
   padding-top: 5em;
 }
 
-section:nth-child(2),
-section:last-child {
+main section:nth-child(2),
+main section:last-child {
   background-color: #e8e8e8;
 }
 

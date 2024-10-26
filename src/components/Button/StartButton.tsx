@@ -22,8 +22,10 @@ const StartButton: FC<StartButtonProps> = memo(
       >
         {text === 'START' ? (
           <IconPlayerPlayFilled />
-        ) : (
+        ) : text === 'PAUSE' ? (
           <IconPlayerPauseFilled />
+        ) : (
+          ''
         )}
         <span className={Styles['start-text']}>{text}</span>
       </button>

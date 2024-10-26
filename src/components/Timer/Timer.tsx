@@ -14,16 +14,16 @@ interface Tab {
 
 interface TimerProps {
   selectedTab: number;
-  alarmSound: HTMLAudioElement;
+  reset: boolean;
   timerLength: TimerLength;
-  onTabCycle: () => void;
+  modalOpen: () => void;
 }
 
 const Timer: FC<TimerProps> = ({
   selectedTab,
-  alarmSound,
+  reset,
   timerLength,
-  onTabCycle,
+  modalOpen,
 }) => {
   const ringSize = useResponsiveSize();
 
@@ -74,14 +74,14 @@ const Timer: FC<TimerProps> = ({
   }, [selectedTab, tabs]);
 
   useEffect(() => {
-    if (initialTime > 0) {
+    if (initialTime > 0 && reset) {
       setTimeLeft(initialTime);
       setProgress(100);
     }
     if (isRunning) {
       setHasFinished(false);
     }
-  }, [initialTime, isRunning]);
+  }, [initialTime, isRunning, reset]);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
@@ -97,14 +97,13 @@ const Timer: FC<TimerProps> = ({
     } else if (timeLeft === 0 && !hasFinished) {
       setIsRunning(false);
       setHasFinished(true);
-      alarmSound.play();
-      onTabCycle();
+      modalOpen();
     }
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [isRunning, timeLeft, initialTime, alarmSound, hasFinished]);
+  }, [isRunning, timeLeft, initialTime, hasFinished]);
 
   const toggleTimer = () => {
     setIsRunning((prevIsRunning) => !prevIsRunning);
