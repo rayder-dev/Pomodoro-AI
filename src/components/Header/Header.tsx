@@ -6,8 +6,8 @@ import {
   IconLogin2,
 } from '@tabler/icons-react';
 import Styles from './header.module.css';
-import NavButton from '../Buttons/NavButton';
-import SigninButton from '../Buttons/SignInButton';
+import NavButton from '../Button/NavButton';
+import SigninButton from '../Button/SignInButton';
 import PomodoroLogo from '../Logo/PomodoroLogo';
 
 const Header: FC = () => {

@@ -14,7 +14,7 @@ import {
   Anchor,
   Stack,
 } from '@mantine/core';
-import GoogleButton from '../Buttons/GoogleButton';
+import GoogleButton from '../Button/GoogleButton';
 
 const AuthenticationForm: FC<PaperProps> = (props) => {
   const [type, toggle] = useToggle(['login', 'register']);

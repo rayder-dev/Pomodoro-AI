@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Styles from './login.module.css';
-import AuthenticationForm from '../../components/Forms/AuthForm';
+import AuthenticationForm from '../../components/Form/AuthForm';
 import PomodoroLogo from '../../components/Logo/PomodoroLogo';
 
 const Login: FC = () => {

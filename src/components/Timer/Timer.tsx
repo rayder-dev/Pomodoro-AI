@@ -1,8 +1,9 @@
 import { FC, useState, useEffect, useMemo } from 'react';
-import StartButton from '../Buttons/StartButton';
 import { RingProgress } from '@mantine/core';
 import Styles from './timer.module.css';
+import { TimerLength } from '../../containers/Home/Home';
 import { useResponsiveSize } from '../../hooks/useResponsiveSize';
+import StartButton from '../Button/StartButton';
 
 interface Tab {
   title: string;
@@ -14,9 +15,16 @@ interface Tab {
 interface TimerProps {
   selectedTab: number;
   alarmSound: HTMLAudioElement;
+  timerLength: TimerLength;
+  onTabCycle: () => void;
 }
 
-const Timer: FC<TimerProps> = ({ selectedTab, alarmSound }) => {
+const Timer: FC<TimerProps> = ({
+  selectedTab,
+  alarmSound,
+  timerLength,
+  onTabCycle,
+}) => {
   const ringSize = useResponsiveSize();
 
   const tabs: Tab[] = useMemo(
@@ -24,23 +32,23 @@ const Timer: FC<TimerProps> = ({ selectedTab, alarmSound }) => {
       {
         title: 'Session',
         color: '#f77170',
-        initialTime: 1500,
+        initialTime: timerLength.session,
         timerLabel: 'In session',
       },
       {
         title: 'Short Break',
         color: '#36c890',
-        initialTime: 300,
+        initialTime: timerLength.shortBreak,
         timerLabel: 'Take a break',
       },
       {
         title: 'Long Break',
         color: '#2083b0',
-        initialTime: 600,
+        initialTime: timerLength.longBreak,
         timerLabel: 'Take a break',
       },
     ],
-    []
+    [timerLength]
   );
 
   const [tabState, setTabState] = useState({
@@ -66,28 +74,36 @@ const Timer: FC<TimerProps> = ({ selectedTab, alarmSound }) => {
   }, [selectedTab, tabs]);
 
   useEffect(() => {
-    setTimeLeft(initialTime);
-    setProgress(100);
-    setIsRunning(false);
-    setHasFinished(false);
-  }, [initialTime]);
+    if (initialTime > 0) {
+      setTimeLeft(initialTime);
+      setProgress(100);
+    }
+    if (isRunning) {
+      setHasFinished(false);
+    }
+  }, [initialTime, isRunning]);
 
   useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+
     if (isRunning && timeLeft > 0) {
-      const intervalId = setInterval(() => {
+      intervalId = setInterval(() => {
         setTimeLeft((prevTime) => {
           const newTime = prevTime - 1;
           setProgress((newTime / initialTime) * 100);
           return newTime;
         });
       }, 1000);
-
-      return () => clearInterval(intervalId);
     } else if (timeLeft === 0 && !hasFinished) {
       setIsRunning(false);
       setHasFinished(true);
       alarmSound.play();
+      onTabCycle();
     }
+
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [isRunning, timeLeft, initialTime, alarmSound, hasFinished]);
 
   const toggleTimer = () => {

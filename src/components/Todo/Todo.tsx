@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
-import TodoForm from '../Forms/TodoForm';
+import TodoForm from '../Form/TodoForm';
 import TodoList from '../List/TodoList';
 import Styles from './todo.module.css';
 import { v4 as uuidv4 } from 'uuid';
-import MacOsCard from '../Cards/MacOsCard';
+import MacOsCard from '../Card/MacOsCard';
 import TaskStatus from '../Tally/TaskStatus';
 
 interface Todo {

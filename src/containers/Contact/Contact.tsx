@@ -9,7 +9,7 @@ import {
   Group,
   SimpleGrid,
 } from '@mantine/core';
-import { ContactIconsList } from '../../components/Icons/ContactIcons';
+import { ContactIconsList } from '../../components/Icon/ContactIcons';
 import bg from '/assets/svg/bg.svg';
 import Styles from './contact.module.css';
 import Header from '../../components/Header/Header';

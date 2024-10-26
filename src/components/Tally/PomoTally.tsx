@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import styles from './taskTally.module.css';
+import styles from './pomoTally.module.css';
 import { Badge } from '@mantine/core';
 
-interface TaskTallyProps {
+interface PomoTallyProps {
   title: string;
   value: number;
   color: string;
   subtitle?: string;
 }
 
-const TaskTally: FC<TaskTallyProps> = ({
+const PomoTally: FC<PomoTallyProps> = ({
   title,
   value,
   color,
@@ -26,4 +26,4 @@ const TaskTally: FC<TaskTallyProps> = ({
   );
 };
 
-export default TaskTally;
+export default PomoTally;

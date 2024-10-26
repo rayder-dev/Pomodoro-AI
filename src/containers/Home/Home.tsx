@@ -1,20 +1,50 @@
-import { FC, useMemo, useState } from 'react';
+import { FC, useCallback, useMemo, useState } from 'react';
 import { Divider } from '@mantine/core';
 import { IconVolume } from '@tabler/icons-react';
 import styles from './home.module.css';
 
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
-import Length from '../../components/Length/Length';
+import TimerControl from '../../components/TimerControl/TimerControl';
 import PomoTimeline from '../../components/Timeline/PomoTimeline';
-import Tabs from '../../components/Tabs/Tabs';
-import TaskTally from '../../components/Tally/TaskTally';
+import Tabs from '../../components/Tab/Tab';
+import PomoTally from '../../components/Tally/PomoTally';
 import Timer from '../../components/Timer/Timer';
 import Todo from '../../components/Todo/Todo';
+
+interface TimerLength {
+  session: number;
+  shortBreak: number;
+  longBreak: number;
+}
 
 const Home: FC = () => {
   const alarm = useMemo(() => new Audio('/assets/sounds/alarm.mp3'), []);
   const [selectedTab, setSelectedTab] = useState(0);
+  const [timerLength, setTimerLength] = useState<TimerLength>({
+    session: 1,
+    shortBreak: 1,
+    longBreak: 1,
+  });
+  const [cycleCount, setCycleCount] = useState(0);
+  const [timelineIndex, setTimelineIndex] = useState(0);
+
+  const cycleTab = useCallback(() => {
+    if (selectedTab === 0) {
+      if (cycleCount < 3) {
+        setSelectedTab(1); // Move to Short Break
+        setTimelineIndex(cycleCount < 1 ? 1 : 2);
+        setCycleCount(cycleCount + 1);
+      } else {
+        setSelectedTab(2); // After 4 cycles, go to Long Break
+        setTimelineIndex(3);
+        setCycleCount(0); // Reset cycle count after a long break
+      }
+    } else {
+      setSelectedTab(0); // Go back to Session after a break
+      setTimelineIndex(cycleCount > 0 ? 2 : 0);
+    }
+  }, [selectedTab, cycleCount]);
 
   return (
     <>
@@ -24,39 +54,50 @@ const Home: FC = () => {
           <div className={styles['grid-container']}>
             <div className={`${styles['grid-item']} ${styles['item1']}`}>
               <Tabs selected={selectedTab} onSelect={setSelectedTab} />
-              <Timer selectedTab={selectedTab} alarmSound={alarm} />
+              <Timer
+                selectedTab={selectedTab}
+                alarmSound={alarm}
+                timerLength={timerLength}
+                onTabCycle={cycleTab}
+              />
             </div>
             <div className={`${styles['grid-item']} ${styles['item2']}`}>
               <Todo />
             </div>
             <div className={`${styles['grid-item']} ${styles['item3']}`}>
-              <Length />
-              <PomoTimeline />
+              <TimerControl
+                timerLength={timerLength}
+                setTimerLength={setTimerLength}
+              />
+              <PomoTimeline
+                activeIndex={timelineIndex}
+                cycleCount={cycleCount}
+              />
             </div>
           </div>
         </section>
 
         <section>
           <div className={styles['tally-container']}>
-            <TaskTally
+            <PomoTally
               title="Task List"
               value={346}
               color="#f77170"
               subtitle="Today's Ongoing tasks"
             />
-            <TaskTally
+            <PomoTally
               title="Task Completed"
               value={795}
               color="#36c890"
               subtitle="Total completed tasks"
             />
-            <TaskTally
+            <PomoTally
               title="Current Streak"
               value={83}
               color="#f9a976"
               subtitle="Current streak of daily productivity"
             />
-            <TaskTally
+            <PomoTally
               title="Longest Streak"
               value={257}
               color="#2083b0"
@@ -151,3 +192,4 @@ const Home: FC = () => {
 };
 
 export default Home;
+export type { TimerLength };

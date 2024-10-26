@@ -1,22 +1,19 @@
-import { FC, useState } from 'react';
-import styles from './tabs.module.css';
+import { FC, useEffect } from 'react';
+import styles from './tab.module.css';
 
-interface TabsProps {
+interface TabProps {
   selected: number;
   onSelect: (value: number) => void;
 }
 
-const Tabs: FC<TabsProps> = ({ selected, onSelect }) => {
-  const [selectedTab, setSelectedTab] = useState(selected);
+const Tab: FC<TabProps> = ({ selected, onSelect }) => {
   const tabs = ['Session', 'Short Break', 'Long Break'];
-
   const tabColors = ['#f77170', '#36c890', '#2083b0'];
 
   const handleTabClick = (index: number) => {
-    setSelectedTab(index);
     onSelect(index);
   };
-  const gliderColor = tabColors[selectedTab];
+  const gliderColor = tabColors[selected];
 
   return (
     <div className={styles.tabContainer}>
@@ -25,7 +22,7 @@ const Tabs: FC<TabsProps> = ({ selected, onSelect }) => {
           <div
             key={index}
             className={`${styles.tab} ${
-              selectedTab === index ? styles.active : ''
+              selected === index ? styles.active : ''
             }`}
             onClick={() => handleTabClick(index)}
           >
@@ -35,7 +32,7 @@ const Tabs: FC<TabsProps> = ({ selected, onSelect }) => {
         <span
           className={styles.glider}
           style={{
-            transform: `translateX(${selectedTab * 100}%)`,
+            transform: `translateX(${selected * 100}%)`,
             backgroundColor: gliderColor,
           }}
         ></span>
@@ -44,4 +41,4 @@ const Tabs: FC<TabsProps> = ({ selected, onSelect }) => {
   );
 };
 
-export default Tabs;
+export default Tab;
