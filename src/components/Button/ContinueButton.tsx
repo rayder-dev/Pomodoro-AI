@@ -3,9 +3,10 @@ import styles from './styles/continueButton.module.css';
 
 interface ContinueButtonProps {
   onClick: () => void;
+  color: string;
 }
 
-const ContinueButton: FC<ContinueButtonProps> = ({ onClick }) => {
+const ContinueButton: FC<ContinueButtonProps> = ({ onClick, color }) => {
   return (
     <div>
       <button
@@ -13,6 +14,9 @@ const ContinueButton: FC<ContinueButtonProps> = ({ onClick }) => {
         type="button"
         onClick={onClick}
         aria-label={'continue'}
+        style={{
+          background: color,
+        }}
       >
         <span>Continue</span>
         <svg
@@ -23,7 +27,7 @@ const ContinueButton: FC<ContinueButtonProps> = ({ onClick }) => {
           width="34"
         >
           <circle
-            stroke-width="3"
+            strokeWidth="3"
             stroke="black"
             r="35.5"
             cy="37"

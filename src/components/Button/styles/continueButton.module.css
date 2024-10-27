@@ -5,7 +5,6 @@
   transition: all 0.2s;
   padding: 10px 20px;
   border-radius: 100px;
-  background: #23bab1;
   border: 1px solid transparent;
   display: flex;
   align-items: center;
@@ -13,7 +12,7 @@
 }
 
 .continue-button:hover {
-  background: #36c890;
+  filter: brightness(1.2);
 }
 
 .continue-button > svg {

@@ -9,11 +9,11 @@ interface TabProps {
 const Tab: FC<TabProps> = ({ selected, onSelect }) => {
   const tabs = ['Session', 'Short Break', 'Long Break'];
   const tabColors = ['#f77170', '#36c890', '#2083b0'];
+  const gliderColor = tabColors[selected];
 
   const handleTabClick = (index: number) => {
     onSelect(index);
   };
-  const gliderColor = tabColors[selected];
 
   return (
     <div className={styles.tabContainer}>

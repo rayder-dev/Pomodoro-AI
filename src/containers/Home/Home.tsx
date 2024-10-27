@@ -11,7 +11,7 @@ import Tabs from '../../components/Tab/Tab';
 import PomoTally from '../../components/Tally/PomoTally';
 import Timer from '../../components/Timer/Timer';
 import Todo from '../../components/Todo/Todo';
-import ModalWrapper from '../../components/Modal/ModalWrapper';
+import TimeUpModal from '../../components/Modal/TimeUpModal';
 
 interface TimerLength {
   session: number;
@@ -26,8 +26,8 @@ const Home: FC = () => {
   const [timerReset, setTimerReset] = useState(false);
   const [timerLength, setTimerLength] = useState<TimerLength>({
     session: 3,
-    shortBreak: 3,
-    longBreak: 600,
+    shortBreak: 2,
+    longBreak: 4,
   });
   const [cycleCount, setCycleCount] = useState(0);
   const [timelineIndex, setTimelineIndex] = useState(0);
@@ -51,12 +51,13 @@ const Home: FC = () => {
 
   const handleModalOpen = () => {
     setModalOpen(true);
+    setTimerReset(true);
   };
 
   const handleModalClose = () => {
     setModalOpen(false);
     cycleTab();
-    setTimerReset(true);
+    setTimerReset(false);
   };
 
   return (
@@ -200,10 +201,11 @@ const Home: FC = () => {
         </section>
       </main>
       <Footer />
-      <ModalWrapper
+      <TimeUpModal
         opened={modalOpen}
-        alarmSound={alarm}
         close={handleModalClose}
+        alarmSound={alarm}
+        selectedTab={selectedTab}
       />
     </>
   );

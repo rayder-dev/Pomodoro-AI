@@ -1,15 +1,22 @@
 import { FC, useEffect } from 'react';
+import { IconAlarm } from '@tabler/icons-react';
 import { Modal } from '@mantine/core';
-import styles from './modalWrapper.module.css';
+import styles from './timeUpModal.module.css';
 import ContinueButton from '../Button/ContinueButton';
 
-interface ModalWrapperProps {
+interface TimeUpModalProps {
   opened: boolean;
   close: () => void;
   alarmSound: HTMLAudioElement;
+  selectedTab: number;
 }
 
-const ModalWrapper: FC<ModalWrapperProps> = ({ opened, close, alarmSound }) => {
+const TimeUpModal: FC<TimeUpModalProps> = ({
+  opened,
+  close,
+  alarmSound,
+  selectedTab,
+}) => {
   const playAlarm = () => {
     alarmSound.loop = true;
     alarmSound.play();
@@ -28,6 +35,9 @@ const ModalWrapper: FC<ModalWrapperProps> = ({ opened, close, alarmSound }) => {
     }
   }, [opened]);
 
+  const alarmColor =
+    selectedTab === 0 ? '#f77170' : selectedTab === 1 ? '#36c890' : '#2083b0';
+
   return (
     <Modal
       opened={opened}
@@ -35,6 +45,9 @@ const ModalWrapper: FC<ModalWrapperProps> = ({ opened, close, alarmSound }) => {
       withCloseButton={false}
       transitionProps={{ transition: 'rotate-left' }}
       zIndex={1000}
+      radius={20}
+      closeOnClickOutside={false}
+      closeOnEscape={false}
       overlayProps={{
         backgroundOpacity: 0.55,
         blur: 2,
@@ -46,11 +59,19 @@ const ModalWrapper: FC<ModalWrapperProps> = ({ opened, close, alarmSound }) => {
         <div className={`${styles['circle-btn']} ${styles['green']}`} />
       </div>
       <div className={styles['modal-wrapper']}>
-        <h3> Time’s up! Tap Continue to proceed.</h3>
-        <ContinueButton onClick={stopAlarm} />
+        <h3>
+          Time’s up! Tap Continue to proceed.
+          <IconAlarm
+            className={styles.vibrating}
+            color={alarmColor}
+            size="3rem"
+            style={{ marginBottom: '-1rem' }}
+          />
+        </h3>
+        <ContinueButton onClick={stopAlarm} color={alarmColor} />
       </div>
     </Modal>
   );
 };
 
-export default ModalWrapper;
+export default TimeUpModal;

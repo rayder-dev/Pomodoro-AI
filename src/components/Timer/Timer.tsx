@@ -26,7 +26,6 @@ const Timer: FC<TimerProps> = ({
   modalOpen,
 }) => {
   const ringSize = useResponsiveSize();
-
   const tabs: Tab[] = useMemo(
     () => [
       {
@@ -50,7 +49,6 @@ const Timer: FC<TimerProps> = ({
     ],
     [timerLength]
   );
-
   const [tabState, setTabState] = useState({
     title: tabs[0].title,
     initialTime: tabs[0].initialTime,
@@ -74,36 +72,53 @@ const Timer: FC<TimerProps> = ({
   }, [selectedTab, tabs]);
 
   useEffect(() => {
-    if (initialTime > 0 && reset) {
-      setTimeLeft(initialTime);
-      setProgress(100);
-    }
-    if (isRunning) {
-      setHasFinished(false);
-    }
-  }, [initialTime, isRunning, reset]);
+    console.log(reset);
+    console.log(initialTime);
+    setTimeLeft(initialTime);
+    setProgress(100);
+    setIsRunning(false);
+    setHasFinished(false);
+  }, [initialTime]);
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-
     if (isRunning && timeLeft > 0) {
-      intervalId = setInterval(() => {
+      const intervalId = setInterval(() => {
         setTimeLeft((prevTime) => {
           const newTime = prevTime - 1;
           setProgress((newTime / initialTime) * 100);
           return newTime;
         });
       }, 1000);
+
+      return () => clearInterval(intervalId);
     } else if (timeLeft === 0 && !hasFinished) {
       setIsRunning(false);
       setHasFinished(true);
       modalOpen();
     }
-
-    return () => {
-      clearInterval(intervalId);
-    };
   }, [isRunning, timeLeft, initialTime, hasFinished]);
+
+  // useEffect(() => {
+  //   let intervalId: NodeJS.Timeout;
+
+  //   if (isRunning && timeLeft > 0) {
+  //     intervalId = setInterval(() => {
+  //       setTimeLeft((prevTime) => {
+  //         const newTime = prevTime - 1;
+  //         setProgress((newTime / initialTime) * 100);
+  //         return newTime;
+  //       });
+  //     }, 1000);
+  //   } else if (timeLeft === 0 && !hasFinished) {
+  //     setIsRunning(false);
+  //     setHasFinished(true);
+  //     modalOpen();
+  //   }
+
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, [isRunning, timeLeft, initialTime, hasFinished]);
 
   const toggleTimer = () => {
     setIsRunning((prevIsRunning) => !prevIsRunning);
