@@ -25,9 +25,9 @@ const Home: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [timerReset, setTimerReset] = useState(false);
   const [timerLength, setTimerLength] = useState<TimerLength>({
-    session: 3,
-    shortBreak: 2,
-    longBreak: 4,
+    session: 5,
+    shortBreak: 5,
+    longBreak: 2,
   });
   const [cycleCount, setCycleCount] = useState(0);
   const [timelineIndex, setTimelineIndex] = useState(0);
@@ -51,13 +51,13 @@ const Home: FC = () => {
 
   const handleModalOpen = () => {
     setModalOpen(true);
-    setTimerReset(true);
+    setTimerReset(false);
   };
 
   const handleModalClose = () => {
     setModalOpen(false);
     cycleTab();
-    setTimerReset(false);
+    setTimerReset(true);
   };
 
   return (

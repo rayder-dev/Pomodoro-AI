@@ -66,20 +66,31 @@ const Timer: FC<TimerProps> = ({
 
   const { title, initialTime, progressColor, timerLabel } = tabState;
 
+  // For Tabs
   useEffect(() => {
     const { title, initialTime: time, color, timerLabel } = tabs[selectedTab];
     setTabState({ title, initialTime: time, progressColor: color, timerLabel });
   }, [selectedTab, tabs]);
 
+  // For Timer Control
   useEffect(() => {
-    console.log(reset);
-    console.log(initialTime);
     setTimeLeft(initialTime);
     setProgress(100);
     setIsRunning(false);
     setHasFinished(false);
   }, [initialTime]);
 
+  // For Modal Reset
+  useEffect(() => {
+    if (reset) {
+      setTimeLeft(initialTime);
+      setProgress(100);
+      setIsRunning(false);
+      setHasFinished(false);
+    }
+  }, [reset]);
+
+  // For Timer
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
       const intervalId = setInterval(() => {
