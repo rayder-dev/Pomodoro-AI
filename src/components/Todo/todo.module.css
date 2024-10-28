@@ -151,10 +151,31 @@ TODO LIST STYLE
 ====================*/
 .todo-list {
   display: flex;
-  justify-content: space-between;
-  padding: 0 1em;
-  margin: 0.5em auto;
+  justify-self: flex-end;
+  justify-content: flex-end;
+  width: 91%;
+  padding-right: 0.5em;
   color: #fff;
+}
+
+.active-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: #42364a;
+  border-radius: 10px;
+}
+
+.active-icon {
+  display: inline;
+  color: #23bab1;
+}
+
+.todo-task-wrapper {
+  width: 100%;
+  font-size: 1rem;
 }
 
 .todo-task {
@@ -166,7 +187,7 @@ TODO LIST STYLE
 
 .todo-actions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 0.5em;
   font-size: 1.5rem;
@@ -197,5 +218,5 @@ TODO LIST STYLE
 
 .complete {
   text-decoration: line-through;
-  color: #36c8bd;
+  color: #36c890;
 }

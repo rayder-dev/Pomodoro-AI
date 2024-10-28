@@ -21,13 +21,18 @@ interface TimerLength {
 
 const Home: FC = () => {
   const alarm = useMemo(() => new Audio('/assets/sounds/alarm.mp3'), []);
+  const [sessionStatus, setSessionStatus] = useState({
+    count: 0,
+    time: '',
+  });
+  const currentTime = new Date();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
   const [timerReset, setTimerReset] = useState(false);
   const [timerLength, setTimerLength] = useState<TimerLength>({
-    session: 5,
-    shortBreak: 5,
-    longBreak: 2,
+    session: 3,
+    shortBreak: 1,
+    longBreak: 1,
   });
   const [cycleCount, setCycleCount] = useState(0);
   const [timelineIndex, setTimelineIndex] = useState(0);
@@ -35,16 +40,16 @@ const Home: FC = () => {
   const cycleTab = useCallback(() => {
     if (selectedTab === 0) {
       if (cycleCount < 3) {
-        setSelectedTab(1); // Move to Short Break
+        setSelectedTab(1);
         setTimelineIndex(cycleCount < 1 ? 1 : 2);
         setCycleCount(cycleCount + 1);
       } else {
-        setSelectedTab(2); // After 4 cycles, go to Long Break
+        setSelectedTab(2);
         setTimelineIndex(3);
-        setCycleCount(0); // Reset cycle count after a long break
+        setCycleCount(0);
       }
     } else {
-      setSelectedTab(0); // Go back to Session after a break
+      setSelectedTab(0);
       setTimelineIndex(cycleCount > 0 ? 2 : 0);
     }
   }, [selectedTab, cycleCount]);
@@ -58,6 +63,12 @@ const Home: FC = () => {
     setModalOpen(false);
     cycleTab();
     setTimerReset(true);
+    if (selectedTab === 0) {
+      setSessionStatus((prev) => ({
+        count: prev.count + 1,
+        time: currentTime.toLocaleTimeString(),
+      }));
+    }
   };
 
   return (
@@ -76,7 +87,7 @@ const Home: FC = () => {
               />
             </div>
             <div className={`${styles['grid-item']} ${styles['item2']}`}>
-              <Todo />
+              <Todo sessionStatus={sessionStatus} />
             </div>
             <div className={`${styles['grid-item']} ${styles['item3']}`}>
               <TimerControl
