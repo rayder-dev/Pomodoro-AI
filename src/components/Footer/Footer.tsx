@@ -1,5 +1,4 @@
 import { Group, ActionIcon, rem } from '@mantine/core';
-import { Link } from 'react-router-dom';
 import {
   IconBrandYoutube,
   IconBrandGithub,
@@ -9,55 +8,78 @@ import Styles from './footer.module.css';
 import { FC } from 'react';
 
 const links = [
-  { link: '/contact', label: 'Contact' },
-  { link: '/terms', label: 'Terms' },
-  { link: '/privacy', label: 'Privacy' },
-  { link: '/faq', label: 'FAQ' },
-  { link: '/404', label: 'Gallery' },
+  { label: 'Home' },
+  { label: 'Terms' },
+  { label: 'Privacy' },
+  { label: 'FAQ' },
 ];
 
-const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+interface FooterProps {
+  section: (value: string) => void;
+}
 
-const Footer: FC = () => {
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+const scrollToDown = () =>
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+const Footer: FC<FooterProps> = ({ section }) => {
+  const selectSection = (label: string) => {
+    if (label === 'Home') {
+      scrollToTop();
+    } else {
+      scrollToDown();
+    }
+    section(label);
+  };
+
   const items = links.map((link) => (
-    <Link key={link.label} to={link.link} onClick={scrollToTop}>
+    <a key={link.label} onClick={() => selectSection(link.label)}>
       {link.label}
-    </Link>
+    </a>
   ));
 
   return (
     <footer>
       <div className={Styles.footer}>
         <div className={Styles.inner}>
-          {/* <span className={Styles['footer-logo']}>
-            <PomodoroLogo to="/" />
-          </span> */}
           <Group className={Styles.links}>{items}</Group>
           <Group gap="xs" justify="flex-end" wrap="nowrap">
-            <Link to="https://www.youtube.com/watch?v=arj7oStGLkU">
+            <a
+              href="https://www.youtube.com/watch?v=arj7oStGLkU"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ActionIcon size="lg" variant="default" radius="xl">
                 <IconBrandYoutube
                   style={{ width: rem(18), height: rem(18) }}
                   stroke={1.5}
                 />
               </ActionIcon>
-            </Link>
-            <Link to="https://github.com/hernandezraymondm/Pomodoro">
+            </a>
+            <a
+              href="https://github.com/hernandezraymondm/Pomodoro"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ActionIcon size="lg" variant="default" radius="xl">
                 <IconBrandGithub
                   style={{ width: rem(18), height: rem(18) }}
                   stroke={1.5}
                 />
               </ActionIcon>
-            </Link>
-            <Link to="https://www.tiktok.com/@inspectorelement">
+            </a>
+            <a
+              href="https://www.tiktok.com/@inspectorelement"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ActionIcon size="lg" variant="default" radius="xl">
                 <IconBrandTiktok
                   style={{ width: rem(18), height: rem(18) }}
                   stroke={1.5}
                 />
               </ActionIcon>
-            </Link>
+            </a>
           </Group>
         </div>
       </div>

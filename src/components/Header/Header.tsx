@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import {
-  IconNotebook,
+  IconRobot,
+  IconAddressBook,
   IconCalendarMonth,
   IconSettings2,
   IconLogin2,
@@ -10,7 +11,11 @@ import NavButton from '../Button/NavButton';
 import SigninButton from '../Button/SignInButton';
 import PomodoroLogo from '../Logo/PomodoroLogo';
 
-const Header: FC = () => {
+interface HeaderProps {
+  onDrawerOpen: () => void;
+}
+
+const Header: FC<HeaderProps> = ({ onDrawerOpen }) => {
   return (
     <header>
       <div className={Styles['header-container']}>
@@ -19,13 +24,15 @@ const Header: FC = () => {
         {/* Navigation Buttons */}
         <nav>
           <ul>
-            <NavButton
-              to="/"
-              icon={
-                <IconNotebook size="1rem" style={{ marginBottom: '-1px' }} />
-              }
-              text="Notes"
-            />
+            <div onClick={onDrawerOpen}>
+              <NavButton
+                to="/"
+                icon={
+                  <IconRobot size="1rem" style={{ marginBottom: '-1px' }} />
+                }
+                text="Ask AI"
+              />
+            </div>
             <NavButton
               to="/"
               icon={
@@ -35,6 +42,13 @@ const Header: FC = () => {
                 />
               }
               text="Calendar"
+            />
+            <NavButton
+              to="/"
+              icon={
+                <IconAddressBook size="1rem" style={{ marginBottom: '-1px' }} />
+              }
+              text="Contact"
             />
             <NavButton
               to="/"

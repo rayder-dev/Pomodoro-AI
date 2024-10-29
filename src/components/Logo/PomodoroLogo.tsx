@@ -28,7 +28,7 @@ const PomodoroLogo: FC<PomodoroLogoProps> = ({
         className={Styles['img-logo']}
       />
       <span className={textMode}>
-        <span className={Styles['hidden-p']}>P</span>omodoro
+        <span className={Styles['hidden-p']}>P</span>omodoro AI
       </span>
     </Link>
   );

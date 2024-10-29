@@ -9,10 +9,14 @@
   user-select: none;
 }
 
-.img-dance {
-  margin: 0;
-  z-index: -5;
-  width: 100px;
+.modal-wrapper h3 {
+  color: #333;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.modal-wrapper h3 span {
+  white-space: nowrap;
 }
 
 .button-container {

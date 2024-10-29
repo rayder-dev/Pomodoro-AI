@@ -122,11 +122,10 @@ article {
   margin: 0 auto;
   padding: 2em 0;
 }
-.wrapper {
-  padding-top: 4em;
-  margin: 0 auto;
-  min-height: 100vh;
-  width: 60%;
+
+.alarm-text {
+  border-bottom: 1px solid #551a8b;
+  cursor: pointer;
 }
 
 .title {
@@ -134,9 +133,16 @@ article {
   font-size: 52px;
   font-family: Greycliff CF, var(--mantine-font-family);
   margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);
+  animation: lightUp 1s ease-out;
 }
 
-.alarm-text {
-  border-bottom: 1px solid #551a8b;
-  cursor: pointer;
+@keyframes lightUp {
+  0% {
+    color: #f0e68c;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  }
+  100% {
+    color: #333;
+    text-shadow: none;
+  }
 }

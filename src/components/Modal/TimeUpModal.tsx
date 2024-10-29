@@ -29,9 +29,12 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
     close();
   };
 
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   useEffect(() => {
     if (opened) {
       playAlarm();
+      scrollToTop();
     }
   }, [opened]);
 
@@ -44,7 +47,7 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
       onClose={stopAlarm}
       withCloseButton={false}
       transitionProps={{ transition: 'rotate-left' }}
-      zIndex={1000}
+      zIndex={4000}
       radius={20}
       closeOnClickOutside={false}
       closeOnEscape={false}
@@ -59,13 +62,8 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
         <div className={`${styles['circle-btn']} ${styles['green']}`} />
       </div>
       <div className={styles['modal-wrapper']}>
-        <img
-          src="/assets/images/dancing_fruit.gif"
-          alt="Pomodoro Logo"
-          className={styles['img-dance']}
-        />
         <h3>
-          Time’s up! Tap Continue to proceed.
+          <span>Time’s up!</span> <span>Tap Continue to proceed.</span>
           <IconAlarm
             className={styles.vibrating}
             color={alarmColor}

@@ -51,7 +51,7 @@ Pomodoro Logo
   color: #23bab1;
 }
 
-@media (min-width: 575px) {
+@media (min-width: 620px) {
   .site-logo span {
     position: static; /* Reset position */
     width: auto; /* Reset width */
