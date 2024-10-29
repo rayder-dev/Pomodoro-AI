@@ -1,0 +1,31 @@
+.timeline-title {
+  width: 0px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+}
+
+.timeline-description {
+  width: 0px;
+  height: 40px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (min-width: 430px) {
+  .timeline-description,
+  .timeline-title {
+    width: auto; /* Reset width */
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+    overflow: visible; /* Show overflow */
+    clip: auto; /* Remove the clipping */
+    border: none; /* Reset border */
+  }
+}

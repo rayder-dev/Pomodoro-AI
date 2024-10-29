@@ -12,7 +12,7 @@ TODO WRAPPER STYLE
 .todo-wrapper h2 {
   margin-top: 0;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: 2px;
   color: #fff;
@@ -31,6 +31,7 @@ TODO FORM STYLE
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  user-select: none;
 }
 
 .todo-btn {
@@ -168,17 +169,13 @@ TODO LIST STYLE
   border-radius: 10px;
 }
 
-.active-icon {
-  display: inline;
-  color: #23bab1;
-}
-
 .todo-task-wrapper {
   width: 100%;
   font-size: 1rem;
 }
 
 .todo-task {
+  cursor: pointer;
   max-width: 250px;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -201,6 +198,11 @@ TODO LIST STYLE
   -ms-user-select: none; /* For IE/Edge */
 }
 
+.active-icon {
+  display: inline;
+  color: #23bab1;
+}
+
 .complete-button {
   color: #a5a5a5;
   cursor: pointer;
@@ -219,4 +221,8 @@ TODO LIST STYLE
 .complete {
   text-decoration: line-through;
   color: #36c890;
+}
+
+.todo-task-wrapper .complete {
+  cursor: default;
 }

@@ -6,7 +6,8 @@ interface PomoTallyProps {
   title: string;
   value: number;
   color: string;
-  subtitle?: string;
+  subtitle: string;
+  taskCount?: number;
 }
 
 const PomoTally: FC<PomoTallyProps> = ({
@@ -14,12 +15,13 @@ const PomoTally: FC<PomoTallyProps> = ({
   value,
   color,
   subtitle = '',
+  taskCount = 0,
 }) => {
   return (
     <div className={styles['tally-wrapper']}>
       <h2>{title}</h2>
       <Badge className={styles['tally-badge']} color={color} size="xl">
-        {value}
+        {taskCount ? taskCount : value}
       </Badge>
       <h5>{subtitle}</h5>
     </div>

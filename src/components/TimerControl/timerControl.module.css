@@ -8,6 +8,7 @@
 }
 
 .time-container {
+  user-select: none;
   width: 100%;
   max-width: 415px;
   display: flex;

@@ -12,6 +12,7 @@ Pomodoro Logo
   font-size: 1.5rem;
   font-weight: 700;
   text-decoration: none;
+  user-select: none;
 }
 
 .dark-mode {

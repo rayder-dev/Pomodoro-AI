@@ -48,6 +48,10 @@ Main Layout
   /* column-gap: 1em; */
 }
 
+.item1 {
+  user-select: none;
+}
+
 .item2,
 .item3 {
   margin: 0 auto;

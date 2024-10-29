@@ -109,28 +109,6 @@ const Timer: FC<TimerProps> = ({
     }
   }, [isRunning, timeLeft, initialTime, hasFinished]);
 
-  // useEffect(() => {
-  //   let intervalId: NodeJS.Timeout;
-
-  //   if (isRunning && timeLeft > 0) {
-  //     intervalId = setInterval(() => {
-  //       setTimeLeft((prevTime) => {
-  //         const newTime = prevTime - 1;
-  //         setProgress((newTime / initialTime) * 100);
-  //         return newTime;
-  //       });
-  //     }, 1000);
-  //   } else if (timeLeft === 0 && !hasFinished) {
-  //     setIsRunning(false);
-  //     setHasFinished(true);
-  //     modalOpen();
-  //   }
-
-  //   return () => {
-  //     clearInterval(intervalId);
-  //   };
-  // }, [isRunning, timeLeft, initialTime, hasFinished]);
-
   const toggleTimer = () => {
     setIsRunning((prevIsRunning) => !prevIsRunning);
   };

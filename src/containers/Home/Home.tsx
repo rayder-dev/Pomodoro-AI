@@ -27,12 +27,13 @@ const Home: FC = () => {
   });
   const currentTime = new Date();
   const [modalOpen, setModalOpen] = useState(false);
+  const [taskCount, setTaskCount] = useState(3);
   const [selectedTab, setSelectedTab] = useState(0);
   const [timerReset, setTimerReset] = useState(false);
   const [timerLength, setTimerLength] = useState<TimerLength>({
-    session: 3,
-    shortBreak: 1,
-    longBreak: 1,
+    session: 10,
+    shortBreak: 3,
+    longBreak: 5,
   });
   const [cycleCount, setCycleCount] = useState(0);
   const [timelineIndex, setTimelineIndex] = useState(0);
@@ -87,7 +88,7 @@ const Home: FC = () => {
               />
             </div>
             <div className={`${styles['grid-item']} ${styles['item2']}`}>
-              <Todo sessionStatus={sessionStatus} />
+              <Todo sessionStatus={sessionStatus} setTaskCount={setTaskCount} />
             </div>
             <div className={`${styles['grid-item']} ${styles['item3']}`}>
               <TimerControl
@@ -106,25 +107,26 @@ const Home: FC = () => {
           <div className={styles['tally-container']}>
             <PomoTally
               title="Task List"
-              value={346}
+              value={0}
               color="#f77170"
               subtitle="Today's Ongoing tasks"
+              taskCount={taskCount}
             />
             <PomoTally
               title="Task Completed"
-              value={795}
+              value={0}
               color="#36c890"
               subtitle="Total completed tasks"
             />
             <PomoTally
               title="Current Streak"
-              value={83}
+              value={0}
               color="#f9a976"
               subtitle="Current streak of daily productivity"
             />
             <PomoTally
               title="Longest Streak"
-              value={257}
+              value={0}
               color="#2083b0"
               subtitle="Longest streak of daily productivity"
             />
@@ -157,11 +159,13 @@ const Home: FC = () => {
             <ol>
               <li>Add tasks to work on today</li>
               <li>Select a task to work on</li>
+              <li>Adjust the timer accordingly</li>
               <li>
-                Start <b>session</b> timer and focus on the task
+                Start <b>session</b> timer and focus on the task{' '}
+                <i>(25 minutes)</i>
               </li>
               <li>
-                Take a <b>short break</b> when the{' '}
+                When the{' '}
                 <span
                   onClick={() => alarm.play()}
                   className={styles['alarm-text']}
@@ -174,10 +178,11 @@ const Home: FC = () => {
                     alarm
                   </strong>
                 </span>{' '}
-                rings
+                rings, take a <b>short break</b> <i>(5 minutes)</i>
               </li>
               <li>
-                After every 4 pomodoros, take a <b>long break</b>.
+                After every 4 pomodoros, take a <b>long break</b>{' '}
+                <i>(10 minutes)</i>
               </li>
               <li>Iterate until you finish the tasks</li>
             </ol>

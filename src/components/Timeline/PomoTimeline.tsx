@@ -6,6 +6,7 @@ import {
   IconPlayerPauseFilled,
   IconRotateClockwise,
 } from '@tabler/icons-react';
+import styles from './pomoTimeline.module.css';
 import RefreshLoader from '../Loader/RefreshLoader';
 
 interface TimelineItem {
@@ -31,7 +32,7 @@ const PomoTimeline: FC<PomoTimelineProps> = ({ activeIndex, cycleCount }) => {
   const timelineData: TimelineItem[] = [
     {
       title: 'Session',
-      description: 'Start a pomodoro session and work on your task',
+      description: 'Start a session and work on your task',
       icon: <IconPlayerPlay size="1.5rem" color="#f77170" />,
       color: '#de986f',
     },
@@ -61,7 +62,14 @@ const PomoTimeline: FC<PomoTimelineProps> = ({ activeIndex, cycleCount }) => {
       {timelineData.map((item, index) => (
         <Timeline.Item
           key={index}
-          title={<Text style={{ color: item.color }}>{item.title}</Text>}
+          title={
+            <Text
+              className={styles['timeline-title']}
+              style={{ color: item.color }}
+            >
+              {item.title}
+            </Text>
+          }
           bullet={
             <ThemeIcon
               size={40}
@@ -79,6 +87,7 @@ const PomoTimeline: FC<PomoTimelineProps> = ({ activeIndex, cycleCount }) => {
           <Text
             c="dimmed"
             size="sm"
+            className={styles['timeline-description']}
             style={{ maxWidth: '200px', justifySelf: 'flex-end' }}
           >
             {item.description}

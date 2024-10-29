@@ -1,8 +1,11 @@
 import { FC } from 'react';
 import Styles from './taskStatus.module.css';
-import { TodoProps } from '../Todo/Todo';
 
-const TaskStatus: FC<TodoProps> = ({ sessionStatus }) => {
+interface TaskStatusProps {
+  sessionStatus: { count: number; time: string };
+}
+
+const TaskStatus: FC<TaskStatusProps> = ({ sessionStatus }) => {
   return (
     <div className={Styles['tally-container']}>
       <div className={Styles['tally-wrapper']}>
@@ -12,7 +15,7 @@ const TaskStatus: FC<TodoProps> = ({ sessionStatus }) => {
         <div className={Styles['item2']}>
           Finish At:{' '}
           <strong>
-            {sessionStatus.time ? sessionStatus.time : '--:--:--'}
+            {sessionStatus.time ? sessionStatus.time : 'HH:MM:SS'}
           </strong>
         </div>
       </div>

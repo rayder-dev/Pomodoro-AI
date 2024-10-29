@@ -6,10 +6,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  user-select: none;
 }
 
 .tally-wrapper h2 {
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-weight: 700;
   margin: 1em 0 0.5em;
 }

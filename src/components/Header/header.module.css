@@ -8,6 +8,7 @@
 Navigation
 =============*/
 header {
+  user-select: none;
   padding: 0.4em;
   position: fixed;
   top: 0;

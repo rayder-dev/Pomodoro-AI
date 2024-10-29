@@ -1,5 +1,6 @@
 .tally-container {
   width: 100%;
+  user-select: none;
 }
 
 .tally-wrapper {
@@ -14,7 +15,7 @@
 }
 
 .tally-container strong {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   letter-spacing: 2px;
   margin: auto 5px;
 }

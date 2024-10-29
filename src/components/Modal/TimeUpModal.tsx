@@ -59,6 +59,11 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
         <div className={`${styles['circle-btn']} ${styles['green']}`} />
       </div>
       <div className={styles['modal-wrapper']}>
+        <img
+          src="/assets/images/dancing_fruit.gif"
+          alt="Pomodoro Logo"
+          className={styles['img-dance']}
+        />
         <h3>
           Time’s up! Tap Continue to proceed.
           <IconAlarm
