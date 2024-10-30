@@ -55,3 +55,7 @@ nav ul {
     gap: 2em;
   }
 }
+
+.signin-btn {
+  background: #ffffff2b;
+}

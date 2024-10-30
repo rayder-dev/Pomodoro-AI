@@ -12,7 +12,6 @@
 .modal-wrapper h3 {
   color: #333;
   text-align: center;
-  margin-top: 0.5em;
 }
 
 .modal-wrapper h3 span {
@@ -23,6 +22,7 @@
   display: flex;
   align-items: center;
   column-gap: 8px;
+  /* margin-bottom: 1.5em; */
 }
 
 .circle-btn {
@@ -37,11 +37,11 @@
 }
 
 .red {
-  background-color: #fc7f73;
+  background-color: #f77170;
 }
 
 .yellow {
-  background-color: #f9a976;
+  background-color: #f9a876;
 }
 
 .green {

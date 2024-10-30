@@ -19,7 +19,14 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
 }) => {
   const playAlarm = () => {
     alarmSound.loop = true;
-    alarmSound.play();
+    alarmSound.addEventListener(
+      'canplaythrough',
+      () => {
+        alarmSound.play();
+      },
+      { once: true }
+    );
+    alarmSound.load();
   };
 
   const stopAlarm = () => {

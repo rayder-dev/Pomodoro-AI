@@ -1,9 +1,10 @@
 import { FC, useState } from 'react';
 import { useOrientation } from '@mantine/hooks';
-import { Drawer, TextInput, Button, ScrollArea, Paper } from '@mantine/core';
-import { IconXboxX } from '@tabler/icons-react';
+import { IconCircleArrowUpFilled } from '@tabler/icons-react';
+import { Drawer, TextInput, ScrollArea, Paper } from '@mantine/core';
+import { IconBrandOpenai } from '@tabler/icons-react';
 import styles from './aiDrawer.module.css';
-import PomodoroLogo from '../Logo/PomodoroLogo';
+import Gpt from '../Badge/Gpt';
 
 interface AiDrawerProps {
   opened: boolean;
@@ -26,13 +27,17 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
     <Drawer
       opened={opened}
       onClose={close}
-      title={<PomodoroLogo to="/" isDarkMode={false} />}
+      title={
+        <>
+          <div className={styles.aiLogo}>
+            <IconBrandOpenai className={styles.logo} size="1.8rem" />{' '}
+            <span className={styles.text}>Ask GPT</span>
+          </div>
+        </>
+      }
       size="37%"
       zIndex={3000}
       lockScroll={false}
-      closeButtonProps={{
-        icon: <IconXboxX size={20} stroke={1.5} />,
-      }}
       position={type === 'landscape-primary' ? 'left' : 'bottom'}
       transitionProps={{
         transition: type === 'landscape-primary' ? 'fade-right' : 'fade-up',
@@ -55,15 +60,17 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
       </div>
       <div className={styles.inputContainer}>
         <TextInput
+          className={styles.inputField}
           data-autofocus
           label="Ask your question"
-          // placeholder={type}
           placeholder="Type your question here..."
           mt="md"
           value={input}
           onChange={(event) => setInput(event.currentTarget.value)}
           onKeyPress={(event) => event.key === 'Enter' && handleSendMessage()}
+          rightSection={<IconCircleArrowUpFilled size={30} stroke={2} />} // Add the icon here
         />
+        <Gpt />
       </div>
     </Drawer>
   );

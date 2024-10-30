@@ -62,6 +62,17 @@ const Pomodoro: FC<Pomodoro> = ({ alarmSound }) => {
         <h2>Additional Features of Pomodoro</h2>
         <ul>
           <li>
+            <strong>Ask GPT</strong>: This cutting-edge feature utilizes the
+            power of ChatGPT to assist you in real-time. It can help answer your
+            questions, provide insightful suggestions, and generate creative
+            ideas. Whether you're seeking a quick summary, brainstorming new
+            concepts, or just looking for a bit of motivation, Ask AI is your
+            go-to companion, available 24/7 to enhance your productivity and
+            creativity. It's like having an intelligent partner for every step
+            of your journey.
+          </li>
+          <br />
+          <li>
             <strong>Procrastinator Life Calendar</strong>: Inspired by Tim
             Urban's TED Talk "
             <a href="https://www.youtube.com/watch?v=arj7oStGLkU">
@@ -77,12 +88,6 @@ const Pomodoro: FC<Pomodoro> = ({ alarmSound }) => {
             procrastination, offering a unique perspective on how you’ve
             utilized your time. It’s more than just a calendar—it’s a reflection
             of your life’s progress.
-          </li>
-          <li>
-            <strong>Notepad</strong>: This feature allows you to jot down quick
-            notes or maintain a journal entry for the current task. You can
-            easily review all of your notes, neatly listed with dates and task
-            titles, on the dedicated Notes page of the website.
           </li>
         </ul>
       </article>

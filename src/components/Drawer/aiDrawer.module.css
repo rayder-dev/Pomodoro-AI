@@ -13,11 +13,14 @@
 }
 
 .inputContainer {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
-  bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1em;
+}
+
+.inputField {
+  width: 100%;
 }
 
 .message {
@@ -32,4 +35,13 @@
 
 .chatButton {
   height: 13em;
+}
+
+.aiLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  gap: 0.5rem;
 }

@@ -14,9 +14,9 @@ import {
   Anchor,
   Stack,
 } from '@mantine/core';
-import GoogleButton from '../Button/GoogleButton';
+import GoogleButton from '../../components/Button/GoogleButton';
 
-const AuthenticationForm: FC<PaperProps> = (props) => {
+const AuthLogin: FC<PaperProps> = (props) => {
   const [type, toggle] = useToggle(['login', 'register']);
   const form = useForm({
     initialValues: {
@@ -36,16 +36,16 @@ const AuthenticationForm: FC<PaperProps> = (props) => {
   });
 
   return (
-    <Paper radius="md" p="xl" withBorder {...props}>
-      <Text size="lg" fw={500}>
-        Welcome to Pomodoro, {type} with
+    <Paper radius="md" p="xl" {...props}>
+      <Text size="xl" fw={600} mb={'xl'} mt={-20} color="#404040">
+        Welcome to Pomodoro AI, {type} with
       </Text>
 
       <Group grow mb="md" mt="md">
         <GoogleButton radius="xl">Google</GoogleButton>
       </Group>
 
-      <Divider label="Or continue with email" labelPosition="center" my="lg" />
+      <Divider label="Or continue with email" labelPosition="center" my="xl" />
 
       <form onSubmit={form.onSubmit(() => {})}>
         <Stack>
@@ -121,4 +121,4 @@ const AuthenticationForm: FC<PaperProps> = (props) => {
   );
 };
 
-export default AuthenticationForm;
+export default AuthLogin;

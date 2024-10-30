@@ -92,7 +92,7 @@ const Home: FC = () => {
 
   return (
     <>
-      <Header onDrawerOpen={handleDrawerOpen} />
+      <Header onDrawerOpen={handleDrawerOpen} section={handleSectionChange} />
       <main>
         <section>
           <div className={styles['grid-container']}>

@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, useMemo } from 'react';
 import {
   IconPlayerPlayFilled,
   IconPlayerPauseFilled,
@@ -11,26 +11,42 @@ interface StartButtonProps {
   className?: string;
 }
 
-const StartButton: FC<StartButtonProps> = memo(
-  ({ text, onClick, className = '' }) => {
-    return (
-      <button
-        type="button"
-        className={`${Styles['start-btn']} ${className}`}
-        onClick={onClick}
-        aria-label={text}
-      >
-        {text === 'START' ? (
-          <IconPlayerPlayFilled />
-        ) : text === 'PAUSE' ? (
-          <IconPlayerPauseFilled />
-        ) : (
-          ''
-        )}
-        <span className={Styles['start-text']}>{text}</span>
-      </button>
+const StartButton: FC<StartButtonProps> = ({
+  text,
+  onClick,
+  className = '',
+}) => {
+  const click = useMemo(() => new Audio('/assets/sounds/click.mp3'), []);
+
+  const handleClick = () => {
+    onClick();
+    click.addEventListener(
+      'canplaythrough',
+      () => {
+        click.play();
+      },
+      { once: true }
     );
-  }
-);
+    click.load();
+  };
+
+  return (
+    <button
+      type="button"
+      className={`${Styles['start-btn']} ${className}`}
+      onClick={handleClick}
+      aria-label={text}
+    >
+      {text === 'START' ? (
+        <IconPlayerPlayFilled />
+      ) : text === 'PAUSE' ? (
+        <IconPlayerPauseFilled />
+      ) : (
+        ''
+      )}
+      <span className={Styles['start-text']}>{text}</span>
+    </button>
+  );
+};
 
 export default StartButton;

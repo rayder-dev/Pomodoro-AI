@@ -1,11 +1,3 @@
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 6em;
-  height: 100vh;
-}
-
 .paper {
   background: none;
   box-shadow: none;
@@ -19,18 +11,12 @@
 }
 
 .wrapper {
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   display: flex;
   background-color: light-dark(
     var(--mantine-color-white),
     var(--mantine-color-dark-8)
   );
-  border-radius: var(--mantine-radius-lg);
   padding: rem(4px);
-  border: rem(1px) solid
-    light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8));
-
   @media (max-width: $mantine-breakpoint-sm) {
     flex-direction: column;
   }
@@ -74,9 +60,10 @@
 }
 
 .contacts {
+  background-color: #404040;
   box-sizing: border-box;
   position: relative;
-  border-radius: var(--mantine-radius-lg);
+  border-radius: var(--mantine-radius-md);
   background-size: cover;
   background-position: center;
   border: rem(1px) solid transparent;
@@ -89,8 +76,24 @@
   }
 }
 
+.title {
+  color: #404040;
+  margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);
+  font-family: Greycliff CF, var(--mantine-font-family);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-bottom: var(--mantine-spacing-xl);
+  }
+}
+
 .control {
+  background: #23bab1;
   @media (max-width: $mantine-breakpoint-sm) {
     flex: 1;
   }
+}
+
+.control:hover {
+  background: #23bab1;
+  filter: brightness(0.9);
 }
