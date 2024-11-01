@@ -44,6 +44,11 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
         duration: 150,
         timingFunction: 'linear',
       }}
+      shadow="5px 0 10px rgba(24, 94, 224, 0.3), 6px 0 12px rgba(0, 0, 0, 0.3)"
+      overlayProps={{
+        backgroundOpacity: 0.1,
+        blur: 0,
+      }}
       className={styles.drawerContainer}
     >
       <div

@@ -28,8 +28,9 @@ const ModalWrapper: FC<ModalWrapperProps> = ({ opened, close, children }) => {
       radius={10}
       closeOnClickOutside={true}
       closeOnEscape={true}
+      shadow="0 0 12px rgba(24, 94, 224, .7), 0 0 12px rgba(24, 94, 224, .7)"
       overlayProps={{
-        backgroundOpacity: 0.55,
+        backgroundOpacity: 0.8,
         blur: 2,
       }}
     >

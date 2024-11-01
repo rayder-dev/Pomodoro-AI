@@ -96,8 +96,12 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
       <ModalWrapper opened={modalOpen} close={handleModalClose}>
         {selectedNavBtn === 'Singin' && <AuthenticationForm />}
         {selectedNavBtn === 'Contact' && <Contact />}
-        {selectedNavBtn === 'Calendar' && <ComingSoon />}
-        {selectedNavBtn === 'Setting' && <ComingSoon />}
+        {selectedNavBtn === 'Calendar' && (
+          <ComingSoon onClick={handleModalClose} />
+        )}
+        {selectedNavBtn === 'Setting' && (
+          <ComingSoon onClick={handleModalClose} />
+        )}
       </ModalWrapper>
     </>
   );

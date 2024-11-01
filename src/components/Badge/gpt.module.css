@@ -1,15 +1,19 @@
 .gpt-badge {
   zoom: 0.8;
-  opacity: 0.9;
+  /* opacity: 0.9; */
 }
 
-/* From Uiverse.io by 0xnihilism */
 .brutalist-button.openai {
   display: flex;
   align-items: center;
-  width: 240px;
+  width: 170px;
   height: 70px;
-  background-color: #1c5749;
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    rgb(67, 54, 74) 16.4%,
+    rgb(47, 48, 67) 68.2%,
+    rgb(27, 23, 36) 99.1%
+  );
   color: #dadada;
   text-decoration: none;
   font-weight: bold;
@@ -17,16 +21,17 @@
   padding: 0 12px;
   box-sizing: border-box;
   position: relative;
-  box-shadow: 5px 5px 0 #000;
+  box-shadow: 7px 7px 0 #333;
   overflow: hidden;
   transition: all 0.3s ease;
+  transform: translate(-2px, -2px);
 }
 
 .brutalist-button.openai::before {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 100%;
   width: 100%;
   height: 100%;
   background: linear-gradient(
@@ -38,22 +43,6 @@
   transition: all 0.6s ease;
 }
 
-.brutalist-button.openai:hover::before {
-  left: 100%;
-}
-
-.brutalist-button.openai:hover {
-  background-color: #301140;
-  border: 3px solid #000000;
-  transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 #020504;
-}
-
-.brutalist-button.openai:active {
-  transform: translate(2px, 2px);
-  box-shadow: 3px 3px 0 #000;
-}
-
 @keyframes spin-and-zoom {
   0% {
     transform: rotate(0deg) scale(1.1);
@@ -63,7 +52,7 @@
   }
 }
 
-.brutalist-button:hover .openai-icon {
+.brutalist-button .openai-icon {
   animation: spin-and-zoom 1s linear infinite;
 }
 
@@ -98,11 +87,6 @@
 .button-text span:last-child {
   font-size: 16px;
   font-weight: 700;
-  /* text-transform: uppercase; */
   letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-
-.brutalist-button:hover .button-text span:last-child {
-  color: #2eae7f; /* Change this to your desired hover color */
+  color: #2eae7f;
 }

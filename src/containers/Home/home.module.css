@@ -73,6 +73,10 @@ main section:first-child {
   padding-top: 5em;
 }
 
+main section:nth-child(2) {
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.494);
+}
+
 main section:nth-child(2),
 main section:last-child {
   background-color: #e8e8e8;

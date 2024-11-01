@@ -58,6 +58,7 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
       radius={20}
       closeOnClickOutside={false}
       closeOnEscape={false}
+      shadow="0 0 12px rgba(24, 94, 224, .7), 0 0 12px rgba(24, 94, 224, .7)"
       overlayProps={{
         backgroundOpacity: 0.55,
         blur: 2,
