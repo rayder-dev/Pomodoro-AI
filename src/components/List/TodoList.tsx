@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import styles from '../Todo/todo.module.css';
 import { IconCircleCheck, IconEdit, IconTrash } from '@tabler/icons-react';
-import { Todo } from '../Todo/Todo';
-import ButtonTooltip from '../Tooltip/ButtonTooltip';
+import { TodoTypes } from '../../types';
+import { Tooltip } from '..';
 
 interface TodoListProps {
-  task: Todo;
+  task: TodoTypes;
   handleComplete: (id: string) => void;
   handleActive: (id: string) => void;
   handleEdit: (id: string) => void;
@@ -33,7 +33,7 @@ const TodoList: FC<TodoListProps> = ({
         </p>
       </span>
       <div className={styles['todo-actions']}>
-        <ButtonTooltip
+        <Tooltip
           label="Complete"
           position="top"
           color="#36c890"
@@ -43,8 +43,8 @@ const TodoList: FC<TodoListProps> = ({
             className={`${styles['complete-button']} ${isCompleted} `}
             onClick={() => handleComplete(task.id)}
           />
-        </ButtonTooltip>
-        <ButtonTooltip
+        </Tooltip>
+        <Tooltip
           label="Edit"
           position="top"
           color="#2278a0"
@@ -54,8 +54,8 @@ const TodoList: FC<TodoListProps> = ({
             className={styles['edit-button']}
             onClick={() => handleEdit(task.id)}
           />
-        </ButtonTooltip>
-        <ButtonTooltip
+        </Tooltip>
+        <Tooltip
           label="Delete"
           position="top"
           color="#fb786e"
@@ -65,7 +65,7 @@ const TodoList: FC<TodoListProps> = ({
             className={styles['delete-button']}
             onClick={() => handleDelete(task.id)}
           />
-        </ButtonTooltip>
+        </Tooltip>
       </div>
     </div>
   );

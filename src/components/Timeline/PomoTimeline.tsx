@@ -7,7 +7,7 @@ import {
   IconRotateClockwise,
 } from '@tabler/icons-react';
 import styles from './pomoTimeline.module.css';
-import RefreshLoader from '../Loader/RefreshLoader';
+import { RefreshLoader } from '..';
 
 interface TimelineItem {
   title: string;

@@ -1,10 +1,10 @@
 import { FC, useState, useEffect, FormEvent, useRef } from 'react';
 import styles from '../Todo/todo.module.css';
-import { Todo } from '../Todo/Todo';
+import { TodoTypes } from '../../types';
 
 interface TodoFormProps {
   addTodo: (value: string) => void;
-  editTodo: Todo | null;
+  editTodo: TodoTypes | null;
 }
 
 const TodoForm: FC<TodoFormProps> = ({ addTodo, editTodo }) => {

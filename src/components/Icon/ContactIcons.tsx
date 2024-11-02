@@ -50,4 +50,4 @@ const ContactIconsList: FC = () => {
   return <Stack>{items}</Stack>;
 };
 
-export { ContactIconsList };
+export default ContactIconsList;

@@ -2,12 +2,13 @@ import { FC, useEffect, useState } from 'react';
 import { ActionIcon, RingProgress, Center, rem } from '@mantine/core';
 import { IconAlarmFilled } from '@tabler/icons-react';
 import styles from './timerControl.module.css';
-import { TimerLength } from '../../containers/Home/Home';
-import ButtonTooltip from '../Tooltip/ButtonTooltip';
+import { TimerLengthTypes } from '../../types';
+import { formatTime } from '../../utils/timeFormatter';
+import { Tooltip } from '..';
 
 interface TimerControlProps {
-  timerLength: TimerLength;
-  setTimerLength: (value: TimerLength) => void;
+  timerLength: TimerLengthTypes;
+  setTimerLength: (value: TimerLengthTypes) => void;
 }
 
 interface TimeDisplayProps {
@@ -25,14 +26,11 @@ const TimeDisplay: FC<TimeDisplayProps> = ({
   onIncrement,
   onDecrement,
 }) => {
-  const timeInMinutes = Math.floor(time / 60);
   return (
     <div className={styles['time-container']}>
       <div className={styles['time-wrapper']}>
         <span className={styles['time-header']}>{label}</span>
-        <p className={styles['time-session-display']}>
-          {time >= 60 ? timeInMinutes : time} {time >= 60 ? 'min' : 'sec'}{' '}
-        </p>
+        <p className={styles['time-session-display']}>{formatTime(time)}</p>
         <div className={styles['time-btn-wrapper']}>
           <button className={styles['minus']} onClick={onDecrement}>
             -
@@ -45,11 +43,11 @@ const TimeDisplay: FC<TimeDisplayProps> = ({
       <RingProgress
         size={110}
         roundCaps
-        sections={[{ value: timeInMinutes, color }]}
+        sections={[{ value: Math.floor(time / 60), color }]}
         rootColor="#28232e90"
         label={
           <Center>
-            <ButtonTooltip
+            <Tooltip
               label={'Save'}
               position={'right'}
               color={color}
@@ -58,7 +56,7 @@ const TimeDisplay: FC<TimeDisplayProps> = ({
               <ActionIcon color={color} variant="light" radius="xl" size="xl">
                 <IconAlarmFilled style={{ width: rem(35), height: rem(35) }} />
               </ActionIcon>
-            </ButtonTooltip>
+            </Tooltip>
           </Center>
         }
       />

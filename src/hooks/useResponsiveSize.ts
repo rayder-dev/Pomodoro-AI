@@ -1,7 +1,7 @@
 import { useMediaQuery } from '@mantine/hooks';
 
 // Custom hook to handle multiple breakpoints
-export const useResponsiveSize = () => {
+const useResponsiveSize = () => {
   const isExtraSmallScreen = useMediaQuery('(min-width: 350px)');
   const isSmallScreen = useMediaQuery('(min-width: 480px)');
   const isMediumScreen = useMediaQuery('(min-width: 768px)');
@@ -22,3 +22,5 @@ export const useResponsiveSize = () => {
 
   return size;
 };
+
+export { useResponsiveSize };

@@ -4,7 +4,7 @@ import { IconCircleArrowUpFilled } from '@tabler/icons-react';
 import { Drawer, TextInput, ScrollArea, Paper } from '@mantine/core';
 import { IconBrandOpenai } from '@tabler/icons-react';
 import styles from './aiDrawer.module.css';
-import Gpt from '../Badge/Gpt';
+import { GptBadge } from '..';
 
 interface AiDrawerProps {
   opened: boolean;
@@ -75,7 +75,7 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
           onKeyPress={(event) => event.key === 'Enter' && handleSendMessage()}
           rightSection={<IconCircleArrowUpFilled size={30} stroke={2} />} // Add the icon here
         />
-        <Gpt />
+        <GptBadge />
       </div>
     </Drawer>
   );

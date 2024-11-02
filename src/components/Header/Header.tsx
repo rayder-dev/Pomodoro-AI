@@ -7,12 +7,8 @@ import {
   IconLogin,
 } from '@tabler/icons-react';
 import styles from './header.module.css';
-import NavButton from '../Button/NavButton';
-import PomodoroLogo from '../Logo/PomodoroLogo';
-import ModalWrapper from '../Modal/ModalWrapper';
-import AuthenticationForm from '../../containers/Auth/AuthLogin';
-import Contact from '../../containers/Contact/Contact';
-import ComingSoon from '../Banner/ComingSoon';
+import { Contact, Login } from '../../containers';
+import { ComingSoon, Logo, Modal, NavBtn } from '..';
 
 interface HeaderProps {
   onDrawerOpen: () => void;
@@ -37,12 +33,12 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
       <header>
         <div className={styles['header-container']}>
           {/* Logo Section */}
-          <PomodoroLogo section={section} />
+          <Logo section={section} />
           {/* Navigation Buttons */}
           <nav>
             <ul>
               <div onClick={onDrawerOpen}>
-                <NavButton
+                <NavBtn
                   icon={
                     <IconBrandOpenai
                       size="1rem"
@@ -53,7 +49,7 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
                 />
               </div>
               <div onClick={() => handleModalOpen('Calendar')}>
-                <NavButton
+                <NavBtn
                   icon={
                     <IconCalendarMonth
                       size="1rem"
@@ -64,7 +60,7 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
                 />
               </div>
               <div onClick={() => handleModalOpen('Setting')}>
-                <NavButton
+                <NavBtn
                   icon={
                     <IconSettings2 size="1rem" style={{ marginTop: '-2px' }} />
                   }
@@ -72,7 +68,7 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
                 />
               </div>
               <div onClick={() => handleModalOpen('Contact')}>
-                <NavButton
+                <NavBtn
                   icon={
                     <IconAddressBook
                       size="1rem"
@@ -83,7 +79,7 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
                 />
               </div>
               <div onClick={() => handleModalOpen('Singin')}>
-                <NavButton
+                <NavBtn
                   className={styles['signin-btn']}
                   icon={<IconLogin size="1rem" style={{ marginTop: '-2px' }} />}
                   text="Sign In"
@@ -93,8 +89,8 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
           </nav>
         </div>
       </header>
-      <ModalWrapper opened={modalOpen} close={handleModalClose}>
-        {selectedNavBtn === 'Singin' && <AuthenticationForm />}
+      <Modal opened={modalOpen} close={handleModalClose}>
+        {selectedNavBtn === 'Singin' && <Login />}
         {selectedNavBtn === 'Contact' && <Contact />}
         {selectedNavBtn === 'Calendar' && (
           <ComingSoon onClick={handleModalClose} />
@@ -102,7 +98,7 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
         {selectedNavBtn === 'Setting' && (
           <ComingSoon onClick={handleModalClose} />
         )}
-      </ModalWrapper>
+      </Modal>
     </>
   );
 };

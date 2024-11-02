@@ -1,9 +1,9 @@
 import { FC, useState, useEffect, useMemo } from 'react';
 import { RingProgress } from '@mantine/core';
 import Styles from './timer.module.css';
-import { TimerLength } from '../../containers/Home/Home';
-import { useResponsiveSize } from '../../hooks/useResponsiveSize';
-import StartButton from '../Button/StartButton';
+import { TimerLengthTypes } from '../../types';
+import { useResponsiveSize } from '../../hooks';
+import { StartBtn } from '..';
 
 interface Tab {
   title: string;
@@ -15,7 +15,7 @@ interface Tab {
 interface TimerProps {
   selectedTab: number;
   reset: boolean;
-  timerLength: TimerLength;
+  timerLength: TimerLengthTypes;
   modalOpen: () => void;
 }
 
@@ -138,7 +138,7 @@ const Timer: FC<TimerProps> = ({
                 <div className={Styles['time']}>
                   {formatTime(minutes)}:{formatTime(seconds)}
                 </div>
-                <StartButton
+                <StartBtn
                   text={isRunning ? 'PAUSE' : 'START'}
                   onClick={toggleTimer}
                 />
