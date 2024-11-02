@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { IconAlarm } from '@tabler/icons-react';
 import { Modal } from '@mantine/core';
 import styles from './timeUpModal.module.css';
-import ContinueButton from '../Button/ContinueButton';
+import { ContinueBtn } from '..';
 
 interface TimeUpModalProps {
   opened: boolean;
@@ -79,7 +79,7 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
             style={{ marginBottom: '-1rem' }}
           />
         </h3>
-        <ContinueButton onClick={stopAlarm} color={alarmColor} />
+        <ContinueBtn onClick={stopAlarm} color={alarmColor} />
       </div>
     </Modal>
   );

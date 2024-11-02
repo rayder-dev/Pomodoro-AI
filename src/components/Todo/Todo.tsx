@@ -1,20 +1,9 @@
 import { Dispatch, FC, SetStateAction, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { IconCaretRight } from '@tabler/icons-react';
-import TodoForm from '../Form/TodoForm';
-import TodoList from '../List/TodoList';
 import styles from './todo.module.css';
-import MacOsCard from '../Card/MacOsCard';
-import TaskStatus from '../Tally/TaskStatus';
-import ButtonTooltip from '../Tooltip/ButtonTooltip';
-
-interface Todo {
-  id: string;
-  task: string;
-  isActive: boolean;
-  isEditing: boolean;
-  completed: boolean;
-}
+import { TodoTypes } from '../../types';
+import { Card, TaskStatus, TodoForm, TodoList, Tooltip } from '..';
 
 interface TodoProps {
   sessionStatus: { count: number; time: string };
@@ -22,7 +11,7 @@ interface TodoProps {
 }
 
 const Todo: FC<TodoProps> = ({ sessionStatus, setTaskCount }) => {
-  const [todos, setTodos] = useState<Todo[]>([
+  const [todos, setTodos] = useState<TodoTypes[]>([
     {
       id: '550deeaf-bce7-4cd4-a06a-6ade2d5553ab',
       task: 'React',
@@ -45,9 +34,9 @@ const Todo: FC<TodoProps> = ({ sessionStatus, setTaskCount }) => {
       completed: false,
     },
   ]);
-  const [editTodo, setEditTodo] = useState<Todo | null>(null);
+  const [editTodo, setEditTodo] = useState<TodoTypes | null>(null);
 
-  const updateTodos = (updater: (todo: Todo) => Todo) =>
+  const updateTodos = (updater: (todo: TodoTypes) => TodoTypes) =>
     setTodos((prevTodos) => prevTodos.map(updater));
 
   const addTodo = (name: string) => {
@@ -143,14 +132,14 @@ const Todo: FC<TodoProps> = ({ sessionStatus, setTaskCount }) => {
             className={todo.isActive ? styles['active-wrapper'] : ''}
           >
             {todo.isActive && (
-              <ButtonTooltip
+              <Tooltip
                 label="Active"
                 position="left"
                 color="#23bab1"
                 transition="rotate-left"
               >
                 <IconCaretRight className={styles['active-icon']} size="2rem" />
-              </ButtonTooltip>
+              </Tooltip>
             )}
             <TodoList
               task={todo}
@@ -162,12 +151,11 @@ const Todo: FC<TodoProps> = ({ sessionStatus, setTaskCount }) => {
           </div>
         ))}
       </div>
-      <MacOsCard>
+      <Card>
         <TaskStatus sessionStatus={sessionStatus} />
-      </MacOsCard>
+      </Card>
     </div>
   );
 };
 
 export default Todo;
-export type { Todo };

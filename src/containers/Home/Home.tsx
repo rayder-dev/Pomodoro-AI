@@ -1,27 +1,20 @@
 import { FC, useCallback, useMemo, useState } from 'react';
 import { Divider } from '@mantine/core';
 import styles from './home.module.css';
-
-import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
-import TimerControl from '../../components/TimerControl/TimerControl';
-import PomoTimeline from '../../components/Timeline/PomoTimeline';
-import Tabs from '../../components/Tab/Tab';
-import PomoTally from '../../components/Tally/PomoTally';
-import Timer from '../../components/Timer/Timer';
-import Todo from '../../components/Todo/Todo';
-import TimeUpModal from '../../components/Modal/TimeUpModal';
-import Pomodoro from '../Pomodoro/Pomodoro';
-import Privacy from '../Privacy/Privacy';
-import Terms from '../Terms/Terms';
-import Faq from '../Faq/Faq';
-import AiDrawer from '../../components/Drawer/AiDrawer';
-
-interface TimerLength {
-  session: number;
-  shortBreak: number;
-  longBreak: number;
-}
+import { TimerLengthTypes } from '../../types';
+import { Faq, Pomodoro, Privacy, Terms } from '../';
+import {
+  AlarmModal,
+  Drawer,
+  Footer,
+  Header,
+  PomoTally,
+  Tabs,
+  Timeline,
+  Timer,
+  TimerControl,
+  Todo,
+} from '../../components';
 
 const Home: FC = () => {
   const alarm = useMemo(() => new Audio('/assets/sounds/alarm.mp3'), []);
@@ -35,7 +28,7 @@ const Home: FC = () => {
   const [taskCount, setTaskCount] = useState(3);
   const [selectedTab, setSelectedTab] = useState(0);
   const [timerReset, setTimerReset] = useState(false);
-  const [timerLength, setTimerLength] = useState<TimerLength>({
+  const [timerLength, setTimerLength] = useState<TimerLengthTypes>({
     session: 10,
     shortBreak: 3,
     longBreak: 5,
@@ -113,10 +106,7 @@ const Home: FC = () => {
                 timerLength={timerLength}
                 setTimerLength={setTimerLength}
               />
-              <PomoTimeline
-                activeIndex={timelineIndex}
-                cycleCount={cycleCount}
-              />
+              <Timeline activeIndex={timelineIndex} cycleCount={cycleCount} />
             </div>
           </div>
         </section>
@@ -161,16 +151,15 @@ const Home: FC = () => {
         </section>
       </main>
       <Footer section={handleSectionChange} />
-      <TimeUpModal
+      <AlarmModal
         opened={modalOpen}
         close={handleModalClose}
         alarmSound={alarm}
         selectedTab={selectedTab}
       />
-      <AiDrawer opened={drawerOpen} close={handleDrawerClose} />
+      <Drawer opened={drawerOpen} close={handleDrawerClose} />
     </>
   );
 };
 
 export default Home;
-export type { TimerLength };

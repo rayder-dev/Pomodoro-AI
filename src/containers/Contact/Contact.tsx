@@ -8,8 +8,8 @@ import {
   Group,
   SimpleGrid,
 } from '@mantine/core';
-import { ContactIconsList } from '../../components/Icon/ContactIcons';
 import Styles from './contact.module.css';
+import { ContactIcons } from '../../components';
 
 const Contact: FC = () => {
   return (
@@ -21,7 +21,7 @@ const Contact: FC = () => {
               Contact information
             </Text>
 
-            <ContactIconsList />
+            <ContactIcons />
           </div>
 
           <form

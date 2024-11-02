@@ -14,7 +14,7 @@ import {
   Anchor,
   Stack,
 } from '@mantine/core';
-import GoogleButton from '../../components/Button/GoogleButton';
+import { GoogleBtn } from '../../components';
 
 const AuthLogin: FC<PaperProps> = (props) => {
   const [type, toggle] = useToggle(['login', 'register']);
@@ -42,7 +42,7 @@ const AuthLogin: FC<PaperProps> = (props) => {
       </Text>
 
       <Group grow mb="md" mt="md">
-        <GoogleButton radius="xl">Google</GoogleButton>
+        <GoogleBtn radius="xl">Google</GoogleBtn>
       </Group>
 
       <Divider label="Or continue with email" labelPosition="center" my="xl" />
