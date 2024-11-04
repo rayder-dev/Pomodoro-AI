@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useReducer } from 'react';
 import { ActionIcon, RingProgress, Center, rem } from '@mantine/core';
 import { IconAlarmFilled } from '@tabler/icons-react';
 import styles from './timerControl.module.css';
@@ -18,6 +18,36 @@ interface TimeDisplayProps {
   onIncrement: () => void;
   onDecrement: () => void;
 }
+
+// Action types for the reducer
+type Action =
+  | { type: 'INCREMENT'; timer: keyof TimerLengthTypes }
+  | { type: 'DECREMENT'; timer: keyof TimerLengthTypes }
+  | { type: 'SET_TIMER_LENGTH'; payload: TimerLengthTypes };
+
+// Reducer function to handle timer actions
+const timerReducer = (
+  state: TimerLengthTypes,
+  action: Action
+): TimerLengthTypes => {
+  const adjustTime = (time: number) => time - (time % 300);
+  switch (action.type) {
+    case 'INCREMENT':
+      return {
+        ...state,
+        [action.timer]: Math.min(6000, adjustTime(state[action.timer]) + 300),
+      };
+    case 'DECREMENT':
+      return {
+        ...state,
+        [action.timer]: Math.max(300, adjustTime(state[action.timer]) - 300),
+      };
+    case 'SET_TIMER_LENGTH':
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
 const TimeDisplay: FC<TimeDisplayProps> = ({
   label,
@@ -68,58 +98,35 @@ const TimerControl: FC<TimerControlProps> = ({
   timerLength,
   setTimerLength,
 }) => {
-  const [sessionTime, setSessionTime] = useState(timerLength.session);
-  const [shortBreakTime, setShortBreakTime] = useState(timerLength.shortBreak);
-  const [longBreakTime, setLongBreakTime] = useState(timerLength.longBreak);
+  const [state, dispatch] = useReducer(timerReducer, timerLength);
 
+  // Sync state with parent component whenever it changes
   useEffect(() => {
-    setTimerLength({
-      session: sessionTime,
-      shortBreak: shortBreakTime,
-      longBreak: longBreakTime,
-    });
-  }, [sessionTime, shortBreakTime, longBreakTime, setTimerLength]);
-
-  const adjustTime = (time: number) => time - (time % 300);
-
-  const incrementTime = (
-    setTime: React.Dispatch<React.SetStateAction<number>>,
-    time: number
-  ) => {
-    const adjustedTime = adjustTime(time);
-    setTime(Math.min(6000, adjustedTime + 300)); // Adds 300 seconds but caps at 6000 seconds (100 minutes)
-  };
-
-  const decrementTime = (
-    setTime: React.Dispatch<React.SetStateAction<number>>,
-    time: number
-  ) => {
-    const adjustedTime = adjustTime(time);
-    setTime(Math.max(300, adjustedTime - 300)); // Subtracts 300 seconds but keeps it at or above 0
-  };
+    setTimerLength(state);
+  }, [state, setTimerLength]);
 
   return (
     <div className={styles['time-length']}>
       <TimeDisplay
         label="Session"
-        time={sessionTime}
+        time={state.session}
         color="#f77170"
-        onIncrement={() => incrementTime(setSessionTime, sessionTime)}
-        onDecrement={() => decrementTime(setSessionTime, sessionTime)}
+        onIncrement={() => dispatch({ type: 'INCREMENT', timer: 'session' })}
+        onDecrement={() => dispatch({ type: 'DECREMENT', timer: 'session' })}
       />
       <TimeDisplay
         label="Short break"
-        time={shortBreakTime}
+        time={state.shortBreak}
         color="#36c890"
-        onIncrement={() => incrementTime(setShortBreakTime, shortBreakTime)}
-        onDecrement={() => decrementTime(setShortBreakTime, shortBreakTime)}
+        onIncrement={() => dispatch({ type: 'INCREMENT', timer: 'shortBreak' })}
+        onDecrement={() => dispatch({ type: 'DECREMENT', timer: 'shortBreak' })}
       />
       <TimeDisplay
         label="Long break"
-        time={longBreakTime}
+        time={state.longBreak}
         color="#2083b0"
-        onIncrement={() => incrementTime(setLongBreakTime, longBreakTime)}
-        onDecrement={() => decrementTime(setLongBreakTime, longBreakTime)}
+        onIncrement={() => dispatch({ type: 'INCREMENT', timer: 'longBreak' })}
+        onDecrement={() => dispatch({ type: 'DECREMENT', timer: 'longBreak' })}
       />
     </div>
   );

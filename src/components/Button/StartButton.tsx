@@ -19,15 +19,8 @@ const StartButton: FC<StartButtonProps> = ({
   const click = useMemo(() => new Audio('/assets/sounds/click.mp3'), []);
 
   const handleClick = () => {
+    click.play();
     onClick();
-    click.addEventListener(
-      'canplaythrough',
-      () => {
-        click.play();
-      },
-      { once: true }
-    );
-    click.load();
   };
 
   return (

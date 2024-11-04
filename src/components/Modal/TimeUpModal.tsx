@@ -17,6 +17,10 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
   alarmSound,
   selectedTab,
 }) => {
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const alarmColor =
+    selectedTab === 0 ? '#f77170' : selectedTab === 1 ? '#36c890' : '#2083b0';
+
   const playAlarm = () => {
     alarmSound.loop = true;
     alarmSound.addEventListener(
@@ -27,16 +31,22 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
       { once: true }
     );
     alarmSound.load();
+
+    // Show a notification with sound if permissions are granted
+    if (Notification.permission === 'granted') {
+      new Notification("Time's up!", {
+        body: 'Tap to continue.',
+        icon: '/assets/images/icon.png',
+      });
+    }
   };
 
-  const stopAlarm = () => {
-    alarmSound.pause();
-    alarmSound.currentTime = 0;
-    alarmSound.loop = false;
-    close();
-  };
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  useEffect(() => {
+    // Request notification permissions if they haven't been granted
+    if (Notification.permission !== 'granted') {
+      Notification.requestPermission();
+    }
+  }, []);
 
   useEffect(() => {
     if (opened) {
@@ -45,8 +55,12 @@ const TimeUpModal: FC<TimeUpModalProps> = ({
     }
   }, [opened]);
 
-  const alarmColor =
-    selectedTab === 0 ? '#f77170' : selectedTab === 1 ? '#36c890' : '#2083b0';
+  const stopAlarm = () => {
+    alarmSound.pause();
+    alarmSound.currentTime = 0;
+    alarmSound.loop = false;
+    close();
+  };
 
   return (
     <Modal
