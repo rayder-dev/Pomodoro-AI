@@ -1,28 +1,23 @@
-import Styles from './pomodoroLogo.module.css';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import Styles from './pomodoroLogo.module.css';
 
 interface PomodoroLogoProps {
   className?: string;
   isDarkMode?: boolean;
-  section: (value: string) => void;
 }
 
 const PomodoroLogo: FC<PomodoroLogoProps> = ({
   className = '',
   isDarkMode = true,
-  section,
 }) => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   const textMode = isDarkMode ? Styles['dark-mode'] : '';
 
-  const handleClick = () => {
-    scrollToTop();
-    section('Home');
-  };
-
   return (
-    <div
-      onClick={handleClick}
+    <Link
+      to={'/'}
+      onClick={scrollToTop}
       className={`${Styles['site-logo']} ${className}`}
     >
       <img
@@ -33,7 +28,7 @@ const PomodoroLogo: FC<PomodoroLogoProps> = ({
       <span className={textMode}>
         <span className={Styles['hidden-p']}>P</span>omodoro AI
       </span>
-    </div>
+    </Link>
   );
 };
 
