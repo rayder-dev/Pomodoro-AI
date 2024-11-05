@@ -1,32 +1,20 @@
-import { FC, useState, useEffect, useMemo } from 'react';
+import { FC, useState, useEffect, useMemo, useCallback } from 'react';
 import { RingProgress } from '@mantine/core';
 import Styles from './timer.module.css';
 import { TimerLengthTypes } from '../../types';
 import { useResponsiveSize } from '../../hooks';
 import { StartBtn } from '..';
-
-interface Tab {
-  title: string;
-  color: string;
-  initialTime: number;
-  timerLabel: string;
-}
+import { startCountdown, formatToTwoDigits } from '../../utils/timerUtils';
 
 interface TimerProps {
   selectedTab: number;
-  reset: boolean;
   timerLength: TimerLengthTypes;
   modalOpen: () => void;
 }
 
-const Timer: FC<TimerProps> = ({
-  selectedTab,
-  reset,
-  timerLength,
-  modalOpen,
-}) => {
+const Timer: FC<TimerProps> = ({ selectedTab, timerLength, modalOpen }) => {
   const ringSize = useResponsiveSize();
-  const tabs: Tab[] = useMemo(
+  const tabs = useMemo(
     () => [
       {
         title: 'Session',
@@ -49,98 +37,58 @@ const Timer: FC<TimerProps> = ({
     ],
     [timerLength]
   );
-  const [tabState, setTabState] = useState({
-    title: tabs[0].title,
-    initialTime: tabs[0].initialTime,
-    progressColor: tabs[0].color,
-    timerLabel: tabs[0].timerLabel,
-  });
 
   const [timeLeft, setTimeLeft] = useState(tabs[0].initialTime);
-  const [progress, setProgress] = useState(100);
   const [isRunning, setIsRunning] = useState(false);
-  const [hasFinished, setHasFinished] = useState(false);
 
+  const tabState = tabs[selectedTab];
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
-  const { title, initialTime, progressColor, timerLabel } = tabState;
-
-  // For Tabs
+  // For Tabs & Timer Control
   useEffect(() => {
-    const { title, initialTime: time, color, timerLabel } = tabs[selectedTab];
-    setTabState({ title, initialTime: time, progressColor: color, timerLabel });
-  }, [selectedTab, tabs]);
-
-  // For Timer Control
-  useEffect(() => {
-    setTimeLeft(initialTime);
-    setProgress(100);
+    setTimeLeft(tabState.initialTime);
     setIsRunning(false);
-    setHasFinished(false);
-  }, [initialTime]);
-
-  // For Modal Reset
-  useEffect(() => {
-    if (reset) {
-      setTimeLeft(initialTime);
-      setProgress(100);
-      setIsRunning(false);
-      setHasFinished(false);
-    }
-  }, [reset]);
+  }, [selectedTab, tabState.initialTime]);
 
   // For Timer
   useEffect(() => {
-    if (isRunning && timeLeft > 0) {
-      const intervalId = setInterval(() => {
-        setTimeLeft((prevTime) => {
-          const newTime = prevTime - 1;
-          setProgress((newTime / initialTime) * 100);
-          return newTime;
-        });
-      }, 1000);
-
-      return () => clearInterval(intervalId);
-    } else if (timeLeft === 0 && !hasFinished) {
-      setIsRunning(false);
-      setHasFinished(true);
-      modalOpen();
-    }
-  }, [isRunning, timeLeft, initialTime, hasFinished]);
-
-  const toggleTimer = () => {
-    setIsRunning((prevIsRunning) => !prevIsRunning);
-  };
-
-  const formatTime = (value: number) => (value < 10 ? `0${value}` : value);
+    if (!isRunning) return;
+    const intervalId = startCountdown(timeLeft, setTimeLeft, modalOpen);
+    return () => clearInterval(intervalId);
+  }, [isRunning, timeLeft, modalOpen]);
 
   return (
     <div className={Styles['clock-container']}>
       <RingProgress
         size={ringSize}
         roundCaps
-        sections={[{ value: progress, color: progressColor }]}
+        sections={[
+          {
+            value: (timeLeft / tabState.initialTime) * 100,
+            color: tabState.color,
+          },
+        ]}
         rootColor="transparent"
         label={
           <div className={Styles['clock-outer']}>
             <div className={Styles['clock-inner']}>
               <div className={Styles['clock-center']}>
                 <div className={Styles['label']}>
-                  {isRunning
-                    ? timerLabel
+                  {isRunning && timeLeft
+                    ? tabState.timerLabel
                     : timeLeft === 0
                     ? 'Time is up!'
-                    : timeLeft < initialTime
+                    : timeLeft < tabState.initialTime && !isRunning
                     ? 'Paused'
-                    : title}
+                    : tabState.title}
                 </div>
                 <div className={Styles['time']}>
-                  {formatTime(minutes)}:{formatTime(seconds)}
+                  {formatToTwoDigits(minutes)}:{formatToTwoDigits(seconds)}
                 </div>
                 <StartBtn
                   text={isRunning ? 'PAUSE' : 'START'}
-                  onClick={toggleTimer}
+                  onClick={useCallback(() => setIsRunning((prev) => !prev), [])}
                 />
               </div>
             </div>

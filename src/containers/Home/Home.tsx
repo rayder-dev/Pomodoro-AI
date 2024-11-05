@@ -27,11 +27,10 @@ const Home: FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [taskCount, setTaskCount] = useState(3);
   const [selectedTab, setSelectedTab] = useState(0);
-  const [timerReset, setTimerReset] = useState(false);
   const [timerLength, setTimerLength] = useState<TimerLengthTypes>({
-    session: 10,
-    shortBreak: 3,
-    longBreak: 5,
+    session: 2,
+    shortBreak: 2,
+    longBreak: 24,
   });
   const [cycleCount, setCycleCount] = useState(0);
   const [timelineIndex, setTimelineIndex] = useState(0);
@@ -64,13 +63,11 @@ const Home: FC = () => {
 
   const handleModalOpen = () => {
     setModalOpen(true);
-    setTimerReset(false);
   };
 
   const handleModalClose = () => {
     setModalOpen(false);
     cycleTab();
-    setTimerReset(true);
     if (selectedTab === 0) {
       setSessionStatus((prev) => ({
         count: prev.count + 1,
@@ -95,7 +92,6 @@ const Home: FC = () => {
                 selectedTab={selectedTab}
                 timerLength={timerLength}
                 modalOpen={handleModalOpen}
-                reset={timerReset}
               />
             </div>
             <div className={`${styles['grid-item']} ${styles['item2']}`}>
