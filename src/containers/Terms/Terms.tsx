@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import { Title } from '@mantine/core';
 import styles from '../Home/home.module.css';
 
-const Terms: FC = () => {
+const Terms = () => {
   return (
     <>
       <article>

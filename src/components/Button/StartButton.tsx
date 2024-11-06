@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, useMemo, useEffect } from 'react';
 import {
   IconPlayerPlayFilled,
   IconPlayerPauseFilled,
@@ -18,7 +18,21 @@ const StartButton: FC<StartButtonProps> = ({
 }) => {
   const click = useMemo(() => new Audio('/assets/sounds/click.mp3'), []);
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        click.load(); // Reloads the audio to prevent distortion
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () =>
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [click]);
+
   const handleClick = () => {
+    click.volume = 0.5;
+    click.currentTime = 0; // Ensure it starts from the beginning
     click.play();
     onClick();
   };

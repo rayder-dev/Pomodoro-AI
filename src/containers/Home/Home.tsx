@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Divider } from '@mantine/core';
 import styles from './home.module.css';
 import { TimerLengthTypes } from '../../types';
@@ -16,7 +16,7 @@ import {
   Todo,
 } from '../../components';
 
-const Home: FC = () => {
+const Home = () => {
   const alarm = useMemo(() => new Audio('/assets/sounds/alarm.mp3'), []);
   const [sessionStatus, setSessionStatus] = useState({
     count: 0,
@@ -28,9 +28,9 @@ const Home: FC = () => {
   const [taskCount, setTaskCount] = useState(3);
   const [selectedTab, setSelectedTab] = useState(0);
   const [timerLength, setTimerLength] = useState<TimerLengthTypes>({
-    session: 2,
+    session: 3,
     shortBreak: 2,
-    longBreak: 24,
+    longBreak: 1,
   });
   const [cycleCount, setCycleCount] = useState(0);
   const [timelineIndex, setTimelineIndex] = useState(0);

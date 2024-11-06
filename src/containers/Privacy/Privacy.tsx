@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import { Title } from '@mantine/core';
 import Styles from '../Home/home.module.css';
 
-const Privacy: FC = () => {
+const Privacy = () => {
   return (
     <>
       <article>
