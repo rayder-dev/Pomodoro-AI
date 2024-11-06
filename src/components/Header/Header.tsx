@@ -12,10 +12,9 @@ import { ComingSoon, Logo, Modal, NavBtn } from '..';
 
 interface HeaderProps {
   onDrawerOpen: () => void;
-  section: (value: string) => void;
 }
 
-const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
+const Header: FC<HeaderProps> = ({ onDrawerOpen }) => {
   const [selectedNavBtn, setSelectedNavBtn] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -33,7 +32,7 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen, section }) => {
       <header>
         <div className={styles['header-container']}>
           {/* Logo Section */}
-          <Logo section={section} />
+          <Logo />
           {/* Navigation Buttons */}
           <nav>
             <ul>

@@ -1,38 +1,37 @@
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import styles from './tab.module.css';
+import { TimerStateTypes } from '../../types';
 
 interface TabProps {
-  selected: number;
-  onSelect: (value: number) => void;
+  timerState: TimerStateTypes;
+  onSelect: Dispatch<SetStateAction<TimerStateTypes>>;
 }
 
-const Tab: FC<TabProps> = ({ selected, onSelect }) => {
-  const tabs = ['Session', 'Short Break', 'Long Break'];
-  const tabColors = ['#f77170', '#36c890', '#2083b0'];
-  const gliderColor = tabColors[selected];
+const Tab: FC<TabProps> = ({ timerState, onSelect }) => {
+  const gliderColor = timerState.tabs[timerState.selectedTab].color;
 
   const handleTabClick = (index: number) => {
-    onSelect(index);
+    onSelect({ ...timerState, selectedTab: index });
   };
 
   return (
     <div className={styles.tabContainer}>
       <div className={styles.tabs}>
-        {tabs.map((tab, index) => (
+        {timerState.tabs.map((tab, index) => (
           <div
             key={index}
             className={`${styles.tab} ${
-              selected === index ? styles.active : ''
+              timerState.selectedTab === index ? styles.active : ''
             }`}
             onClick={() => handleTabClick(index)}
           >
-            {tab}
+            {tab.title}
           </div>
         ))}
         <span
           className={styles.glider}
           style={{
-            transform: `translateX(${selected * 100}%)`,
+            transform: `translateX(${timerState.selectedTab * 100}%)`,
             backgroundColor: gliderColor,
           }}
         ></span>

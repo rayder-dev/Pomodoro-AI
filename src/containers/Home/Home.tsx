@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Divider } from '@mantine/core';
 import styles from './home.module.css';
-import { TimerLengthTypes } from '../../types';
+import { TimerStateTypes } from '../../types';
 import { Faq, Pomodoro, Privacy, Terms } from '../';
 import {
   AlarmModal,
@@ -18,40 +18,60 @@ import {
 
 const Home = () => {
   const alarm = useMemo(() => new Audio('/assets/sounds/alarm.mp3'), []);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [taskCount, setTaskCount] = useState(3);
+  const [cycleCount, setCycleCount] = useState(0);
+  const [timelineIndex, setTimelineIndex] = useState(0);
+  const [currentSection, setCurrentSection] = useState('Home');
   const [sessionStatus, setSessionStatus] = useState({
     count: 0,
     time: '',
   });
-  const currentTime = new Date();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [taskCount, setTaskCount] = useState(3);
-  const [selectedTab, setSelectedTab] = useState(0);
-  const [timerLength, setTimerLength] = useState<TimerLengthTypes>({
-    session: 3,
-    shortBreak: 2,
-    longBreak: 1,
+  const tabs = useMemo(
+    () => [
+      {
+        title: 'Session',
+        color: '#f77170',
+        initialTime: 2,
+        timerLabel: 'In session',
+      },
+      {
+        title: 'Short Break',
+        color: '#36c890',
+        initialTime: 2,
+        timerLabel: 'Take a break',
+      },
+      {
+        title: 'Long Break',
+        color: '#2083b0',
+        initialTime: 1,
+        timerLabel: 'Take a break',
+      },
+    ],
+    []
+  );
+  const [timerState, setTimerState] = useState<TimerStateTypes>({
+    selectedTab: 0,
+    tabs,
   });
-  const [cycleCount, setCycleCount] = useState(0);
-  const [timelineIndex, setTimelineIndex] = useState(0);
-  const [currentSection, setCurrentSection] = useState('Home');
 
   const cycleTab = useCallback(() => {
-    if (selectedTab === 0) {
+    if (timerState.selectedTab === 0) {
       if (cycleCount < 3) {
-        setSelectedTab(1);
+        setTimerState({ ...timerState, selectedTab: 1 });
         setTimelineIndex(cycleCount < 1 ? 1 : 2);
         setCycleCount(cycleCount + 1);
       } else {
-        setSelectedTab(2);
+        setTimerState({ ...timerState, selectedTab: 2 });
         setTimelineIndex(3);
         setCycleCount(0);
       }
     } else {
-      setSelectedTab(0);
+      setTimerState({ ...timerState, selectedTab: 0 });
       setTimelineIndex(cycleCount > 0 ? 2 : 0);
     }
-  }, [selectedTab, cycleCount]);
+  }, [timerState.selectedTab, cycleCount]);
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -66,9 +86,10 @@ const Home = () => {
   };
 
   const handleModalClose = () => {
+    const currentTime = new Date();
     setModalOpen(false);
     cycleTab();
-    if (selectedTab === 0) {
+    if (timerState.selectedTab === 0) {
       setSessionStatus((prev) => ({
         count: prev.count + 1,
         time: currentTime.toLocaleTimeString(),
@@ -87,20 +108,16 @@ const Home = () => {
         <section>
           <div className={styles['grid-container']}>
             <div className={`${styles['grid-item']} ${styles['item1']}`}>
-              <Tabs selected={selectedTab} onSelect={setSelectedTab} />
-              <Timer
-                selectedTab={selectedTab}
-                timerLength={timerLength}
-                modalOpen={handleModalOpen}
-              />
+              <Tabs timerState={timerState} onSelect={setTimerState} />
+              <Timer timerState={timerState} modalOpen={handleModalOpen} />
             </div>
             <div className={`${styles['grid-item']} ${styles['item2']}`}>
               <Todo sessionStatus={sessionStatus} setTaskCount={setTaskCount} />
             </div>
             <div className={`${styles['grid-item']} ${styles['item3']}`}>
               <TimerControl
-                timerLength={timerLength}
-                setTimerLength={setTimerLength}
+                timerState={timerState}
+                setTimerState={setTimerState}
               />
               <Timeline activeIndex={timelineIndex} cycleCount={cycleCount} />
             </div>
@@ -151,7 +168,7 @@ const Home = () => {
         opened={modalOpen}
         close={handleModalClose}
         alarmSound={alarm}
-        selectedTab={selectedTab}
+        selectedTab={timerState.selectedTab}
       />
       <Drawer opened={drawerOpen} close={handleDrawerClose} />
     </>

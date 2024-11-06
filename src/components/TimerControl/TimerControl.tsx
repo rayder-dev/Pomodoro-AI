@@ -2,13 +2,13 @@ import { FC, useEffect, useReducer } from 'react';
 import { ActionIcon, RingProgress, Center, rem } from '@mantine/core';
 import { IconAlarmFilled } from '@tabler/icons-react';
 import styles from './timerControl.module.css';
-import { TimerLengthTypes } from '../../types';
+import { TimerStateTypes } from '../../types';
 import { formatTime } from '../../utils/timeFormatter';
 import { Tooltip } from '..';
 
 interface TimerControlProps {
-  timerLength: TimerLengthTypes;
-  setTimerLength: (value: TimerLengthTypes) => void;
+  timerState: TimerStateTypes;
+  setTimerState: (value: TimerStateTypes) => void;
 }
 
 interface TimeDisplayProps {
@@ -21,28 +21,44 @@ interface TimeDisplayProps {
 
 // Action types for the reducer
 type Action =
-  | { type: 'INCREMENT'; timer: keyof TimerLengthTypes }
-  | { type: 'DECREMENT'; timer: keyof TimerLengthTypes }
-  | { type: 'SET_TIMER_LENGTH'; payload: TimerLengthTypes };
+  | { type: 'INCREMENT'; index: number }
+  | { type: 'DECREMENT'; index: number }
+  | { type: 'SET_TIMER_STATE'; payload: TimerStateTypes };
 
 // Reducer function to handle timer actions
 const timerReducer = (
-  state: TimerLengthTypes,
+  state: TimerStateTypes,
   action: Action
-): TimerLengthTypes => {
+): TimerStateTypes => {
   const adjustTime = (time: number) => time - (time % 300);
   switch (action.type) {
     case 'INCREMENT':
       return {
         ...state,
-        [action.timer]: Math.min(6000, adjustTime(state[action.timer]) + 300),
+        selectedTab: action.index,
+        tabs: state.tabs.map((tab, i) =>
+          i === action.index
+            ? {
+                ...tab,
+                initialTime: Math.min(6000, adjustTime(tab.initialTime) + 300),
+              }
+            : tab
+        ),
       };
     case 'DECREMENT':
       return {
         ...state,
-        [action.timer]: Math.max(300, adjustTime(state[action.timer]) - 300),
+        selectedTab: action.index,
+        tabs: state.tabs.map((tab, i) =>
+          i === action.index
+            ? {
+                ...tab,
+                initialTime: Math.max(300, adjustTime(tab.initialTime) - 300),
+              }
+            : tab
+        ),
       };
-    case 'SET_TIMER_LENGTH':
+    case 'SET_TIMER_STATE':
       return action.payload;
     default:
       return state;
@@ -94,40 +110,26 @@ const TimeDisplay: FC<TimeDisplayProps> = ({
   );
 };
 
-const TimerControl: FC<TimerControlProps> = ({
-  timerLength,
-  setTimerLength,
-}) => {
-  const [state, dispatch] = useReducer(timerReducer, timerLength);
+const TimerControl: FC<TimerControlProps> = ({ timerState, setTimerState }) => {
+  const [state, dispatch] = useReducer(timerReducer, timerState);
 
   // Sync state with parent component whenever it changes
   useEffect(() => {
-    setTimerLength(state);
-  }, [state, setTimerLength]);
+    setTimerState(state);
+  }, [state, setTimerState]);
 
   return (
     <div className={styles['time-length']}>
-      <TimeDisplay
-        label="Session"
-        time={state.session}
-        color="#f77170"
-        onIncrement={() => dispatch({ type: 'INCREMENT', timer: 'session' })}
-        onDecrement={() => dispatch({ type: 'DECREMENT', timer: 'session' })}
-      />
-      <TimeDisplay
-        label="Short break"
-        time={state.shortBreak}
-        color="#36c890"
-        onIncrement={() => dispatch({ type: 'INCREMENT', timer: 'shortBreak' })}
-        onDecrement={() => dispatch({ type: 'DECREMENT', timer: 'shortBreak' })}
-      />
-      <TimeDisplay
-        label="Long break"
-        time={state.longBreak}
-        color="#2083b0"
-        onIncrement={() => dispatch({ type: 'INCREMENT', timer: 'longBreak' })}
-        onDecrement={() => dispatch({ type: 'DECREMENT', timer: 'longBreak' })}
-      />
+      {state.tabs.map((tab, index) => (
+        <TimeDisplay
+          key={index}
+          label={tab.title}
+          time={tab.initialTime}
+          color={tab.color}
+          onIncrement={() => dispatch({ type: 'INCREMENT', index })}
+          onDecrement={() => dispatch({ type: 'DECREMENT', index })}
+        />
+      ))}
     </div>
   );
 };

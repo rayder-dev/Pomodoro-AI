@@ -77,7 +77,6 @@ const PomoTimeline: FC<PomoTimelineProps> = ({ activeIndex, cycleCount }) => {
               style={{
                 background:
                   'radial-gradient(circle at 50% 0%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%)',
-                color: 'white',
               }}
             >
               {activeIndex === 2 && index === 2 ? <RefreshLoader /> : item.icon}

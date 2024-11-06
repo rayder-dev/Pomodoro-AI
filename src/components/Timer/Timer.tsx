@@ -1,62 +1,50 @@
-import { FC, useState, useEffect, useMemo, useCallback } from 'react';
+import { FC, useState, useEffect, useCallback } from 'react';
 import { RingProgress } from '@mantine/core';
 import Styles from './timer.module.css';
-import { TimerLengthTypes } from '../../types';
 import { useResponsiveSize } from '../../hooks';
 import { StartBtn } from '..';
 import { startCountdown, formatToTwoDigits } from '../../utils/timerUtils';
+import { TimerStateTypes } from '../../types';
 
 interface TimerProps {
-  selectedTab: number;
-  timerLength: TimerLengthTypes;
+  timerState: TimerStateTypes;
   modalOpen: () => void;
 }
 
-const Timer: FC<TimerProps> = ({ selectedTab, timerLength, modalOpen }) => {
+const Timer: FC<TimerProps> = ({ timerState, modalOpen }) => {
   const ringSize = useResponsiveSize();
-  const tabs = useMemo(
-    () => [
-      {
-        title: 'Session',
-        color: '#f77170',
-        initialTime: timerLength.session,
-        timerLabel: 'In session',
-      },
-      {
-        title: 'Short Break',
-        color: '#36c890',
-        initialTime: timerLength.shortBreak,
-        timerLabel: 'Take a break',
-      },
-      {
-        title: 'Long Break',
-        color: '#2083b0',
-        initialTime: timerLength.longBreak,
-        timerLabel: 'Take a break',
-      },
-    ],
-    [timerLength]
-  );
-
-  const [timeLeft, setTimeLeft] = useState(tabs[0].initialTime);
+  const tabState = timerState.tabs[timerState.selectedTab];
+  const [timeLeft, setTimeLeft] = useState(tabState.initialTime);
   const [isRunning, setIsRunning] = useState(false);
-
-  const tabState = tabs[selectedTab];
+  const [progress, setProgress] = useState(100);
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
-  // For Tabs & Timer Control
-  useEffect(() => {
-    setTimeLeft(tabState.initialTime);
-    setIsRunning(false);
-  }, [selectedTab, tabState.initialTime]);
+  // Separated because of Progress glitching
+  const resetTimer = useCallback(
+    (intervalId: NodeJS.Timeout) => {
+      if (timeLeft === 0) {
+        setProgress(100);
+      }
+      clearInterval(intervalId);
+    },
+    [isRunning]
+  );
 
   // For Timer
   useEffect(() => {
     if (!isRunning) return;
     const intervalId = startCountdown(timeLeft, setTimeLeft, modalOpen);
-    return () => clearInterval(intervalId);
+    setProgress((timeLeft / tabState.initialTime) * 100);
+    return () => resetTimer(intervalId);
   }, [isRunning, timeLeft, modalOpen]);
+
+  // For Tabs & Timer Control
+  useEffect(() => {
+    setTimeLeft(tabState.initialTime);
+    setIsRunning(false);
+    setProgress(100);
+  }, [timerState.selectedTab, tabState.initialTime]);
 
   return (
     <div className={Styles['clock-container']}>
@@ -65,7 +53,7 @@ const Timer: FC<TimerProps> = ({ selectedTab, timerLength, modalOpen }) => {
         roundCaps
         sections={[
           {
-            value: (timeLeft / tabState.initialTime) * 100,
+            value: progress,
             color: tabState.color,
           },
         ]}
@@ -77,11 +65,11 @@ const Timer: FC<TimerProps> = ({ selectedTab, timerLength, modalOpen }) => {
                 <div className={Styles['label']}>
                   {isRunning && timeLeft
                     ? tabState.timerLabel
+                    : !isRunning && progress === 100
+                    ? tabState.title
                     : timeLeft === 0
                     ? 'Time is up!'
-                    : timeLeft < tabState.initialTime && !isRunning
-                    ? 'Paused'
-                    : tabState.title}
+                    : 'Paused'}
                 </div>
                 <div className={Styles['time']}>
                   {formatToTwoDigits(minutes)}:{formatToTwoDigits(seconds)}
