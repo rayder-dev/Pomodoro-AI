@@ -3,11 +3,12 @@ import styles from '../Todo/todo.module.css';
 import { TodoTypes } from '../../types';
 
 interface TodoFormProps {
-  addTodo: (value: string) => void;
+  addTodo: (name: string) => void;
   editTodo: TodoTypes | null;
+  handleUpdate: (id: string, name: string) => void;
 }
 
-const TodoForm: FC<TodoFormProps> = ({ addTodo, editTodo }) => {
+const TodoForm: FC<TodoFormProps> = ({ addTodo, editTodo, handleUpdate }) => {
   const [value, setValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -22,7 +23,11 @@ const TodoForm: FC<TodoFormProps> = ({ addTodo, editTodo }) => {
     e.preventDefault(); // Prevent page refresh
     // if input is not empty or whitespace
     if (value.trim()) {
-      addTodo(value);
+      if (editTodo) {
+        handleUpdate(editTodo.id, value);
+      } else {
+        addTodo(value);
+      }
       setValue(''); // Reset the input field after submission
     }
   };

@@ -1,8 +1,8 @@
-import { Dispatch, FC, SetStateAction, useState } from 'react';
+import { Dispatch, FC, SetStateAction, useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { IconCaretRight } from '@tabler/icons-react';
 import styles from './todo.module.css';
-import { TodoTypes } from '../../types';
+import { TodoTypes, TodoAction, TodoState } from '../../types';
 import { Card, TaskStatus, TodoForm, TodoList, Tooltip } from '..';
 
 interface TodoProps {
@@ -10,8 +10,8 @@ interface TodoProps {
   setTaskCount: Dispatch<SetStateAction<number>>;
 }
 
-const Todo: FC<TodoProps> = ({ sessionStatus, setTaskCount }) => {
-  const [todos, setTodos] = useState<TodoTypes[]>([
+const initialState: TodoState = {
+  todos: [
     {
       id: '550deeaf-bce7-4cd4-a06a-6ade2d5553ab',
       task: 'React',
@@ -33,100 +33,136 @@ const Todo: FC<TodoProps> = ({ sessionStatus, setTaskCount }) => {
       isEditing: false,
       completed: false,
     },
-  ]);
-  const [editTodo, setEditTodo] = useState<TodoTypes | null>(null);
+  ],
+  editTodo: null,
+};
 
-  const updateTodos = (updater: (todo: TodoTypes) => TodoTypes) =>
-    setTodos((prevTodos) => prevTodos.map(updater));
-
-  const addTodo = (name: string) => {
-    if (editTodo) {
-      updateTodos((todo) =>
-        todo.id === editTodo.id
-          ? { ...todo, task: name, isEditing: false }
+const todoReducer = (state: TodoState, action: TodoAction): TodoState => {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return {
+        ...state,
+        todos: [
+          ...state.todos,
+          {
+            id: uuidv4(),
+            task: action.payload.task,
+            isActive: state.todos.length === 0,
+            isEditing: false,
+            completed: false,
+          },
+        ],
+      };
+    case 'EDIT_TODO':
+      return {
+        ...state,
+        editTodo:
+          state.todos.find((todo) => todo.id === action.payload.id) || null,
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload.id
+            ? { ...todo, isEditing: true }
+            : { ...todo, isEditing: false }
+        ),
+      };
+    case 'UPDATE_TODO':
+      return {
+        ...state,
+        editTodo: null,
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload.id
+            ? { ...todo, task: action.payload.task, isEditing: false }
+            : todo
+        ),
+      };
+    case 'DELETE_TODO':
+      return {
+        ...state,
+        todos: state.todos
+          .filter((todo) => todo.id !== action.payload.id)
+          .map((todo, index, filteredTodos) => {
+            if (index === 0 && !todo.completed) {
+              return { ...todo, isActive: true };
+            } else if (index > 0 && !todo.completed) {
+              const previousTodo = filteredTodos[index - 1];
+              return {
+                ...todo,
+                isActive: previousTodo.isActive ? false : todo.isActive,
+              };
+            }
+            return todo;
+          }),
+      };
+    case 'TOGGLE_COMPLETE':
+      const updatedTodos = state.todos.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, completed: !todo.completed }
           : todo
       );
-      setEditTodo(null);
-    } else {
-      setTodos((prevTodos) => [
-        ...prevTodos,
-        {
-          id: uuidv4(),
-          task: name,
-          isActive: todos.length === 0,
-          isEditing: false,
-          completed: false,
-        },
-      ]);
-      setTaskCount((prev) => prev + 1);
-    }
-  };
-
-  const handleActive = (id: string) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = prevTodos.map((todo) => {
-        // If a completed todo is clicked, keep the current active state as-is
-        if (todo.completed) return todo;
-        // Set only the selected incomplete todo as active
+      const activeTodos = updatedTodos.filter((todo) => !todo.completed);
+      if (state.todos.find((todo) => todo.id === action.payload.id)?.isActive) {
         return {
-          ...todo,
-          isActive: todo.id === id && !todo.completed,
+          ...state,
+          todos: updatedTodos.map((todo) =>
+            activeTodos[0]?.id === todo.id
+              ? { ...todo, isActive: true }
+              : { ...todo, isActive: false }
+          ),
         };
-      });
-      // Ensure there's only one active todo at a time
-      const activeTodoExists = updatedTodos.some((todo) => todo.isActive);
-      if (!activeTodoExists) {
-        const firstIncomplete = updatedTodos.find((todo) => !todo.completed);
-        if (firstIncomplete) firstIncomplete.isActive = true;
       }
-      return updatedTodos;
-    });
-  };
+      return { ...state, todos: updatedTodos };
+    case 'SET_ACTIVE':
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload.id && !todo.completed
+            ? { ...todo, isActive: true }
+            : { ...todo, isActive: false }
+        ),
+      };
+    default:
+      return state;
+  }
+};
 
-  const handleComplete = (id: string) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      );
-      const activeTodo = updatedTodos.find((todo) => todo.id === id);
-      if (activeTodo?.isActive && activeTodo.completed) {
-        activeTodo.isActive = false;
-        const firstIncomplete = updatedTodos.find(
-          (todo) => !todo.completed && todo.id !== id
-        );
-        if (firstIncomplete) firstIncomplete.isActive = true;
-      }
-      return updatedTodos;
-    });
-  };
+const Todo: FC<TodoProps> = ({ sessionStatus, setTaskCount }) => {
+  const [state, dispatch] = useReducer(todoReducer, initialState);
 
-  const handleDelete = (id: string) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = prevTodos.filter((todo) => todo.id !== id);
-      const activeTodo = prevTodos.find(
-        (todo) => todo.id === id && todo.isActive
-      );
-      if (activeTodo && updatedTodos.length > 0) {
-        const firstIncomplete = updatedTodos.find((todo) => !todo.completed);
-        if (firstIncomplete) firstIncomplete.isActive = true;
-      }
-      return updatedTodos;
-    });
-    setTaskCount((prev) => prev - 1);
+  const addTodo = (task: string) => {
+    dispatch({ type: 'ADD_TODO', payload: { task } });
+    setTaskCount((prev: number) => prev + 1);
   };
 
   const handleEdit = (id: string) => {
-    updateTodos((todo) => ({ ...todo, isEditing: todo.id === id }));
-    const todoToEdit = todos.find((todo) => todo.id === id);
-    if (todoToEdit) setEditTodo(todoToEdit);
+    dispatch({ type: 'EDIT_TODO', payload: { id } });
+  };
+
+  const handleUpdate = (id: string, task: string) => {
+    dispatch({ type: 'UPDATE_TODO', payload: { id, task } });
+  };
+
+  const handleDelete = (id: string) => {
+    dispatch({ type: 'DELETE_TODO', payload: { id } });
+    setTaskCount((prev: number) => prev - 1);
+  };
+
+  const handleComplete = (id: string) => {
+    dispatch({ type: 'TOGGLE_COMPLETE', payload: { id } });
+  };
+
+  const handleActive = (id: string) => {
+    dispatch({ type: 'SET_ACTIVE', payload: { id } });
   };
 
   return (
     <div className={styles['todo-wrapper']}>
       <h2>Get Things Done!</h2>
-      <TodoForm addTodo={addTodo} editTodo={editTodo} />
+      <TodoForm
+        addTodo={addTodo}
+        editTodo={state.editTodo}
+        handleUpdate={handleUpdate}
+      />
       <div className={styles['list-wrapper']}>
-        {todos.map((todo) => (
+        {state.todos.map((todo: TodoTypes) => (
           <div
             key={todo.id}
             className={todo.isActive ? styles['active-wrapper'] : ''}
