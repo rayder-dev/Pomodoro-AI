@@ -75,23 +75,36 @@ const todoReducer = (state: TodoState, action: TodoAction): TodoState => {
         ),
       };
     case 'DELETE_TODO':
+      // Filter out the todo to be deleted
+      const updatedTodosAfterDeletion = state.todos.filter(
+        (todo) => todo.id !== action.payload.id
+      );
+
+      // Find the deleted todo and check if it was active
+      const wasActive = state.todos.find(
+        (todo) => todo.id === action.payload.id
+      )?.isActive;
+
+      // If the deleted todo was active, set the next incomplete, inactive todo as active
+      if (wasActive) {
+        const nextIncompleteTodoIndex = updatedTodosAfterDeletion.findIndex(
+          (todo) => !todo.completed && !todo.isActive
+        );
+
+        // If there's an incomplete, inactive todo, set it to active
+        if (nextIncompleteTodoIndex !== -1) {
+          updatedTodosAfterDeletion[nextIncompleteTodoIndex] = {
+            ...updatedTodosAfterDeletion[nextIncompleteTodoIndex],
+            isActive: true,
+          };
+        }
+      }
+
       return {
         ...state,
-        todos: state.todos
-          .filter((todo) => todo.id !== action.payload.id)
-          .map((todo, index, filteredTodos) => {
-            if (index === 0 && !todo.completed) {
-              return { ...todo, isActive: true };
-            } else if (index > 0 && !todo.completed) {
-              const previousTodo = filteredTodos[index - 1];
-              return {
-                ...todo,
-                isActive: previousTodo.isActive ? false : todo.isActive,
-              };
-            }
-            return todo;
-          }),
+        todos: updatedTodosAfterDeletion,
       };
+
     case 'TOGGLE_COMPLETE':
       const updatedTodos = state.todos.map((todo) =>
         todo.id === action.payload.id
