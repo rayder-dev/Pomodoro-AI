@@ -5,7 +5,7 @@ import { TimerStateTypes } from '../../types';
 import { Faq, Pomodoro, Privacy, Terms } from '../';
 import {
   AlarmModal,
-  Drawer,
+  AiDrawer,
   Footer,
   Header,
   PomoTally,
@@ -170,7 +170,7 @@ const Home = () => {
         alarmSound={alarm}
         selectedTab={timerState.selectedTab}
       />
-      <Drawer opened={drawerOpen} close={handleDrawerClose} />
+      <AiDrawer opened={drawerOpen} close={handleDrawerClose} />
     </>
   );
 };

@@ -31,7 +31,7 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
         <>
           <div className={styles.aiLogo}>
             <IconBrandOpenai className={styles.logo} size="1.8rem" />{' '}
-            <span className={styles.text}>Ask GPT</span>
+            <span className={styles.text}>Ask AI</span>
           </div>
         </>
       }

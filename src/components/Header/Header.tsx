@@ -44,7 +44,7 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen }) => {
                       style={{ marginTop: '-2px' }}
                     />
                   }
-                  text="Ask GPT"
+                  text="Ask AI"
                 />
               </div>
               <div onClick={() => handleModalOpen('Calendar')}>

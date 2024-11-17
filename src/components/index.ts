@@ -12,7 +12,7 @@ export { default as StartBtn } from './Button/StartButton';
 // Card
 export { default as Card } from './Card/MacOsCard';
 // Drawer
-export { default as Drawer } from './Drawer/AiDrawer';
+export { default as AiDrawer } from './Drawer/AiDrawer';
 // Footer
 export { default as Footer } from './Footer/Footer';
 // Form

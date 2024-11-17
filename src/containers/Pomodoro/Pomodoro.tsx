@@ -62,7 +62,7 @@ const Pomodoro: FC<Pomodoro> = ({ alarmSound }) => {
         <h2>Additional Features of Pomodoro</h2>
         <ul>
           <li>
-            <strong>Ask GPT</strong>: This cutting-edge feature utilizes the
+            <strong>Ask AI</strong>: This cutting-edge feature utilizes the
             power of ChatGPT to assist you in real-time. It can help answer your
             questions, provide insightful suggestions, and generate creative
             ideas. Whether you're seeking a quick summary, brainstorming new
