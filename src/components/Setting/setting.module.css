@@ -52,15 +52,29 @@
   gap: 5px;
 }
 
+.sliderWrapper {
+  width: 40%;
+}
+
 .themeBox {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 10em;
-  width: 9.5em;
+  width: 9.75em;
   text-align: center;
   border-radius: 15px;
   background-color: #313133;
+}
+
+.themeBox2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+  width: 9.75em;
+  border-radius: 15px;
+  background-color: #f4edf3;
 }
 
 .settingHeader {
@@ -77,14 +91,4 @@
 
 .languageSelect {
   align-self: center;
-}
-
-.themeBox2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10em;
-  width: 9.5em;
-  border-radius: 15px;
-  background-color: #f4edf3;
 }

@@ -6,12 +6,15 @@ import {
   IconArrowBack,
   IconX,
   IconCheck,
+  IconBellRingingFilled,
+  IconHourglassFilled,
 } from '@tabler/icons-react';
 import {
   Button,
   NativeSelect,
   NumberInput,
   rem,
+  Slider,
   Switch,
   Tabs,
   Title,
@@ -103,6 +106,7 @@ const Setting: FC = () => {
             />
           </div>
         </Tabs.Panel>
+
         <Tabs.Panel value="timer">
           <div className={styles.languageContainer}>
             <div>
@@ -185,7 +189,100 @@ const Setting: FC = () => {
           </div>
         </Tabs.Panel>
 
-        <Tabs.Panel value="notification">Notification tab content</Tabs.Panel>
+        <Tabs.Panel value="notification">
+          <div className={styles.languageContainer}>
+            <div>
+              <h4 className={styles.settingHeader}>Alarm sound</h4>
+              <h5 className={styles.settingSub}>
+                Choose your preferred alert tones for breaks and sessions
+              </h5>
+            </div>
+            <NativeSelect
+              className={styles.languageSelect}
+              data={['Default', 'Modern', 'Classic']}
+            />
+          </div>
+          <div className={styles.languageContainer}>
+            <div>
+              <h4 className={styles.settingHeader}>Alarm volume</h4>
+              <h5 className={styles.settingSub}>
+                Adjust alarm sound levels to your preference
+              </h5>
+            </div>
+            <div className={styles.sliderWrapper}>
+              <Slider
+                thumbChildren={<IconBellRingingFilled size="1rem" />}
+                defaultValue={50}
+                thumbSize={26}
+                color="#f77170"
+                marks={[
+                  { value: 20, label: '20%' },
+                  { value: 50, label: '50%' },
+                  { value: 80, label: '80%' },
+                ]}
+              />
+            </div>
+          </div>
+          <div className={styles.darkRunningContainer}>
+            <div>
+              <h4 className={styles.settingHeader}>Auto repeat</h4>
+              <h5 className={styles.settingSub}>
+                Set alarm sounds to repeat automatically (0 for infinity)
+              </h5>
+            </div>
+            <NumberInput defaultValue={0} style={{ maxWidth: '6em' }} />
+          </div>
+          <div className={styles.languageContainer}>
+            <div>
+              <h4 className={styles.settingHeader}>Ticking sound</h4>
+              <h5 className={styles.settingSub}>
+                Enable a ticking sound during sessions for time awareness
+              </h5>
+            </div>
+            <Switch
+              checked={checked}
+              onChange={(event) => setChecked(event.currentTarget.checked)}
+              color="#23bab1"
+              size="lg"
+              thumbIcon={
+                checked ? (
+                  <IconCheck
+                    style={{ width: rem(12), height: rem(12) }}
+                    color={theme.colors.teal[6]}
+                    stroke={3}
+                  />
+                ) : (
+                  <IconX
+                    style={{ width: rem(12), height: rem(12) }}
+                    color={theme.colors.red[6]}
+                    stroke={3}
+                  />
+                )
+              }
+            />
+          </div>
+          <div className={styles.languageContainer}>
+            <div>
+              <h4 className={styles.settingHeader}>Ticking volume</h4>
+              <h5 className={styles.settingSub}>
+                Adjust ticking sound levels to your preference
+              </h5>
+            </div>
+            <div className={styles.sliderWrapper}>
+              <Slider
+                thumbChildren={<IconHourglassFilled size="1rem" />}
+                defaultValue={20}
+                thumbSize={26}
+                color="#f77170"
+                marks={[
+                  { value: 20, label: '20%' },
+                  { value: 50, label: '50%' },
+                  { value: 80, label: '80%' },
+                ]}
+              />
+            </div>
+          </div>
+        </Tabs.Panel>
       </Tabs>
       <div className={styles.saveContainer}>
         <div className={styles.resetWrapper}>
