@@ -26,8 +26,8 @@ const ModalWrapper: FC<ModalWrapperProps> = ({ opened, close, children }) => {
       transitionProps={{ transition: 'fade-down' }}
       zIndex={4000}
       radius={10}
-      closeOnClickOutside={true}
-      closeOnEscape={true}
+      closeOnClickOutside={false}
+      closeOnEscape={false}
       shadow="0 0 12px rgba(24, 94, 224, .7), 0 0 12px rgba(24, 94, 224, .7)"
       overlayProps={{
         backgroundOpacity: 0.8,

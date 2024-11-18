@@ -7,7 +7,7 @@ import {
   IconX,
   IconCheck,
   IconBellRingingFilled,
-  IconHourglassFilled,
+  IconClockFilled,
 } from '@tabler/icons-react';
 import {
   Button,
@@ -27,7 +27,7 @@ const Setting: FC = () => {
   const [checked, setChecked] = useState(false);
   return (
     <div className={styles.settingContainer}>
-      <Title ta="left" className={styles.title}>
+      <Title ta="left" className={styles.title} size="1.8em">
         Settings
       </Title>
       <Tabs color="#23bab1" defaultValue="appearance">
@@ -185,7 +185,7 @@ const Setting: FC = () => {
                 Set extended rest periods for enhanced recovery
               </h5>
             </div>
-            <NumberInput defaultValue={3} style={{ maxWidth: '6em' }} />
+            <NumberInput defaultValue={4} style={{ maxWidth: '6em' }} />
           </div>
         </Tabs.Panel>
 
@@ -213,8 +213,8 @@ const Setting: FC = () => {
               <Slider
                 thumbChildren={<IconBellRingingFilled size="1rem" />}
                 defaultValue={50}
-                thumbSize={26}
-                color="#f77170"
+                thumbSize={22}
+                color="#23bab1"
                 marks={[
                   { value: 20, label: '20%' },
                   { value: 50, label: '50%' },
@@ -270,10 +270,10 @@ const Setting: FC = () => {
             </div>
             <div className={styles.sliderWrapper}>
               <Slider
-                thumbChildren={<IconHourglassFilled size="1rem" />}
+                thumbChildren={<IconClockFilled size="1rem" />}
                 defaultValue={20}
-                thumbSize={26}
-                color="#f77170"
+                thumbSize={22}
+                color="#23bab1"
                 marks={[
                   { value: 20, label: '20%' },
                   { value: 50, label: '50%' },
