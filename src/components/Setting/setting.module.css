@@ -13,7 +13,6 @@
 }
 
 /* Containers */
-
 .languageContainer {
   display: flex;
   flex-direction: row;
@@ -27,25 +26,27 @@
   border-bottom: #e6e6e6 solid 1px;
 }
 
+.saveContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em 0;
+}
+
+/* Wrapper */
 .themeSelectWrapper {
   display: flex;
   gap: 1em;
-  margin: 1em 0;
+  margin-top: 1em;
 }
 
-.settingHeader {
+.themeSelectWrapper div h3 {
   margin: 0;
-  font-weight: 700;
 }
 
-.settingSub {
-  color: #808080;
-  margin: 0 auto;
-  font-weight: 300;
-}
-
-.languageSelect {
-  align-self: center;
+.resetWrapper {
+  display: flex;
+  gap: 5px;
 }
 
 .themeBox {
@@ -57,6 +58,22 @@
   text-align: center;
   border-radius: 15px;
   background-color: #313133;
+}
+
+.settingHeader {
+  margin: 0;
+  font-weight: 700;
+}
+
+.settingSub {
+  color: #808080;
+  margin: 0 auto;
+  font-weight: 300;
+  margin-top: 0.3em;
+}
+
+.languageSelect {
+  align-self: center;
 }
 
 .themeBox2 {

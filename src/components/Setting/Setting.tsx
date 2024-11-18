@@ -1,6 +1,11 @@
 import { FC } from 'react';
-import { IconSunMoon, IconSun, IconMoonStars } from '@tabler/icons-react';
-import { NativeSelect, Tabs, Title } from '@mantine/core';
+import {
+  IconSunMoon,
+  IconSun,
+  IconMoonStars,
+  IconArrowBack,
+} from '@tabler/icons-react';
+import { Button, NativeSelect, Tabs, Title } from '@mantine/core';
 import styles from './setting.module.css';
 
 const Setting: FC = () => {
@@ -53,6 +58,32 @@ const Setting: FC = () => {
                 </div>
                 <h3>Dark</h3>
               </div>
+            </div>
+          </div>
+          <div className={styles.languageContainer}>
+            <div>
+              <h4 className={styles.settingHeader}>Hour Format</h4>
+              <h5 className={styles.settingSub}>
+                Select the hour format of the platform
+              </h5>
+            </div>
+            <NativeSelect
+              className={styles.languageSelect}
+              data={['24-hour', '12-hour']}
+            />
+          </div>
+          <div className={styles.saveContainer}>
+            <div className={styles.resetWrapper}>
+              <IconArrowBack color="#808080" />
+              <h5 className={styles.settingSub}>Reset to defaults</h5>
+            </div>
+            <div className={styles.resetWrapper}>
+              <Button variant="filled" color="#9fa1a2">
+                Cancel
+              </Button>
+              <Button variant="filled" color="#23bab1">
+                Save preferences
+              </Button>
             </div>
           </div>
         </Tabs.Panel>
