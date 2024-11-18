@@ -30,7 +30,7 @@ const ModalWrapper: FC<ModalWrapperProps> = ({ opened, close, children }) => {
       closeOnEscape={false}
       shadow="0 0 12px rgba(24, 94, 224, .7), 0 0 12px rgba(24, 94, 224, .7)"
       overlayProps={{
-        backgroundOpacity: 0.8,
+        backgroundOpacity: 0.5,
         blur: 2,
       }}
     >

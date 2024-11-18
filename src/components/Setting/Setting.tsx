@@ -69,7 +69,7 @@ const Setting: FC = () => {
                 <h3>Light</h3>
               </div>
               <div>
-                <div className={styles.themeBox}>
+                <div className={styles.themeBox3}>
                   <IconMoonStars style={{ color: 'white' }} size="2rem" />
                 </div>
                 <h3>Dark</h3>
