@@ -9,6 +9,7 @@ import {
 import styles from './header.module.css';
 import { Contact, Login } from '../../containers';
 import { ComingSoon, Logo, Modal, NavBtn } from '..';
+import Setting from '../Setting/Setting';
 
 interface HeaderProps {
   onDrawerOpen: () => void;
@@ -94,9 +95,7 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen }) => {
         {selectedNavBtn === 'Calendar' && (
           <ComingSoon onClick={handleModalClose} />
         )}
-        {selectedNavBtn === 'Setting' && (
-          <ComingSoon onClick={handleModalClose} />
-        )}
+        {selectedNavBtn === 'Setting' && <Setting />}
       </Modal>
     </>
   );

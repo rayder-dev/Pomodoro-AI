@@ -1,0 +1,70 @@
+.settingContainer {
+  width: 500px;
+}
+
+.settingContainer > .title {
+  margin-bottom: 0.5em;
+}
+
+.tabList {
+  font-weight: 600;
+  color: #808080;
+  gap: 1em;
+}
+
+/* Containers */
+
+.languageContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em 0;
+  border-bottom: #e6e6e6 solid 1px;
+}
+
+.themeContainer {
+  padding: 1em 0;
+  border-bottom: #e6e6e6 solid 1px;
+}
+
+.themeSelectWrapper {
+  display: flex;
+  gap: 1em;
+  margin: 1em 0;
+}
+
+.settingHeader {
+  margin: 0;
+  font-weight: 700;
+}
+
+.settingSub {
+  color: #808080;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+.languageSelect {
+  align-self: center;
+}
+
+.themeBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+  width: 9.5em;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #313133;
+}
+
+.themeBox2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+  width: 9.5em;
+  border-radius: 15px;
+  background-color: #f4edf3;
+}
