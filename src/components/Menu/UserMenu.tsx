@@ -1,14 +1,6 @@
 import { forwardRef } from 'react';
 import { IconChevronRight } from '@tabler/icons-react';
-import {
-  Group,
-  Avatar,
-  Text,
-  Menu,
-  UnstyledButton,
-  rem,
-  Button,
-} from '@mantine/core';
+import { Group, Avatar, Text, Menu, UnstyledButton, rem } from '@mantine/core';
 import {
   IconSettings,
   IconSearch,
