@@ -52,7 +52,7 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
       className={styles.drawerContainer}
     >
       <div
-        style={{ height: type === 'landscape-primary' ? '83vh' : '20vh' }}
+        style={{ height: type === 'landscape-primary' ? '81vh' : '20vh' }}
         className={styles.chatContainer}
       >
         <ScrollArea>

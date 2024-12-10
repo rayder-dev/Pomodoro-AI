@@ -2,7 +2,7 @@ import { Group, ActionIcon, rem } from '@mantine/core';
 import {
   IconBrandYoutube,
   IconBrandGithub,
-  IconBrandTiktok,
+  IconBrandLinkedin,
 } from '@tabler/icons-react';
 import Styles from './footer.module.css';
 import { FC } from 'react';
@@ -69,14 +69,14 @@ const Footer: FC<FooterProps> = ({ section }) => {
               </ActionIcon>
             </a>
             <a
-              href="https://www.tiktok.com/@inspectorelement"
+              href="https://www.linkedin.com/in/raymond-hernandez-83703327a"
               target="_blank"
               rel="noopener noreferrer"
             >
               <ActionIcon size="lg" variant="default" radius="xl">
-                <IconBrandTiktok
-                  style={{ width: rem(18), height: rem(18) }}
-                  stroke={1.5}
+                <IconBrandLinkedin
+                  style={{ width: rem(22), height: rem(22) }}
+                  stroke={1.2}
                 />
               </ActionIcon>
             </a>

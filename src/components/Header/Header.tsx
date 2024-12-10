@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import {
   IconBrandOpenai,
   IconAddressBook,
@@ -10,6 +10,7 @@ import styles from './header.module.css';
 import { Contact, Login } from '../../containers';
 import { ComingSoon, Logo, Modal, NavBtn } from '..';
 import Setting from '../Setting/Setting';
+import UserMenu from '../Menu/UserMenu';
 
 interface HeaderProps {
   onDrawerOpen: () => void;
@@ -18,6 +19,14 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ onDrawerOpen }) => {
   const [selectedNavBtn, setSelectedNavBtn] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
+  const [token, setToken] = useState<string>('');
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('NotAToken');
+    if (accessToken) {
+      setToken(accessToken);
+    }
+  }, []);
 
   const handleModalOpen = (selection: string) => {
     setSelectedNavBtn(selection);
@@ -78,19 +87,26 @@ const Header: FC<HeaderProps> = ({ onDrawerOpen }) => {
                   text="Contact"
                 />
               </div>
-              <div onClick={() => handleModalOpen('Singin')}>
-                <NavBtn
-                  className={styles['signin-btn']}
-                  icon={<IconLogin size="1rem" style={{ marginTop: '-2px' }} />}
-                  text="Sign In"
-                />
-              </div>
+
+              {token ? (
+                <UserMenu />
+              ) : (
+                <div onClick={() => handleModalOpen('Singin')}>
+                  <NavBtn
+                    className={styles['signin-btn']}
+                    icon={
+                      <IconLogin size="1rem" style={{ marginTop: '-2px' }} />
+                    }
+                    text="Sign In"
+                  />
+                </div>
+              )}
             </ul>
           </nav>
         </div>
       </header>
       <Modal opened={modalOpen} close={handleModalClose}>
-        {selectedNavBtn === 'Singin' && <Login />}
+        {selectedNavBtn === 'Singin' && <Login closeModal={handleModalClose} />}
         {selectedNavBtn === 'Contact' && <Contact />}
         {selectedNavBtn === 'Calendar' && (
           <ComingSoon onClick={handleModalClose} />

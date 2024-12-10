@@ -1,4 +1,6 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { useToggle, upperFirst } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 import {
@@ -9,20 +11,28 @@ import {
   Group,
   PaperProps,
   Button,
-  Divider,
+  // Divider,
   Checkbox,
   Anchor,
   Stack,
 } from '@mantine/core';
-import { GoogleBtn } from '../../components';
+// import { GoogleBtn } from '../../components';
 
-const AuthLogin: FC<PaperProps> = (props) => {
+interface LoginProps {
+  closeModal: () => void;
+}
+
+const AuthLogin: FC<LoginProps & PaperProps> = ({ closeModal, ...props }) => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
   const [type, toggle] = useToggle(['login', 'register']);
   const form = useForm({
     initialValues: {
       email: '',
-      name: '',
+      username: '',
       password: '',
+      password2: '',
       terms: true,
     },
 
@@ -35,27 +45,75 @@ const AuthLogin: FC<PaperProps> = (props) => {
     },
   });
 
+  const submitHandler = async (values: any) => {
+    setLoading(true);
+    try {
+      const url =
+        type === 'login'
+          ? `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/login`
+          : `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/register`;
+
+      const response = await axios.post(url, {
+        email: values.email,
+        password: values.password,
+        password2: values.password2,
+        username: values.username,
+      });
+
+      if (type === 'login') {
+        localStorage.setItem('NotAToken', response.data.token);
+        navigate('/');
+        closeModal(); // Close the modal on successful login
+      } else {
+        navigate('/');
+        closeModal(); // Close the modal on successful registration
+      }
+
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      if (axios.isAxiosError(error)) {
+        // Type guard to check if error is an Axios error
+        if (error.response) {
+          setStatusMessage(error.response.data.message);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log('Error', error.message);
+        }
+      } else {
+        console.log('Unexpected error', error);
+      }
+    }
+  };
+
   return (
     <Paper radius="md" p="xl" {...props}>
       <Text size="xl" fw={600} mb={'xl'} mt={-20} color="#404040">
         Welcome to Pomodoro AI, {type} with
       </Text>
 
-      <Group grow mb="md" mt="md">
+      {statusMessage && (
+        <Text size="sm" color="red">
+          {statusMessage}
+        </Text>
+      )}
+
+      {/* <Group grow mb="md" mt="md">
         <GoogleBtn radius="xl">Google</GoogleBtn>
       </Group>
 
-      <Divider label="Or continue with email" labelPosition="center" my="xl" />
+      <Divider label="Or continue with email" labelPosition="center" my="xl" /> */}
 
-      <form onSubmit={form.onSubmit(() => {})}>
+      <form onSubmit={form.onSubmit(submitHandler)}>
         <Stack>
           {type === 'register' && (
             <TextInput
-              label="Name"
-              placeholder="Your name"
-              value={form.values.name}
+              label="Username"
+              placeholder="Your username"
+              value={form.values.username}
               onChange={(event) =>
-                form.setFieldValue('name', event.currentTarget.value)
+                form.setFieldValue('username', event.currentTarget.value)
               }
               radius="md"
             />
@@ -87,7 +145,22 @@ const AuthLogin: FC<PaperProps> = (props) => {
             }
             radius="md"
           />
-
+          {type === 'register' && (
+            <PasswordInput
+              required
+              label="Confirm Password"
+              placeholder="Confirm Password"
+              value={form.values.password2}
+              onChange={(event) =>
+                form.setFieldValue('password2', event.currentTarget.value)
+              }
+              error={
+                form.errors.password2 &&
+                'Password should include at least 6 characters'
+              }
+              radius="md"
+            />
+          )}
           {type === 'register' && (
             <Checkbox
               color="#23bab1"
@@ -112,7 +185,7 @@ const AuthLogin: FC<PaperProps> = (props) => {
               ? 'Already have an account? Login'
               : "Don't have an account? Register"}
           </Anchor>
-          <Button type="submit" radius="xl" color="#23bab1">
+          <Button type="submit" radius="xl" color="#23bab1" loading={loading}>
             {upperFirst(type)}
           </Button>
         </Group>
