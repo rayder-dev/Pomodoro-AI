@@ -11,6 +11,7 @@ import {
   Button,
 } from '@mantine/core';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import ReactMarkdown from 'react-markdown'; // Importing ReactMarkdown
 import styles from './aiDrawer.module.css';
 import Gpt from '../Badge/Gpt';
 
@@ -67,7 +68,7 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
 
       try {
         const result = await model.generateContent(input);
-        const aiResponse = result.response.text();
+        const aiResponse = await result.response.text(); // Await the text
         const aiMessage: Message = { role: 'ai', content: aiResponse };
         setMessages((prevMessages) => [...prevMessages, aiMessage]);
       } catch (error) {
@@ -139,7 +140,11 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
                 className={`${styles.message} ${styles[msg.role]}`}
                 shadow="xs"
               >
-                {msg.content}
+                {msg.role === 'ai' ? (
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                ) : (
+                  msg.content
+                )}
               </Paper>
             ))}
             {isLoading && (
