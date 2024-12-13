@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useOrientation } from '@mantine/hooks';
 import { IconCircleArrowUp, IconTrash } from '@tabler/icons-react';
 import {
