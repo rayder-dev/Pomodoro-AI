@@ -35,6 +35,8 @@
 }
 
 .message.user {
+  max-width: 90%;
+  flex-wrap: wrap;
   align-self: flex-end;
   margin-left: auto;
   background-color: #e3f2fd;
@@ -42,6 +44,8 @@
 }
 
 .message.ai {
+  max-width: 90%;
+  flex-wrap: wrap;
   align-self: flex-start;
   margin-right: auto;
   background-color: #f5f5f5;
