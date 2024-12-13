@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useRef } from 'react';
 import { useOrientation } from '@mantine/hooks';
 import { IconCircleArrowUp, IconTrash } from '@tabler/icons-react';
 import {
@@ -29,6 +29,7 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   const genAI = new GoogleGenerativeAI(
     import.meta.env.VITE_REACT_APP_GEMINI_API_KEY
@@ -47,6 +48,15 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
       localStorage.setItem('chatMessages', JSON.stringify(messages));
     }
   }, [messages]);
+
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTo({
+        top: scrollAreaRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  }, [messages, isLoading]);
 
   const handleSendMessage = async () => {
     if (input.trim()) {
@@ -121,7 +131,7 @@ const AiDrawer: FC<AiDrawerProps> = ({ opened, close }) => {
         style={{ height: type === 'landscape-primary' ? '75vh' : '20vh' }}
         className={styles.chatContainer}
       >
-        <ScrollArea>
+        <ScrollArea viewportRef={scrollAreaRef}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {messages.map((msg, index) => (
               <Paper
