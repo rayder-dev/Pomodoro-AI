@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@mantine/core": "^7.13.3",
     "@mantine/form": "^7.13.2",
     "@mantine/hooks": "^7.13.3",
