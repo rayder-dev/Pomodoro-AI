@@ -1,0 +1,21 @@
+.openai-icon {
+  animation: spin-and-zoom 6s linear infinite;
+}
+
+.openai-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+  fill: #000;
+  transition: all 0.3s ease;
+}
+
+@keyframes spin-and-zoom {
+  0% {
+    transform: rotate(360deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1.1);
+  }
+}

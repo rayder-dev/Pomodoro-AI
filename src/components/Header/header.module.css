@@ -2,18 +2,16 @@
 Navigation
 =============*/
 header {
-  user-select: none;
-  padding: 0.4em;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  user-select: none;
+  padding: 0.4em;
 }
 
 .header-container {
   padding: 0.5em;
-  width: 100%;
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

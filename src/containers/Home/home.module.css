@@ -71,6 +71,8 @@ main section:first-child {
     rgb(27, 23, 36) 99.1%
   );
   padding-top: 5em;
+
+  overflow-x: hidden;
 }
 
 main section:nth-child(2) {
@@ -110,11 +112,25 @@ main section:last-child {
 Tally Container
 =============*/
 .tally-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(4, 1fr); /* 4 columns by default */
+  gap: 1em; /* Space between grid items */
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto; /* Center the container */
+  padding: 1em; /* Add padding for spacing */
+}
+
+/* Media Queries for Adjustments */
+@media (max-width: 1024px) {
+  .tally-container {
+    grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns */
+  }
+}
+
+@media (max-width: 576px) {
+  .tally-container {
+    grid-template-columns: 1fr; /* Stack items vertically */
+  }
 }
 
 /* ============
