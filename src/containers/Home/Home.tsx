@@ -105,7 +105,7 @@ const Home = () => {
     <>
       <Header onDrawerOpen={handleDrawerOpen} />
       <main>
-        <section>
+        <section className={styles['section']}>
           <div className={styles['grid-container']}>
             <div className={`${styles['grid-item']} ${styles['item1']}`}>
               <Tabs timerState={timerState} onSelect={setTimerState} />

@@ -28,6 +28,10 @@ strong {
 Main Layout 
 =============*/
 
+.section {
+  overflow-y: hidden;
+}
+
 .grid-container {
   display: grid;
   justify-content: center;
